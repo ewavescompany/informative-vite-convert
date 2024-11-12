@@ -24,19 +24,20 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import withAuth from "@/hocs/withAuth";
 import { useFetchAboutus } from "@/hooks/dashboard/useFetchAboutus";
-// import { useTranslations } from "next-intl";
 import { updateAbout } from "@/requests/admin/updateAbout";
 import { useToast } from "@/hooks/use-toast";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
 
-function Page() {
-  const locale = "en"; // Get locale
+function AboutUsPage() {
+  const locale = i18n.language; // Get locale
   const { toast } = useToast();
-  const t = (str: string) => str;
+  const { t } = useTranslation();
   const aboutUsData = useFetchAboutus();
 
   const validationSchema = Yup.object({
-    about: Yup.string().required(t("about_required")),
-    lang: Yup.string().required(t("lang_required")),
+    about: Yup.string().required(t("aboutus.about_required")),
+    lang: Yup.string().required(t("aboutus.lang_required")),
   });
 
   const formik = useFormik({
@@ -64,14 +65,14 @@ function Page() {
         const response = await updateAbout(formData, token ?? "");
         console.log("Update successful:", response);
         toast({
-          title: t("aboutus_updated_successfully"),
-          description: t("about_us_updated"),
+          title: t("aboutus.aboutus_updated_successfully"),
+          description: t("aboutus.about_us_updated"),
         });
       } catch (error) {
         toast({
           variant: "destructive",
-          title: t("aboutus_updated_failed"),
-          description: t("please_try_again"),
+          title: t("aboutus.aboutus_updated_failed"),
+          description: t("aboutus.please_try_again"),
         });
         console.error("Error updating about us:", error);
       }
@@ -80,16 +81,16 @@ function Page() {
 
   return (
     <div className="w-full flex flex-col gap-5 capitalize">
-      <DashboardTitle title={t("update_about_us")} />
+      <DashboardTitle title={t("aboutus.update_about_us")} />
       <form onSubmit={formik.handleSubmit}>
         <Card className="w-full h-full">
           <CardHeader>
-            <CardTitle>{t("update_company_about")}</CardTitle>
-            <CardDescription>{t("fill_about_form")}</CardDescription>
+            <CardTitle>{t("aboutus.update_company_about")}</CardTitle>
+            <CardDescription>{t("aboutus.fill_about_form")}</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col space-y-1.5">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="about">{t("about_us_description")}</Label>
+              <Label htmlFor="about">{t("aboutus.about_us_description")}</Label>
               <Textarea
                 id="about"
                 name="about"
@@ -97,7 +98,7 @@ function Page() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.about}
-                placeholder={t("about_placeholder")}
+                placeholder={t("aboutus.about_placeholder")}
               />
               {formik.errors.about && formik.touched.about && (
                 <div className="text-red-500 text-sm">
@@ -106,18 +107,18 @@ function Page() {
               )}
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="lang">{t("language_select")}</Label>
+              <Label htmlFor="lang">{t("aboutus.language_select")}</Label>
               <Select
                 name="lang"
                 value={formik.values.lang}
                 onValueChange={(value) => formik.setFieldValue("lang", value)}
               >
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder={t("language_select")} />
+                  <SelectValue placeholder={t("aboutus.language_select")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>{t("language_select")}</SelectLabel>
+                    <SelectLabel>{t("aboutus.language_select")}</SelectLabel>
                     <SelectItem value="en">English</SelectItem>
                     <SelectItem value="ar">العربية</SelectItem>
                   </SelectGroup>
@@ -133,9 +134,9 @@ function Page() {
           </CardContent>
           <CardFooter className="flex justify-end gap-4">
             <Button variant="outline" type="button">
-              {t("cancel")}
+              {t("aboutus.cancel")}
             </Button>
-            <Button type="submit">{t("update")}</Button>
+            <Button type="submit">{t("aboutus.update")}</Button>
           </CardFooter>
         </Card>
       </form>
@@ -143,4 +144,4 @@ function Page() {
   );
 }
 
-export default withAuth(Page);
+export default withAuth(AboutUsPage);

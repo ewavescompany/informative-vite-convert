@@ -1,0 +1,42 @@
+export const pageAdmin = {
+  blogs: {
+    manage: "/admin/blogs",
+    add: "/admin/blogs/add",
+    edit: "/admin/blogs/edit",
+  },
+  portfolio: {
+    manage: "/admin/portfolio",
+    add: "/admin/portfolio/add",
+    edit: "/admin/portfolio/edit",
+  },
+  services: {
+    manage: "/admin/services",
+    add: "/admin/services/add",
+    edit: "/admin/services/edit",
+  },
+  team: {
+    manage: "/admin/team",
+    add: "/admin/team/add",
+    edit: "/admin/team/edit",
+  },
+  testimonials: {
+    manage: "/admin/testimonials",
+    add: "/admin/testimonials/add",
+    edit: "/admin/testimonials/edit",
+  },
+  about_us: {
+    main: "/admin/about-us",
+  },
+  mission: {
+    main: "/admin/mission",
+  },
+  vision: {
+    main: "/admin/vision",
+  },
+  contacts_messages: {
+    main: "/admin/vision",
+  },
+  settings: {
+    main: "/admin/settings",
+  },
+};

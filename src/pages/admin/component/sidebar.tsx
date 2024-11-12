@@ -18,11 +18,12 @@ import { SidebarLink } from "./sidebarLink";
 import { DropdownNavItem } from "./dropdownNavItem";
 import "@/i18n";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 const Sidebar: React.FC = () => {
   // Read the locale from cookies (stored in 'locale')
   // const locale = Cookies.get("NEXT_LOCALE") || "en"; // Default to 'en' if no locale is found
-  const locale = "ar"; // Default to 'en' if no locale is found
+  const locale = "en"; // Default to 'en' if no locale is found
   const { t } = useTranslation();
 
   return (
@@ -62,11 +63,13 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.blogs")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/blogs`,
+                  // href: `/${locale}/admin/dashboard/blogs`,
+                  href: pageAdmin.blogs.manage,
                   label: t("sidebar.show_blogs"),
                 }, // Use locale from cookies
                 {
-                  href: `/${locale}/admin/dashboard/blogs/add-blogs`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/blogs/add-blogs`, // Use locale from cookies
+                  href: pageAdmin.blogs.add,
                   label: t("sidebar.add_blogs"),
                 },
               ]}
@@ -76,11 +79,13 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.portfolios")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/portfolio`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/portfolio`, // Use locale from cookies
+                  href: pageAdmin.portfolio.manage,
                   label: t("sidebar.show_portfolio"),
                 },
                 {
-                  href: `/${locale}/admin/dashboard/portfolio/add-portfolios`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/portfolio/add-portfolios`, // Use locale from cookies
+                  href: pageAdmin.portfolio.add,
                   label: t("sidebar.add_portfolio"),
                 },
               ]}
@@ -90,11 +95,13 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.services")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/service`,
+                  // href: `/${locale}/admin/dashboard/service`,
+                  href: pageAdmin.services.manage,
                   label: t("sidebar.show_services"),
                 }, // Use locale from cookies
                 {
-                  href: `/${locale}/admin/dashboard/service/add-services`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/service/add-services`, // Use locale from cookies
+                  href: pageAdmin.services.add,
                   label: t("sidebar.add_services"),
                 },
               ]}
@@ -104,11 +111,13 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.teams")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/team`,
+                  // href: `/${locale}/admin/dashboard/team`,
+                  href: pageAdmin.team.manage,
                   label: t("sidebar.show_team"),
                 }, // Use locale from cookies
                 {
-                  href: `/${locale}/admin/dashboard/team/add-team`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/team/add-team`, // Use locale from cookies
+                  href: pageAdmin.team.add,
                   label: t("sidebar.add_teams"),
                 },
               ]}
@@ -118,17 +127,20 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.testimonials")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/testimonials`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/testimonials`, // Use locale from cookies
+                  href: pageAdmin.testimonials.manage,
                   label: t("sidebar.show_testimonials"),
                 },
                 {
-                  href: `/${locale}/admin/dashboard/testimonials/add-testimonial`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/testimonials/add-testimonial`, // Use locale from cookies
+                  href: pageAdmin.testimonials.add,
                   label: t("sidebar.add_testimonials"),
                 },
               ]}
             />
             <SidebarLink
-              href={`/${locale}/admin/dashboard/about-us`} // Use locale from cookies
+              // href={`/${locale}/admin/dashboard/about-us`} // Use locale from cookies
+              href={pageAdmin.about_us.main}
               icon={Signature}
               label={t("sidebar.about_us")}
             />

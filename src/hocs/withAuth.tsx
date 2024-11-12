@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import Loader from "@/customComponents/loader";
 
 const withAuth = <P extends object>(
@@ -8,7 +8,8 @@ const withAuth = <P extends object>(
   const ComponentWithAuth = (props: P) => {
     const [loading, setLoading] = useState(true);
     const [isClient, setIsClient] = useState(false);
-    const locale = Cookies.get("NEXT_LOCALE") || "en";
+    // const locale = Cookies.get("NEXT_LOCALE") || "en";
+    const locale = "en";
 
     useEffect(() => {
       setIsClient(true);
