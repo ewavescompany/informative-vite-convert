@@ -11,10 +11,11 @@ import PageLoader from "@/customComponents/pageLoader";
 import { BlogInterface } from "@/interfaces/dashboardInterface";
 // import Cookies from "js-cookie";
 import { dashboardBaseServerUrl, imagesPath } from "@/constants/urls";
+import { useTranslation } from "react-i18next";
 // import withAuth from "@/hocs/withAuth";
 
 export default function DashboardMain() {
-  const t = (str: string) => str;
+  const { t } = useTranslation();
   const locale = "en";
   const { isOpen, openDialog, closeDialog } = useShowDialog();
   const [active, setActive] = useState<number>();
@@ -48,12 +49,12 @@ export default function DashboardMain() {
     <>
       <div className="w-full flex flex-col gap-5 capitalize">
         <div className="flex flex-row items-center justify-between">
-          <DashboardTitle title={t("all_blogs")} />
+          <DashboardTitle title={t("blogs.all_blogs")} />
           <LinkButton
             url={`/${locale}/admin/dashboard/blogs/add-blogs`}
             className="space-x-1.5 h-9 px-4 py-2"
           >
-            <span>{t("add_blog")}</span>
+            <span>{t("blogs.add_blog")}</span>
             <Plus size={14} />
           </LinkButton>
         </div>
@@ -78,7 +79,7 @@ export default function DashboardMain() {
         )}
         {blogs?.data && blogs?.data.length === 0 && !loading && (
           <div className="w-full h-full min-h-full flex flex-col items-center justify-center">
-            <h4 className="text-2xl">{t("no_blogs")}</h4>
+            <h4 className="text-2xl">{t("blogs.no_blogs")}</h4>
           </div>
         )}
       </div>
