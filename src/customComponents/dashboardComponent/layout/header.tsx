@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { CircleUser } from "lucide-react";
 import {
   DropdownMenu,
@@ -18,14 +16,15 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
-import Cookies from "js-cookie"; // For saving the selected language
+import i18n from "@/i18n";
+import { changeLanguage } from "i18next";
 
 function Header() {
-  const currentLang = Cookies.get("NEXT_LOCALE") || "en"; // Get the current language from cookies or default to "en"
+  const currentLang = i18n.language; // Get the current language from cookies or default to "en"
 
   const handleLanguageChange = (lang: string) => {
     // Update the language in cookies
-    Cookies.set("NEXT_LOCALE", lang);
+    changeLanguage(lang); //TODO
 
     // Get the current path and replace the language part in the URL
     const newPath = window.location.pathname.replace(/^\/(en|ar)/, `/${lang}`);

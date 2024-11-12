@@ -1,19 +1,17 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import React from "react";
 import SlideComponent from "../reavelAnimation/slideComponent";
-import { useTranslations } from "next-intl";
-import Cookies from "js-cookie";
 import { settings } from "@/interfaces/dashboardInterface";
 import { videosPath } from "@/constants/urls";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
 
 interface videoSectionInterface {
   settings: settings;
 }
 
 function VideoSection({ settings }: videoSectionInterface) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("HomePage");
+  const locale = i18n.language;
+  const { t } = useTranslation();
 
   return (
     <div className="w-full h-screen relative grid lg:grid-cols-2 grid-cols-1">
@@ -58,7 +56,7 @@ function VideoSection({ settings }: videoSectionInterface) {
                 size={"default"}
                 variant={"ghost"}
               >
-                {t("more_about_us")}
+                {t("HomePage.more_about_us")}
               </Button>
             </SlideComponent>
             <SlideComponent dir="down">
@@ -67,7 +65,7 @@ function VideoSection({ settings }: videoSectionInterface) {
                 size={"default"}
                 variant={"secondary"}
               >
-                {t("contact_us")}
+                {t("HomePage.contact_us")}
               </Button>
             </SlideComponent>
           </div>

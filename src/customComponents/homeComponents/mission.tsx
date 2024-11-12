@@ -1,13 +1,10 @@
-"use client";
-
-import React from "react";
-
 import SlideComponent from "../reavelAnimation/slideComponent";
-import Cookies from "js-cookie";
 import { missionInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
+import i18n from "@/i18n";
+
 function Mission({ mission }: { mission: missionInterface }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+  const locale = i18n.language;
   return (
     <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 items-center justify-center overflow-hidden">
       <div className="flex flex-col gap-3 items-start overflow-hidden">

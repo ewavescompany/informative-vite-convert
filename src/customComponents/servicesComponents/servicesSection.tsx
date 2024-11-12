@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
+import i18n from "@/i18n";
 import LeftDirectionService from "./leftDirectionService";
 import RightDirectionService from "./rightDirectionService";
-import Cookies from "js-cookie";
 import { Service } from "@/interfaces/dashboardInterface";
-function ServicesSection({ services }: { services: Service[] }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+
+export default function ServicesSection({ services }: { services: Service[] }) {
+  const locale = i18n.language;
+
   return (
     <div className="flex flex-col overflow-hidden w-full h-full px-0 sm:px-5 lg:px-8 lg:pb-14 pb-4 sm:pb-10 lg:gap-16 gap-10">
       {services.map((service: Service, index: number) => {
@@ -42,5 +42,3 @@ function ServicesSection({ services }: { services: Service[] }) {
     </div>
   );
 }
-
-export default ServicesSection;

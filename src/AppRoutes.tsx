@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import DashboardLayout from "./pages/admin/layout";
+import DashboardLayout from "@/pages/admin/layout";
 import BlogsPage from "@/pages/admin/blogs/blogs";
 import AddBlogsPage from "@/pages/admin/blogs/add-blogs/addBlogs";
 import EditBlogPage from "@/pages/admin/blogs/edit-blogs/editBlog";
@@ -21,6 +21,9 @@ import MissionPage from "@/pages/admin/mission/mission";
 import ContactMessagesPage from "@/pages/admin/contact-messages/contactMessages";
 import VisionPage from "@/pages/admin/vision/vision";
 import SettingsPage from "@/pages/admin/settings/settings";
+import ClientLayout from "./pages/client/layout";
+import { pageClient } from "./data/client/pagesURLs";
+import ClientPage from "./pages/client/page";
 
 export default function AppRoutes() {
   return (
@@ -83,11 +86,10 @@ export default function AppRoutes() {
         <Route path={pageAdmin.settings.main} element={<SettingsPage />} />
       </Route>
 
-      {/* Dashboard Routes */}
-      {/* <Route element={<DashboardLayout />}>
-        <Route path="/dashboard" element={<DashboardHome />} />
-        <Route path="/dashboard/settings" element={<DashboardSettings />} />
-      </Route> */}
+      {/* CLIENT ROUTES */}
+      <Route element={<ClientLayout />}>
+        <Route path={pageClient.main} element={<ClientPage />} />
+      </Route>
     </Routes>
   );
 }

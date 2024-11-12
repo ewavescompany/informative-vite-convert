@@ -1,17 +1,16 @@
-"use client";
-import Image from "next/image";
-import React from "react";
-import bgUrl from "../../public/Services-How-BG.webp";
+import i18n from "@/i18n";
+import bgUrl from "../../../../../public/Services-How-BG.webp";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { statsInterface } from "@/interfaces/clientInterface";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
-function Stats({ stats }: { stats: statsInterface }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("stats");
+import { useTranslation } from "react-i18next";
+
+export default function Stats({ stats }: { stats: statsInterface }) {
+  const locale = i18n.language;
+  const { t } = useTranslation();
+
   return (
     <div className="z-[-1] relative grid lg:grid-cols-2 grid-cols-1 overflow-hidden w-full h-full px-8 sm:px-20 lg:px-28 lg:py-14 py-4 sm:py-10 bg-grayblack/90 rounded-2xl min-h-[30vh] lg:gap-10 gap-5">
-      <Image
+      <img
         className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
         alt="mission"
         src={bgUrl}
@@ -19,7 +18,7 @@ function Stats({ stats }: { stats: statsInterface }) {
       <div className="flex flex-col gap-3 h-full w-full">
         <SlideComponent dir="down">
           <span className="text-gray-500 sm:text-xl text-lg font-medium">
-            {t("stats")}
+            {t("stats.stats")}
           </span>
         </SlideComponent>
         <h3 className="text-graywhite lg:text-5xl md:text-2xl sm:text-xl text-lg font-medium">
@@ -35,31 +34,29 @@ function Stats({ stats }: { stats: statsInterface }) {
       </div>
       <div className="grid grid-cols-2 gap-3 h-full w-full overflow-hidden">
         <StatCard
-          value={`${stats.stat1}${t("K")}`}
+          value={`${stats.stat1}${t("stats.K")}`}
           indicator="+"
-          description={t("Businesses served")}
+          description={t("stats.Businesses served")}
         />
         <StatCard
           value={stats.stat2}
           indicator="%"
-          description={t("Average increase in engagement")}
+          description={t("stats.Average increase in engagement")}
         />
         <StatCard
           value={stats.stat3}
           indicator="+"
-          description={t("Countries reached")}
+          description={t("stats.Countries reached")}
         />
         <StatCard
-          value={`${stats.stat4}${t("M")}`}
+          value={`${stats.stat4}${t("stats.M")}`}
           indicator="+"
-          description={t("Campaigns launched annually")}
+          description={t("stats.Campaigns launched annually")}
         />
       </div>
     </div>
   );
 }
-
-export default Stats;
 
 function StatCard({
   value,

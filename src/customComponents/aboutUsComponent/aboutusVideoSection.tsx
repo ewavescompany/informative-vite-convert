@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "react-i18next";
 import SlideComponent from "../reavelAnimation/slideComponent";
+import i18n from "@/i18n";
 
 function AboutusVideoSection({
   title1,
@@ -15,8 +14,8 @@ function AboutusVideoSection({
   descriptionEn: string;
   descriptionAr: string;
 }) {
-  const t = useTranslations("aboutus");
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+  const { t } = useTranslation();
+  const locale = i18n.language;
 
   return (
     <div className="w-full h-[50vh] relative flex flex-col items-center justify-center gap-3">
@@ -31,12 +30,12 @@ function AboutusVideoSection({
       <h1 className="w-fit h-fit capitalize flex flex-col items-center justify-center gap-3 md:text-3xl lg:text-5xl text-2xl font-semibold text-graywhite z-[3] ">
         <div className="w-full h-full flex flex-row items-center justify-center">
           <SlideComponent dir="down">
-            <span className="">{title1 && t(title1)}</span>
+            <span className="">{title1 && t(`aboutus.${title1}`)}</span>
           </SlideComponent>
         </div>
         <div className="w-full h-full flex flex-row items-center justify-center overflow-hidden">
           <SlideComponent dir="up">
-            <span className="">{title2 && t(title2)}</span>
+            <span className="">{title2 && t(`aboutus.${title2}`)}</span>
           </SlideComponent>
         </div>
       </h1>

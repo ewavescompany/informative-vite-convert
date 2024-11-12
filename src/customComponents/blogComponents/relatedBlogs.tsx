@@ -1,4 +1,3 @@
-import React from "react";
 import RelatedBlogCard from "./relatedBlogCard";
 
 function RelatedBlogs() {

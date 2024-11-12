@@ -1,11 +1,12 @@
-import React from "react";
 import "react-quill/dist/quill.snow.css";
 import { blogsInterface } from "@/interfaces/clientInterface";
-import Cookies from "js-cookie";
 import { formatDateForPortfolio } from "@/utility/generic";
 import { imagesPath } from "@/constants/urls";
+import i18n from "@/i18n";
+
 function BlogHeader({ blog }: { blog: blogsInterface }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+  const locale = i18n.language;
+
   return (
     <div className="w-full h-full flex flex-col gap-1">
       <span className="text-gray-500 uppercase font-medium text-sm">

@@ -1,40 +1,40 @@
-"use client";
-import Link from "next/link";
-import React from "react";
-import Cookies from "js-cookie";
 import SlideComponent from "../reavelAnimation/slideComponent";
-import { useTranslations } from "next-intl";
 import { testimonialsInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function Testomonials({
   testimonials,
 }: {
   testimonials: testimonialsInterface[];
 }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("testimonials");
-  console.log(testimonials);
+  const locale = i18n.language;
+  const { t } = useTranslation();
+
   return (
     <div className="flex relative flex-col overflow-hidden w-full h-full  px-0 sm:px-5 lg:px-8 lg:pb-14 pb-4 sm:pb-10 lg:gap-10 gap-5">
       <div className="flex flex-col items-center gap-3 minibg">
         <SlideComponent dir="down">
           <h4 className="text-grayblack md:text-xl text-lg font-medium">
-            {t("testimonials")}
+            {t("testimonials.testimonials")}
           </h4>
         </SlideComponent>
         <h3 className="lg:text-4xl md:text-2xl text-xl font-medium capitalize text-center text-gray-500">
-          <SlideComponent dir="right">{t("what_our_users")}</SlideComponent>
+          <SlideComponent dir="right">
+            {t("testimonials.what_our_users")}
+          </SlideComponent>
           <SlideComponent dir="left">
-            {t("said_about_our_company")}
+            {t("testimonials.said_about_our_company")}
           </SlideComponent>
         </h3>
         <SlideComponent dir="up">
           <Link
-            href={"/about-us"}
+            to={"/about-us"}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
-            {t("learn_more")}
+            {t("testimonials.learn_more")}
           </Link>
         </SlideComponent>
       </div>

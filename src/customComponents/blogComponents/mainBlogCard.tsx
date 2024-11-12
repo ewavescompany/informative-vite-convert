@@ -1,15 +1,16 @@
-import Cookies from "js-cookie";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
 import { formatDateForPortfolio } from "@/utility/generic";
-import Link from "next/link";
+import i18n from "@/i18n";
+import { Link } from "react-router-dom";
+
 function MainBlogCard({ blog }: { blog: blogsInterface }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+  const locale = i18n.language;
 
   return (
     <div className="w-full h-full flex flex-col gap-3 xl:max-w-5xl lg:max-w-3xl max-w-full">
       <div className="w-full h-full overflow-hidden rounded-2xl max-h-[60vh]">
-        <Link href={`/${locale}/client/blogs/${blog.id}`}>
+        <Link to={`/${locale}/client/blogs/${blog.id}`}>
           <img
             src={`${imagesPath}blogs/${blog.image}`}
             alt="blog img"

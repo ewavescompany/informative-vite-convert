@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import {
   Home,
@@ -14,146 +13,146 @@ import {
   Mails,
   Settings,
 } from "lucide-react";
-
 import { SidebarLink } from "../links/sidebarLink";
 import { DropdownNavItem } from "@/customComponents/layoutComponents/dropdownNavItem";
-import { useTranslations } from "next-intl";
-import Cookies from "js-cookie"; // Import the js-cookie library
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   // Read the locale from cookies (stored in 'locale')
-  const locale = Cookies.get("NEXT_LOCALE") || "en"; // Default to 'en' if no locale is found
-  const t = useTranslations("sidebar");
+  const locale = i18n.language; // Default to 'en' if no locale is found
+  const { t } = useTranslation();
 
   return (
     <div className="hidden border-r bg-muted/40 md:block ">
       <div className="flex h-full max-h-screen min-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link
-            href={`/${locale}`}
+            to={`/${locale}`}
             className="flex items-center gap-2 font-semibold"
           >
             <Package2 className="h-6 w-6" />
-            <span>{t("company_name")}</span>
+            <span>{t("sidebar.company_name")}</span>
           </Link>
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4 text-muted-foreground transition-all hover:text-primary">
             <DropdownNavItem
               icon={Home}
-              label={t("home")}
+              label={t("sidebar.home")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/video-section`, // Use locale from cookies
-                  label: t("video_section"),
+                  label: t("sidebar.video_section"),
                 },
                 {
                   href: `/${locale}/admin/dashboard/stats-section`, // Use locale from cookies
-                  label: t("stats_section"),
+                  label: t("sidebar.stats_section"),
                 },
                 {
                   href: `/${locale}/admin/dashboard/nav-logo`, // Use locale from cookies
-                  label: t("nav_logo"),
+                  label: t("sidebar.nav_logo"),
                 },
               ]}
             />
             <DropdownNavItem
               icon={Newspaper}
-              label={t("blogs")}
+              label={t("sidebar.blogs")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/blogs`,
-                  label: t("show_blogs"),
+                  label: t("sidebar.show_blogs"),
                 }, // Use locale from cookies
                 {
                   href: `/${locale}/admin/dashboard/blogs/add-blogs`, // Use locale from cookies
-                  label: t("add_blogs"),
+                  label: t("sidebar.add_blogs"),
                 },
               ]}
             />
             <DropdownNavItem
               icon={Fingerprint}
-              label={t("portfolios")}
+              label={t("sidebar.portfolios")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/portfolio`, // Use locale from cookies
-                  label: t("show_portfolio"),
+                  label: t("sidebar.show_portfolio"),
                 },
                 {
                   href: `/${locale}/admin/dashboard/portfolio/add-portfolios`, // Use locale from cookies
-                  label: t("add_portfolio"),
+                  label: t("sidebar.add_portfolio"),
                 },
               ]}
             />
             <DropdownNavItem
               icon={Layers3}
-              label={t("services")}
+              label={t("sidebar.services")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/service`,
-                  label: t("show_services"),
+                  label: t("sidebar.show_services"),
                 }, // Use locale from cookies
                 {
                   href: `/${locale}/admin/dashboard/service/add-services`, // Use locale from cookies
-                  label: t("add_services"),
+                  label: t("sidebar.add_services"),
                 },
               ]}
             />
             <DropdownNavItem
               icon={Users}
-              label={t("teams")}
+              label={t("sidebar.teams")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/team`,
-                  label: t("show_team"),
+                  label: t("sidebar.show_team"),
                 }, // Use locale from cookies
                 {
                   href: `/${locale}/admin/dashboard/team/add-team`, // Use locale from cookies
-                  label: t("add_teams"),
+                  label: t("sidebar.add_teams"),
                 },
               ]}
             />
             <DropdownNavItem
               icon={ShieldCheck}
-              label={t("testimonials")}
+              label={t("sidebar.testimonials")}
               items={[
                 {
                   href: `/${locale}/admin/dashboard/testimonials`, // Use locale from cookies
-                  label: t("show_testimonials"),
+                  label: t("sidebar.show_testimonials"),
                 },
                 {
                   href: `/${locale}/admin/dashboard/testimonials/add-testimonial`, // Use locale from cookies
-                  label: t("add_testimonials"),
+                  label: t("sidebar.add_testimonials"),
                 },
               ]}
             />
             <SidebarLink
               href={`/${locale}/admin/dashboard/about-us`} // Use locale from cookies
               icon={Signature}
-              label={t("about_us")}
+              label={t("sidebar.about_us")}
             />
             <SidebarLink
               href={`/${locale}/admin/dashboard/mission`}
               icon={Lightbulb}
-              label={t("mission")}
+              label={t("sidebar.mission")}
             />{" "}
             {/* Use locale from cookies */}
             <SidebarLink
               href={`/${locale}/admin/dashboard/vission`}
               icon={Eye}
-              label={t("vision")}
+              label={t("sidebar.vision")}
             />{" "}
             {/* Use locale from cookies */}
             <SidebarLink
               href={`/${locale}/admin/dashboard/contact-messages`}
               icon={Mails}
-              label={t("contact_message")}
+              label={t("sidebar.contact_message")}
             />{" "}
             {/* Use locale from cookies */}
             <SidebarLink
               href={`/${locale}/admin/dashboard/settings`} // Use locale from cookies
               icon={Settings}
-              label={t("settings")}
+              label={t("sidebar.settings")}
             />
           </nav>
         </div>

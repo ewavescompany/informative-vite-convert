@@ -1,15 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Facebook, Youtube, Twitter, Instagram } from "lucide-react";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-function Navbar({ logo }: { logo: string }) {
+export default function Navbar({ logo }: { logo: string }) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("navbar");
+  const locale = i18n.language;
+  const { t } = useTranslation();
 
   // Function to handle scroll event
   const handleScroll = () => {
@@ -32,12 +31,10 @@ function Navbar({ logo }: { logo: string }) {
       }`}
     >
       <div className="p-1 w-48 h-20">
-        <Link href={"/"}>
+        <Link to={"/"}>
           {logo ? (
-            <Image
+            <img
               src={logo}
-              width={200}
-              height={200}
               alt="Company Logo"
               className="max-w-48 max-h-24 h-full w-full object-cover"
             />
@@ -48,38 +45,38 @@ function Navbar({ logo }: { logo: string }) {
       </div>
       {/* Navigation Links */}
       <div className="flex flex-row gap-4 ">
-        <Link href={"/"} className="text-base font-semibold">
-          {t("home")}
+        <Link to={"/"} className="text-base font-semibold">
+          {t("navbar.home")}
         </Link>
         {/* <Link
           href={`/${locale}/client/about-us`}
           className="text-base font-semibold"
         >
-          {t("about_us")}
+          {t("navbar.about_us")}
         </Link> */}
         <Link
-          href={`/${locale}/client/services`}
+          to={`/${locale}/client/services`}
           className="text-base font-semibold"
         >
-          {t("services")}
+          {t("navbar.services")}
         </Link>
         <Link
-          href={`/${locale}/client/portfolio`}
+          to={`/${locale}/client/portfolio`}
           className="text-base font-semibold"
         >
-          {t("portfolio")}
+          {t("navbar.portfolio")}
         </Link>
         <Link
-          href={`/${locale}/client/blogs`}
+          to={`/${locale}/client/blogs`}
           className="text-base font-semibold"
         >
-          {t("blogs")}
+          {t("navbar.blogs")}
         </Link>
         <Link
-          href={`/${locale}/client/contact-us`}
+          to={`/${locale}/client/contact-us`}
           className="text-base font-semibold"
         >
-          {t("contact_us")}
+          {t("navbar.contact_us")}
         </Link>
       </div>
       <div
@@ -87,21 +84,19 @@ function Navbar({ logo }: { logo: string }) {
           locale === "en" ? "flex-row ml-auto" : "flex-row-reverse mr-auto"
         }`}
       >
-        <Link href={"/home"} className="lg:text-lg text-base text-graywhite">
+        <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
           <Facebook size={20} />
         </Link>
-        <Link href={"/home"} className="lg:text-lg text-base text-graywhite">
+        <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
           <Youtube size={20} />
         </Link>
-        <Link href={"/home"} className="lg:text-lg text-base text-graywhite">
+        <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
           <Twitter size={20} />
         </Link>
-        <Link href={"/home"} className="lg:text-lg text-base text-graywhite">
+        <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
           <Instagram size={20} />
         </Link>
       </div>
     </div>
   );
 }
-
-export default Navbar;

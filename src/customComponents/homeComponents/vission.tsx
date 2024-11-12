@@ -1,11 +1,10 @@
-"use client";
-import React from "react";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { vissionInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
-import Cookies from "js-cookie";
-function Vission({ vission }: { vission: vissionInterface }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+import i18n from "@/i18n";
+
+export default function Vission({ vission }: { vission: vissionInterface }) {
+  const locale = i18n.language;
 
   return (
     <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 items-center justify-center overflow-hidden">
@@ -40,5 +39,3 @@ function Vission({ vission }: { vission: vissionInterface }) {
     </div>
   );
 }
-
-export default Vission;

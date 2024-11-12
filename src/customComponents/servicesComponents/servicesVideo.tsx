@@ -1,6 +1,5 @@
-import React from "react";
-
 import ServicesSwiper from "./servicesSwiper";
+
 function ServicesVideo() {
   return (
     <div className="w-full h-screen relative  gap-3">

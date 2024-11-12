@@ -1,5 +1,4 @@
-"use client";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Slide } from "react-awesome-reveal";
 
 // Define the component with children and direction props

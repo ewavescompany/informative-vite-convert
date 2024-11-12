@@ -1,8 +1,7 @@
-"use client";
-import React from "react";
 import SlideComponent from "@/customComponents/reavelAnimation/slideComponent";
-import Cookies from "js-cookie";
 import { imagesPath } from "@/constants/urls";
+import i18n from "@/i18n";
+
 function PortfolioHeader({
   titleEn,
   titleAr,
@@ -16,7 +15,8 @@ function PortfolioHeader({
   descriptionAr: string;
   image: string;
 }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
+  const locale = i18n.language;
+
   return (
     <div className="w-full h-[100vh] relative flex flex-col items-start justify-end gap-3 overflow-hidden px-8 py-16">
       <div className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[2] bg-grayblack/80"></div>

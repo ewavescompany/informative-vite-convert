@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface SidebarLinkProps {
   href: string;
@@ -12,7 +12,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
   label,
 }) => (
   <Link
-    href={href}
+    to={href}
     className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
   >
     <Icon className="h-4 w-4" />

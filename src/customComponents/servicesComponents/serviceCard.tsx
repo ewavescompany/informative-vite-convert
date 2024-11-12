@@ -1,19 +1,18 @@
-import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import img1 from "../../public/services/service1.jpg";
+import img1 from "../../../../public/services/service1.jpg";
+import { Link } from "react-router-dom";
+
 function ServiceCard() {
   return (
     <div className="w-full h-full  text-graywhite flex flex-col justify-between rounded-2xl relative group overflow-hidden aspect-video md:p-4 p-2">
-      <Image
+      <img
         className="absolute inset-0 saturate-100 lg:saturate-0 md:group-hover:saturate-100 group-hover:scale-110 transition-all duration-500"
         src={img1}
         alt="service1"
       />
       <Link
         className="ml-auto w-fit z-10 relative hover:scale-150 duration-500"
-        href={"/services"}
+        to={"/services"}
       >
         <ArrowUpRight size={38} className=" text-graywhite" />
       </Link>

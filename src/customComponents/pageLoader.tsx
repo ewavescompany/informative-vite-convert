@@ -1,4 +1,5 @@
 import { LoaderCircle } from "lucide-react";
+
 function PageLoader() {
   const t = (str: string) => str;
   return (

@@ -1,26 +1,24 @@
-"use client";
-import React from "react";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-
-import { useTranslations } from "next-intl";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 import { imagesPath } from "@/constants/urls";
-import Cookies from "js-cookie";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 function LatestProjects({ projectsData }: { projectsData: Portfolio[] }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  console.log(projectsData, "projectsData");
-  const t = useTranslations("latestProjects");
+  const locale = i18n.language;
+  const { t } = useTranslation();
+
   return (
     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full h-full">
       <div className="lg:col-span-3 md:col-span-2 col-span-1 w-full flex flex-row items-center justify-between ">
         <SlideComponent dir="down">
           <h4 className="lg:text-6xl text-3xl font-medium capitalize text-center text-grayblack">
-            {t("our_latest_projects")}
+            {t("latestProjects.our_latest_projects")}
           </h4>
         </SlideComponent>
-        <Link href={"/projects"} className="hover:scale-150 duration-500">
+        <Link to={"/projects"} className="hover:scale-150 duration-500">
           <ArrowUpRight size={30} />
         </Link>
       </div>
@@ -58,7 +56,7 @@ function ProjectCard({
         src={projectImgUrl}
       />
       <Link
-        href={projectUrl}
+        to={projectUrl}
         className="uppercase lg:text-3xl flex flex-col gap-3 items-center justify-center"
       >
         <SlideComponent className="mx-auto w-fit" triggerOnce dir="down">

@@ -1,45 +1,46 @@
-"use client";
-import Link from "next/link";
-import React from "react";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { teamsInterface } from "@/interfaces/clientInterface";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
 import { TeamMember } from "@/interfaces/dashboardInterface";
 import { imagesPath } from "@/constants/urls";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 interface teamSectionInterface {
   team: teamsInterface[];
 }
 
 function TeamSection({ team }: teamSectionInterface) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("team");
+  const locale = i18n.language;
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col overflow-hidden w-full h-full px-0 sm:px-5 lg:px-8 lg:py-14 py-4 sm:py-10 lg:gap-10 gap-5">
       <div className="flex flex-col items-center gap-3 minibg overflow-hidden">
         <SlideComponent dir="down">
           <h4 className="text-grayblack md:text-xl text-lg font-medium">
-            {t("Team")}
+            {t("team.Team")}
           </h4>
         </SlideComponent>
 
         <h3 className="lg:text-4xl md:text-2xl text-xl font-medium capitalize text-center text-gray-500">
           <SlideComponent dir="right">
-            {t("Driven by expertise")}
+            {t("team.Driven by expertise")}
           </SlideComponent>
-          <SlideComponent dir="left">{t("united by vision")}</SlideComponent>
+          <SlideComponent dir="left">
+            {t("team.united by vision")}
+          </SlideComponent>
         </h3>
         <SlideComponent dir="down">
           <p className="text-grayblack/90 text-sm font-medium max-w-[400px] text-center">
-            {t("team_description")}
+            {t("team.team_description")}
           </p>
         </SlideComponent>
         <SlideComponent dir="up">
           <Link
-            href={`/${locale}/about-us`}
+            to={`/${locale}/about-us`}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
-            {t("Learn more")}
+            {t("team.Learn more")}
           </Link>
         </SlideComponent>
       </div>

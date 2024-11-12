@@ -1,11 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import imgUrl from "../../public/services/service1.jpg";
+import imgUrl from "../../../../public/services/service1.jpg";
+
 function RelatedBlogCard() {
   return (
     <div className="w-full h-full flex flex-col gap-3 xl:max-w-5xl lg:max-w-3xl max-w-full">
       <div className="w-full h-full overflow-hidden rounded-2xl max-h-[60vh]">
-        <Image
+        <img
           src={imgUrl}
           alt="blog img"
           className="hover:scale-125 duration-500 object-cover"

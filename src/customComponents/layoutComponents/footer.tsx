@@ -1,5 +1,3 @@
-import Link from "next/link";
-import React from "react";
 import {
   Facebook,
   Youtube,
@@ -15,17 +13,17 @@ import { FaTiktok } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import bgUrl from "../../public/Services-How-BG.webp";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
+import { Link } from "react-router-dom";
 
 function Footer() {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("navbar");
+  const locale = i18n.language;
+  const { t } = useTranslation();
 
   return (
     <div className="w-full relative min-h-[60px] bg-grayblack px-8 pb-20 sm:px-20 py-4 sm:py-10 grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 dotbg">
-      <Image
+      <img
         className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
         alt="mission"
         src={bgUrl}
@@ -37,10 +35,10 @@ function Footer() {
         </h4>
 
         <Link
-          href={"/"}
+          to={"/"}
           className="lg:text-lg text-base text-graywhite font-medium"
         >
-          {t("home")}
+          {t("navbar.home")}
         </Link>
 
         {/* <Link
@@ -51,28 +49,28 @@ function Footer() {
         </Link> */}
 
         <Link
-          href={`/${locale}/client/services`}
+          to={`/${locale}/client/services`}
           className="lg:text-lg text-base text-graywhite font-medium"
         >
-          {t("services")}
+          {t("navbar.services")}
         </Link>
         <Link
-          href={`/${locale}/client/portfolio`}
+          to={`/${locale}/client/portfolio`}
           className="lg:text-lg text-base text-graywhite font-medium"
         >
-          {t("portfolio")}
+          {t("navbar.portfolio")}
         </Link>
         <Link
-          href={`/${locale}/client/blogs`}
+          to={`/${locale}/client/blogs`}
           className="lg:text-lg text-base text-graywhite font-medium"
         >
-          {t("blogs")}
+          {t("navbar.blogs")}
         </Link>
         <Link
-          href={`/${locale}/client/contact-us`}
+          to={`/${locale}/client/contact-us`}
           className="lg:text-lg text-base text-graywhite font-medium"
         >
-          {t("contact_us")}
+          {t("navbar.contact_us")}
         </Link>
       </div>
       <div className="flex flex-col gap-3">
@@ -82,7 +80,7 @@ function Footer() {
         </h4>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <Facebook size={20} />
           <span>Facebook</span>
@@ -90,35 +88,35 @@ function Footer() {
 
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <Youtube size={20} />
           <span>Youtube</span>
         </Link>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <Twitter size={20} />
           <span>Twitter</span>
         </Link>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <Instagram size={20} />
           <span>Instagram</span>
         </Link>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <FaSnapchat size={20} />
           <span>Snapchat</span>
         </Link>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit"
-          href={"/home"}
+          to={"/home"}
         >
           <FaTiktok size={20} />
           <span>Tiktok</span>
@@ -131,13 +129,13 @@ function Footer() {
         </h4>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium -mt-2"
-          href={"mailto:example@gmail.com"}
+          to={"mailto:example@gmail.com"}
         >
           Mail: example@gmail.com
         </Link>
         <Link
           className="lg:text-lg text-base text-graywhite font-medium -mt-2"
-          href={"mailto:example@gmail.com"}
+          to={"mailto:example@gmail.com"}
         >
           Phone: +19777
         </Link>

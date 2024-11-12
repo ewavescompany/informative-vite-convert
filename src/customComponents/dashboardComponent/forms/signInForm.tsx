@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
@@ -9,21 +8,24 @@ import { useState } from "react";
 import Loader from "@/customComponents/loader";
 import { useToast } from "@/hooks/use-toast";
 import { loginAdmin } from "@/requests/admin/login";
-import { useTranslations } from "next-intl";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Yup schema for form validation using translations
 export default function SignInForm() {
   const [loading, setLoading] = useState<boolean>(false);
-  const t = useTranslations("login");
+  const { t } = useTranslation();
   const { toast } = useToast();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   // Yup schema for validation with translated messages
   const signInSchema = Yup.object().shape({
-    email: Yup.string().email(t("email_invalid")).required(t("email_required")),
+    email: Yup.string()
+      .email(t("login.email_invalid"))
+      .required(t("email_required")),
     password: Yup.string()
-      .min(6, t("password_min_length"))
-      .required(t("password_required")),
+      .min(6, t("login.password_min_length"))
+      .required(t("login.password_required")),
   });
 
   const formik = useFormik({
@@ -40,21 +42,21 @@ export default function SignInForm() {
         setLoading(false);
         if (result.success) {
           toast({
-            title: t("login_complete"),
-            description: t("login_complete_description"),
+            title: t("login.login_complete"),
+            description: t("login.login_complete_description"),
           });
           localStorage.setItem(
             "authToken",
             result?.data?.token ? result?.data?.token : ""
           );
           setTimeout(() => {
-            router.push("dashboard");
+            navigate("dashboard");
           }, 3000);
         }
         if (!result.success) {
           toast({
             variant: "destructive",
-            title: t("login_failed"),
+            title: t("login.login_failed"),
             description: result?.error,
           });
         }
@@ -69,18 +71,18 @@ export default function SignInForm() {
     <div className="h-full flex items-center justify-center py-12">
       <div className="mx-auto grid w-[350px] gap-6">
         <div className="grid gap-2 text-center">
-          <h1 className="text-3xl font-bold">{t("sign_in")}</h1>
+          <h1 className="text-3xl font-bold">{t("login.sign_in")}</h1>
           <p className="text-balance text-sm text-muted-foreground">
-            {t("description")}
+            {t("login.description")}
           </p>
         </div>
         <form onSubmit={formik.handleSubmit} className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">{t("email")}</Label>
+            <Label htmlFor="email">{t("login.email")}</Label>
             <Input
               id="email"
               type="email"
-              placeholder={t("placeholder_email")}
+              placeholder={t("login.placeholder_email")}
               {...formik.getFieldProps("email")}
             />
             {formik.errors.email && formik.touched.email && (
@@ -89,9 +91,9 @@ export default function SignInForm() {
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="password">{t("password")}</Label>
+            <Label htmlFor="password">{t("login.password")}</Label>
             <Input
-              placeholder={t("placeholder_password")}
+              placeholder={t("login.placeholder_password")}
               id="password"
               type="password"
               {...formik.getFieldProps("password")}
@@ -102,7 +104,7 @@ export default function SignInForm() {
           </div>
 
           <Button disabled={loading} type="submit" className="w-full">
-            {loading ? <Loader size={16} /> : t("sign_in")}
+            {loading ? <Loader size={16} /> : t("login.sign_in")}
           </Button>
         </form>
       </div>

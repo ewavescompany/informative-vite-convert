@@ -1,35 +1,33 @@
-"use client";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import SlideComponent from "../reavelAnimation/slideComponent";
-import { useTranslations } from "next-intl";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useToast } from "@/hooks/use-toast"; // Assuming a custom hook for toasts
-// Adjust the import as per your request file path
 import { Button } from "@/components/ui/button";
 import { sendContactMessage } from "@/requests/generic/postContact";
 
 import Loader from "../loader";
+import { useTranslation } from "react-i18next";
 
 function ContactusForm() {
-  const t = useTranslations("contactus");
+  const { t } = useTranslation();
   const { toast } = useToast();
 
   const [loading, setLoading] = useState<boolean>(false);
   // Form validation schema with localization
   const validationSchema = Yup.object({
-    fullName: Yup.string().required(t("full_name_required")),
-    email: Yup.string().email(t("email_invalid")).required(t("email_required")),
-    subject: Yup.string().required(t("subject_required")),
+    fullName: Yup.string().required(t("contactus.full_name_required")),
+    email: Yup.string()
+      .email(t("contactus.email_invalid"))
+      .required(t("email_required")),
+    subject: Yup.string().required(t("contactus.subject_required")),
     message: Yup.string()
-      .min(10, t("message_min"))
-      .required(t("message_required")),
+      .min(10, t("contactus.message_min"))
+      .required(t("contactus.message_required")),
   });
 
-
-  
   // Initialize Formik
   const formik = useFormik({
     initialValues: {
@@ -49,14 +47,17 @@ function ContactusForm() {
         setLoading(true);
         const res = await sendContactMessage(formData);
         console.log(res);
-        toast({ title: t("success"), description: t("message_sent") });
+        toast({
+          title: t("contactus.success"),
+          description: t("message_sent"),
+        });
         formik.resetForm();
         setLoading(false);
       } catch (error) {
         toast({
           variant: "destructive",
-          title: t("error"),
-          description: t("send_failed"),
+          title: t("contactus.error"),
+          description: t("contactus.send_failed"),
         });
         setLoading(false);
         console.error("Error sending message:", error);
@@ -72,7 +73,7 @@ function ContactusForm() {
       <SlideComponent dir="right">
         <Input
           name="fullName"
-          placeholder={t("full_name")}
+          placeholder={t("contactus.full_name")}
           value={formik.values.fullName}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -85,7 +86,7 @@ function ContactusForm() {
       <SlideComponent dir="left">
         <Input
           name="email"
-          placeholder={t("email")}
+          placeholder={t("contactus.email")}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -98,7 +99,7 @@ function ContactusForm() {
       <SlideComponent dir="right">
         <Input
           name="subject"
-          placeholder={t("subject")}
+          placeholder={t("contactus.subject")}
           value={formik.values.subject}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -111,7 +112,7 @@ function ContactusForm() {
       <SlideComponent dir="left">
         <Textarea
           name="message"
-          placeholder={t("message")}
+          placeholder={t("contactus.message")}
           value={formik.values.message}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -129,7 +130,7 @@ function ContactusForm() {
         type="submit"
         className="mt-4 w-fit"
       >
-        {loading ? <Loader size={14} /> : t("send")}
+        {loading ? <Loader size={14} /> : t("contactus.send")}
       </Button>
     </form>
   );

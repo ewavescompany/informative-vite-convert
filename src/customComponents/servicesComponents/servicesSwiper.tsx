@@ -1,11 +1,9 @@
-"use client";
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import SlideComponent from "../reavelAnimation/slideComponent";
-import Image from "next/image";
-import imgUrl from "../../public/asterisk.png";
+import imgUrl from "../../../../public/asterisk.png";
+
 function ServicesSwiper() {
   return (
     <Swiper
@@ -15,17 +13,15 @@ function ServicesSwiper() {
       autoplay={{ delay: 5000 }} // Set a delay of 3 seconds
       loop={true} // Enable looping of slides
     >
-      <Image
+      <img
         src={imgUrl}
-        width={200}
-        height={200}
         alt="astics"
         className="animate-spin z-[3] absolute duration-[8000] top-24 right-0"
       />
-      <Image
+      <img
         src={imgUrl}
-        width={100}
-        height={100}
+        // width={100}
+        // height={100}
         alt="astics"
         className="animate-spin z-[3] absolute duration-[8000] bottom-0 left-0"
       />

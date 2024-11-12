@@ -6,7 +6,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
+
 interface DropdownItem {
   href: string;
   label: string;
@@ -44,7 +45,7 @@ export const DropdownNavItem: React.FC<DropdownNavItemProps> = ({
     <DropdownMenuContent className="w-56">
       {items.map((item, index) => (
         <DropdownMenuItem key={index} className="">
-          <Link href={item.href} className="flex w-full items-center ">
+          <Link to={item.href} className="flex w-full items-center ">
             <span className="ltr:mr-auto rtl:ml-auto">{item.label}</span>
           </Link>
         </DropdownMenuItem>

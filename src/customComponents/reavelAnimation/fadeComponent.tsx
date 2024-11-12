@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Fade } from "react-awesome-reveal";
 
 // Define the component with children, className, cascade, and triggerOnce props

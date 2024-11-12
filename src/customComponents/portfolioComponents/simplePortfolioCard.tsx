@@ -1,14 +1,15 @@
-import React from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 import { imagesPath } from "@/constants/urls";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
 import { formatDateForPortfolio } from "@/utility/generic";
+import i18n from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 function SimplePortfolioCard({ project }: { project: Portfolio }) {
-  const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const t = useTranslations("portfolio");
+  const locale = i18n.language;
+  const { t } = useTranslation();
+
   return (
     <div className="w-full h-full rounded-2xl flex flex-col gap-3 ">
       <div className="w-full h-full overflow-hidden rounded-2xl min-h-[30vh]">
@@ -32,8 +33,8 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
           {locale === "en" ? project.description_en : project.description_ar}
         </p>
         <Button variant={"default"} size={"lg"} className="w-fit rounded-full">
-          <Link href={`/${locale}/client/portfolio/${project.id}`}>
-            {t("view_project")}
+          <Link to={`/${locale}/client/portfolio/${project.id}`}>
+            {t("portfolio.view_project")}
           </Link>
         </Button>
       </div>

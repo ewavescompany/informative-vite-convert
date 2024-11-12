@@ -1,7 +1,6 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { imagesPath } from "@/constants/urls";
-import { useTranslations } from "next-intl";
 
 function LeftDirectionService({
   title,
@@ -12,13 +11,14 @@ function LeftDirectionService({
   describition: string;
   imgUrl: string;
 }) {
-  const t = useTranslations("services");
+  const { t } = useTranslation();
+
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-5 gap-10 overflow-hidden">
       <div className="w-full h-full flex flex-col gap-3 justify-center overflow-hidden">
         <SlideComponent dir="down">
           <h5 className=" text-base font-medium text-gray-500">
-            {t("service")}
+            {t("services.service")}
           </h5>
         </SlideComponent>
         <SlideComponent dir="left">
