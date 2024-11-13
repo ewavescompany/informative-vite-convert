@@ -5,7 +5,7 @@ import { fetchMissionData } from "@/requests/generic/fetchMissionData";
 
 // Custom hook to fetch and manage vision data
 export const useFetchMission = () => {
-  const [missionData, setMissionData] = useState<vision | null>(null); // State to hold vision data
+  const [missionData, setMissionData] = useState<vision | undefined>(undefined); // State to hold vision data
   const [loading, setLoading] = useState<boolean>(true); // State to indicate loading
   const [error, setError] = useState<string | null>(null); // State to hold errors
 
@@ -13,9 +13,9 @@ export const useFetchMission = () => {
     const fetchData = async () => {
       try {
         setLoading(true); // Set loading to true when fetching starts
-        const data = await fetchMissionData(); // Call the request function
+        const data: vision[] | undefined = await fetchMissionData(); // Call the request function
         console.log(data);
-        setMissionData(data[0]); // Set the fetched data in state
+        setMissionData(data ? data[0] : undefined); // Set the fetched data in state
       } catch (err: unknown) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"

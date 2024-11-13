@@ -10,9 +10,9 @@ interface ApiResponse<T> {
   message?: string;
 }
 
-export const getPortfolios = async (): Promise<ApiResponse<Portfolio[]>> => {
+export const getPortfolios = async () => {
   const url = `${clientBaseServerUrl}${serverUrls.portfolio}`;
-  
+
   try {
     const response = await apiRequest<ApiResponse<Portfolio[]>>(url, "GET");
     return response.data;
@@ -21,7 +21,8 @@ export const getPortfolios = async (): Promise<ApiResponse<Portfolio[]>> => {
     return {
       success: false,
       data: [],
-      message: error instanceof Error ? error.message : "Failed to fetch portfolios"
+      message:
+        error instanceof Error ? error.message : "Failed to fetch portfolios",
     };
   }
 };

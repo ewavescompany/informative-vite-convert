@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+// import "swiper/css";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { formatDate } from "@/utility/generic";

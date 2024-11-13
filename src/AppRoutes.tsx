@@ -21,9 +21,11 @@ import MissionPage from "@/pages/admin/mission/mission";
 import ContactMessagesPage from "@/pages/admin/contact-messages/contactMessages";
 import VisionPage from "@/pages/admin/vision/vision";
 import SettingsPage from "@/pages/admin/settings/settings";
-import ClientLayout from "./pages/client/layout";
-import { pageClient } from "./data/client/pagesURLs";
-import ClientPage from "./pages/client/page";
+import ClientLayout from "@/pages/client/layout";
+import { pageClient } from "@/data/client/pagesURLs";
+import ClientPage from "@/pages/client/page";
+import BlogClientPage from "@/pages/client/blogs/blogs";
+import ContactUsClientPage from "./pages/client/contact-us/page";
 
 export default function AppRoutes() {
   return (
@@ -89,6 +91,8 @@ export default function AppRoutes() {
       {/* CLIENT ROUTES */}
       <Route element={<ClientLayout />}>
         <Route path={pageClient.main} element={<ClientPage />} />
+        <Route path={pageClient.blogs} element={<BlogClientPage />} />
+        <Route path={pageClient.contact_us} element={<ContactUsClientPage />} />
       </Route>
     </Routes>
   );

@@ -3,7 +3,7 @@ import { fetchSettings } from "@/requests/generic/fetchSettings"; // Adjust the 
 import { settings } from "@/interfaces/dashboardInterface";
 
 export const useFetchSettings = () => {
-  const [setting, setSetting] = useState<settings | null>(null);
+  const [setting, setSetting] = useState<settings | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

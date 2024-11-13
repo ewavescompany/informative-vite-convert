@@ -14,7 +14,7 @@ export const useFetchStats = () => {
       try {
         setLoading(true); // Set loading to true before fetching
         const data = await fetchStats(); // Call the fetchStats function
-        setStats(data); // Set the fetched stats data
+        setStats(data ? data : null); // Set the fetched stats data
       } catch (err: unknown) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"

@@ -4,17 +4,17 @@ import { vision } from "@/interfaces/dashboardInterface";
 
 // Custom hook to fetch and manage vision data
 export const useFetchVision = () => {
-  const [visionData, setVisionData] = useState<vision | null>(null); // State to hold vision data
-  const [loading, setLoading] = useState<boolean>(true); // State to indicate loading
-  const [error, setError] = useState<string | null>(null); // State to hold errors
+  const [visionData, setVisionData] = useState<vision | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true); // Set loading to true when fetching starts
-        const data = await fetchVisionData(); // Call the request function
+        const data: vision[] | undefined = await fetchVisionData(); // Call the request function
 
-        setVisionData(data[0]); // Set the fetched data in state
+        setVisionData(data ? data[0] : undefined); // Set the fetched data in state
       } catch (err: unknown) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"

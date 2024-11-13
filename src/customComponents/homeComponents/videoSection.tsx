@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import SlideComponent from "../reavelAnimation/slideComponent";
-import { settings } from "@/interfaces/dashboardInterface";
-import { videosPath } from "@/constants/urls";
 import i18n from "@/i18n";
+import { videosPath } from "@/constants/urls";
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { settings } from "@/interfaces/dashboardInterface";
+import SlideComponent from "../reavelAnimation/slideComponent";
 
 interface videoSectionInterface {
   settings: settings;

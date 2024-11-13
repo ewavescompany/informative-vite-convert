@@ -2,64 +2,103 @@ import PortfolioDescription from "@/customComponents/portfolioComponents/portfol
 import PortfolioGallary from "@/customComponents/portfolioComponents/portfolioGallary";
 import PortfolioHeader from "@/customComponents/portfolioComponents/portfolioHeader";
 import RelatedPortfolios from "@/customComponents/portfolioComponents/relatedPortfolios";
-import React from "react";
 import { fetchPortfolioById } from "@/requests/generic/fetchPortfolioById";
-import { Metadata } from "next/types";
 import { fetchRelatedPortfolios } from "@/requests/generic/fetchRelatedPortfolios";
-// For dynamic metadata based on the portfolio data
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
-  // fetch portfolio data
-  const project = await fetchPortfolioById(params.id);
+import { Helmet } from "react-helmet-async";
+import { useEffect, useState } from "react";
+import { Portfolio } from "@/interfaces/dashboardInterface";
 
-  return {
-    title: `${project?.title_en} | eWaves Portfolio`,
-    description: project?.description_en,
-    openGraph: {
-      title: `${project?.title_en} | eWaves Portfolio`,
-      description: project?.description_en,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${project?.title_en} | eWaves Portfolio`,
-    },
-  };
-}
+type PortfolioImages = {
+  id: number;
+  image: string;
+  portfolio_id: number;
+};
 
-async function page({ params }: { params: { id: string } }) {
-  // Fetch both requests concurrently
-  const [projectRes, relatedProjects] = await Promise.all([
-    fetchPortfolioById(params.id),
-    fetchRelatedPortfolios(params.id),
-  ]);
-  console.log(projectRes, "projectRes");
+type Project =
+  | {
+      id: number;
+      client: string;
+      title_ar: string;
+      title_en: string;
+      content_ar: string;
+      content_en: string;
+      description_ar: string;
+      description_en: string;
+      keywords_ar: string;
+      keywords_en: string;
+      status: string;
+      start_date: string;
+      end_date: string;
+      image: string;
+      website_link: string;
+      created_at: string;
+      updated_at: string;
+      portfolio_images: PortfolioImages[];
+    }
+  | undefined;
+
+function PortfolioPage({ id }: { id: string }) {
+  const [project, setProject] = useState<Project>();
+  const [relatedProjects, setRelatedProjects] = useState<
+    Portfolio[] | undefined
+  >([]);
+
+  useEffect(() => {
+    // Fetch portfolio data and related projects
+    const fetchData = async () => {
+      const [projectRes, relatedProjectsRes] = await Promise.all([
+        fetchPortfolioById(id),
+        fetchRelatedPortfolios(id),
+      ]);
+      setProject(projectRes);
+      setRelatedProjects(relatedProjectsRes);
+    };
+
+    fetchData();
+  }, [id]);
+
+  if (!project) return <div>Loading...</div>;
+
   return (
     <div className="min-h-screen w-full h-full flex flex-col gap-10 justify-center items-center">
+      {/* Set dynamic metadata */}
+      <Helmet>
+        <title>{`${project.title_en} | eWaves Portfolio`}</title>
+        <meta name="description" content={project.description_en} />
+        <meta
+          property="og:title"
+          content={`${project.title_en} | eWaves Portfolio`}
+        />
+        <meta property="og:description" content={project.description_en} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`${project.title_en} | eWaves Portfolio`}
+        />
+      </Helmet>
+
       <PortfolioHeader
-        titleEn={projectRes?.title_en ?? ""}
-        titleAr={projectRes?.title_ar ?? ""}
-        descriptionEn={projectRes?.description_en ?? ""}
-        descriptionAr={projectRes?.description_ar ?? ""}
-        image={projectRes?.image ?? ""}
+        titleEn={project.title_en || ""}
+        titleAr={project.title_ar || ""}
+        descriptionEn={project.description_en || ""}
+        descriptionAr={project.description_ar || ""}
+        image={project.image || ""}
       />
       <PortfolioDescription
-        projectDate={projectRes?.created_at ?? ""}
-        descriptionEn={projectRes?.content_en ?? ""}
-        descriptionAr={projectRes?.content_ar ?? ""}
-        client={projectRes?.client ?? ""}
-        titleEn={projectRes?.title_en ?? ""}
-        titleAr={projectRes?.title_ar ?? ""}
-        projectLink={projectRes?.website_link ?? ""}
-        projectStatus={projectRes?.status ?? ""}
+        projectDate={project.created_at || ""}
+        descriptionEn={project.content_en || ""}
+        descriptionAr={project.content_ar || ""}
+        client={project.client || ""}
+        titleEn={project.title_en || ""}
+        titleAr={project.title_ar || ""}
+        projectLink={project.website_link || ""}
+        projectStatus={project.status || ""}
       />
-      <PortfolioGallary images={projectRes?.portfolio_images ?? []} />
+      <PortfolioGallary images={project.portfolio_images || []} />
       <RelatedPortfolios relatedProjects={relatedProjects} />
     </div>
   );
 }
 
-export default page;
+export default PortfolioPage;

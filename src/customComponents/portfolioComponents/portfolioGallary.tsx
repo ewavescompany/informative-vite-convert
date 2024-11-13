@@ -1,7 +1,7 @@
 import bgUrl from "../../public/Services-How-BG.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
+// import "swiper/css";
 import { imagesPath } from "@/constants/urls";
 import { PortfolioImages } from "@/interfaces/dashboardInterface";
 

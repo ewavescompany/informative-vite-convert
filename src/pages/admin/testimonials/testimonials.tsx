@@ -26,7 +26,7 @@ function Testimonial() {
     try {
       // Call the remove API
       setTestimonials((prevTestimonials) =>
-        prevTestimonials.filter((testimonial) => testimonial.id !== id)
+        prevTestimonials?.filter((testimonial) => testimonial.id !== id)
       ); // Update state by filtering out the deleted testimonial
       closeDialog();
     } catch (error) {
@@ -61,7 +61,7 @@ function Testimonial() {
           </LinkButton>
         </div>
         <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3">
-          {testimonials.map((testimonial, index) => (
+          {testimonials?.map((testimonial, index) => (
             <HorizontalCardComponent
               key={index}
               jobTitle={testimonial.name}

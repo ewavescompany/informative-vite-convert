@@ -135,7 +135,7 @@ function EditBlogPage() {
       const token = localStorage.getItem("authToken");
       try {
         const response = await editBlog(formData, token || "");
-        if (response.blog) {
+        if (response?.data?.blog) {
           toast({
             title: t("blogForm.blog_added_successfully"),
             description: t("blogForm.blog_added_successfully_you_can_check_it"),

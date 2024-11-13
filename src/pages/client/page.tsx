@@ -1,79 +1,61 @@
 import { useEffect, useState } from "react";
-import AboutusVideoSection from "@/customComponents/aboutUsComponent/aboutusVideoSection";
-import LatestProjects from "@/customComponents/aboutUsComponent/latestProjects";
 import Vission from "@/customComponents/homeComponents/vission";
 import Stats from "@/customComponents/homeComponents/stats";
 import TeamSection from "@/customComponents/homeComponents/teamSection";
 import Testomonials from "@/customComponents/homeComponents/testomonials";
 import Mission from "@/customComponents/homeComponents/mission";
-
-import { fetchVisionData } from "@/requests/generic/fetchVisionData";
-import { fetchMissionData } from "@/requests/generic/fetchMissionData";
-import fetchStats from "@/requests/generic/fetchStats";
-import { fetchTestimonials } from "@/requests/generic/fetchTestimonials";
-import { fetchAboutData } from "@/requests/generic/fetchAboutus";
-import { getAllTeamMembers } from "@/requests/generic/team";
-import { getPortfolios } from "@/requests/generic/getPortfolio";
+import VideoSection from "@/customComponents/homeComponents/videoSection";
+import BentoGrids from "@/customComponents/homeComponents/bentoGrids";
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import axios from "axios";
+import { homeInterface } from "@/interfaces/clientInterface";
+import BlogSection from "@/customComponents/homeComponents/blogSection";
+import Contactus from "@/customComponents/homeComponents/contactus";
 
 export default function ClientPage() {
-  const [vissionData, setVissionData] = useState(null);
-  const [missionData, setMissionData] = useState(null);
-  const [statsData, setStatsData] = useState(null);
-  const [teamData, setTeamData] = useState([]);
-  const [testimonialsData, setTestimonialsData] = useState(null);
-  const [aboutus, setAboutus] = useState(null);
-  const [projectsData, setProjectsData] = useState(null);
+  const [data, setData] = useState<homeInterface | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const vision = await fetchVisionData();
-      const mission = await fetchMissionData();
-      const stats = await fetchStats();
-      const team = await getAllTeamMembers();
-      const testimonials = await fetchTestimonials();
-      const about = await fetchAboutData();
-      const projects = await getPortfolios();
-
-      setVissionData(vision);
-      setMissionData(mission);
-      setStatsData(stats);
-      setTeamData(team);
-      setTestimonialsData(testimonials);
-      setAboutus(about);
-      setProjectsData(projects);
+    async function fetchHomeData() {
+      try {
+        const response = await axios.get(
+          `${clientBaseServerUrl}${serverUrls.home}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Failed to fetch:", error);
+        setError("Failed to load data. Please try again later.");
+      }
     }
-
-    fetchData();
+    fetchHomeData();
   }, []);
 
-  if (
-    !projectsData ||
-    !aboutus ||
-    !missionData ||
-    !vissionData ||
-    !statsData ||
-    !teamData ||
-    !testimonialsData
-  ) {
-    return <div>Loading...</div>; // Render a loading state while data is being fetched
-  }
+  if (error) return <div>{error}</div>;
+  if (!data) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen flex flex-col gap-10">
-      <AboutusVideoSection
-        title1={"about_us"}
-        title2={"get_to_know_us"}
-        descriptionEn={aboutus.content_en}
-        descriptionAr={aboutus.content_ar}
-      />
-      <div className="flex flex-col gap-10 px-8 pb-20 sm:px-20 py-4 sm:py-10">
-        <Mission mission={missionData[0]} />
-        <Vission vission={vissionData[0]} />
-        <Stats stats={statsData} />
-        <LatestProjects projectsData={projectsData.data} />
-        <TeamSection team={teamData} />
-        <Testomonials testimonials={testimonialsData} />
+      {/* <Navbar logo={data.logo} /> */}
+      <div className="min-h-screen flex flex-col gap-10">
+        <VideoSection settings={data.setting} />
+        <div className="flex flex-col gap-10 px-8 pb-20 sm:px-20 py-4 sm:py-10">
+          <BentoGrids />
+          <Mission mission={data.mission?.[0]} />
+          <Vission vission={data.vission?.[0]} />
+          <Stats stats={data.stats?.[0]} />
+          <TeamSection team={data.team} />
+          <Testomonials testimonials={data.testimonials} />
+          <BlogSection blogs={data.blogs} />
+          <Contactus />
+        </div>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 }

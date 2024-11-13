@@ -4,7 +4,7 @@ import { getServices } from "@/requests/generic/getServices";
 import { serviceState } from "@/interfaces/dashboardInterface";
 
 export const useFetchServices = () => {
-  const [services, setServices] = useState<serviceState | null>(null);
+  const [services, setServices] = useState<serviceState>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,7 +13,7 @@ export const useFetchServices = () => {
       setLoading(true);
       try {
         const data = await getServices();
-        setServices(data.data);
+        setServices(data);
       } catch (err) {
         setError((err as Error).message);
       } finally {

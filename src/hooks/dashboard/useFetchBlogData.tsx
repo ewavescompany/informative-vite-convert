@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { apiRequest } from "@/requests/api"; // Assuming you have an apiRequest component
+import { apiRequest, ApiResponse } from "@/requests/api"; // Assuming you have an apiRequest component
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import { BlogInterface } from "@/interfaces/dashboardInterface";
 
 const useFetchBlogData = (blogId: number, language: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [blogData, setBlogData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -12,7 +12,7 @@ const useFetchBlogData = (blogId: number, language: string) => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await apiRequest(
+        const response: ApiResponse<{ data: BlogInterface }> = await apiRequest(
           `${clientBaseServerUrl}${serverUrls.blog}/${blogId}`,
           "GET"
         );

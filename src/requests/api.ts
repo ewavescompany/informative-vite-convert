@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // requests/api.ts
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 // Define a type for the response
 export interface ApiResponse<T = any> {
   success: boolean;
-  data?: any;
+  data?: T;
   error?: string;
 }
 
@@ -15,7 +14,9 @@ export async function apiRequest<T>(
   method: AxiosRequestConfig["method"],
   data?: any,
   config?: AxiosRequestConfig
-): Promise<ApiResponse<T>> {
+) {
+  // ): Promise<ApiResponse<T>> {
+  // Explicitly return ApiResponse<T>
   try {
     const response: AxiosResponse<T> = await axios({
       url,
@@ -24,13 +25,11 @@ export async function apiRequest<T>(
       ...config,
     });
 
-    // If the request was successful, return success with data
     return {
       success: true,
       data: response.data,
     };
   } catch (error: any) {
-    // If there's an error, return success as false and provide an error message
     return {
       success: false,
       error: error?.response?.data?.message || error.message,

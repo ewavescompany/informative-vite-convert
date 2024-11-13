@@ -1,14 +1,18 @@
-import { apiRequest } from "@/requests/api";
+import { apiRequest, ApiResponse } from "@/requests/api";
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import { blogsInterface } from "@/interfaces/clientInterface";
 
 export const fetchBlogById = async (id: string) => {
   const url = `${clientBaseServerUrl}${serverUrls.blogById}/${id}`;
 
   try {
-    const response = await apiRequest(url, "GET");
-    
+    const response: ApiResponse<{ data: blogsInterface }> = await apiRequest(
+      url,
+      "GET"
+    );
+
     return response?.data?.data;
   } catch (error: any) {
     throw new Error(error.response?.data?.message || "Failed to fetch blog");
   }
-}; 
+};

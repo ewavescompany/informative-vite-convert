@@ -21,7 +21,7 @@ function ServicesPage() {
   console.log("locale: ", locale);
 
   const { t } = useTranslation();
-  console.log(services?.data);
+  // console.log(services?.data);
   const { isOpen, openDialog, closeDialog } = useShowDialog();
   const [active, setActive] = useState<number>();
 

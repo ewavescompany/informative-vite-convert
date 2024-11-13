@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import contactusimgurl from "../../public/contactimg.png";
 import ContactusForm from "../contactusComponents/contactusForm";
 import SlideComponent from "../reavelAnimation/slideComponent";
 
@@ -20,7 +19,7 @@ export default function ContactUs() {
       <div className="w-full h-full  dotbg items-center justify-center overflow-hidden lg:flex hidden">
         <SlideComponent dir="right">
           <img
-            src={contactusimgurl}
+            src="/contactimg.png"
             alt="contact us image"
             className="w-full h-full"
           />

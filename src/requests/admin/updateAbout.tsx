@@ -1,13 +1,10 @@
 import { apiRequest } from "@/requests/api"; // Assuming this is the correct import path
 import { adminServerUrls, dashboardBaseServerUrl } from "@/constants/urls"; // Import necessary constants for the base server URL and endpoints
-interface ApiResponse<T> {
-  data: T;
-}
 
 export const updateAbout = async (
   formData: FormData,
   token: string
-): Promise<ApiResponse<any>> => {
+): Promise<any> => {
   const url = `${dashboardBaseServerUrl}${adminServerUrls.editAboutus}`;
   const method = "POST";
 

@@ -3,13 +3,13 @@ import { fetchAboutData } from "@/requests/generic/fetchAboutus";
 import { ContentObject } from "@/interfaces/dashboardInterface";
 
 interface UseFetchAboutusReturn {
-  aboutData: ContentObject | null;
+  aboutData: ContentObject | undefined;
   loading: boolean;
   error: string | null;
 }
 
 export const useFetchAboutus = (): UseFetchAboutusReturn => {
-  const [aboutData, setAboutData] = useState<ContentObject | null>(null);
+  const [aboutData, setAboutData] = useState<ContentObject | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

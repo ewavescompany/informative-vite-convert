@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
+// import "swiper/css";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import imgUrl from "../../../../public/asterisk.png";
 

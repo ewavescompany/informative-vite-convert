@@ -6,7 +6,7 @@ import { TeamMember } from "@/interfaces/dashboardInterface"; // Ensure TeamMemb
 
 export const useFetchTeamMembers = () => {
   // Set the correct type for teamMembers, which is an array of TeamMember
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[] | undefined>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

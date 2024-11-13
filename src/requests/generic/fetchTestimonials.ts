@@ -1,5 +1,6 @@
-import { apiRequest } from "@/requests/api"; // Assuming the apiRequest function is correctly set up
+import { apiRequest, ApiResponse } from "@/requests/api"; // Assuming the apiRequest function is correctly set up
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls"; // Adjust the URLs based on your setup
+import { TestimonialState } from "@/interfaces/dashboardInterface";
 
 // Function to fetch all testimonials
 export const fetchTestimonials = async () => {
@@ -7,7 +8,10 @@ export const fetchTestimonials = async () => {
   const method = "GET";
   try {
     // Use apiRequest to send the GET request
-    const response = await apiRequest(url, method);
+    const response: ApiResponse<TestimonialState> = await apiRequest(
+      url,
+      method
+    );
 
     // Return the response data (assuming API response contains 'data')
     return response?.data?.data;

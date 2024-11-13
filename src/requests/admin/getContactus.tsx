@@ -1,13 +1,12 @@
 // requests/blogs.ts
 
 import {
-  clientBaseServerUrl,
+  // clientBaseServerUrl,
   dashboardBaseServerUrl,
   serverUrls,
 } from "@/constants/urls";
 import { apiRequest } from "../api"; // Import your standardized request interface
 import { ContactInfo } from "@/interfaces/dashboardInterface";
-import { headers } from "next/headers";
 // Assuming ApiResponse is exported from api.ts
 
 // Define the expected structure of the blog data (optional, depending on your API response)

@@ -1,9 +1,9 @@
-"use client";
 import { useEffect, useState } from "react";
 import { Facebook, Youtube, Twitter, Instagram } from "lucide-react";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 export default function Navbar({ logo }: { logo: string }) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -67,13 +67,15 @@ export default function Navbar({ logo }: { logo: string }) {
           {t("navbar.portfolio")}
         </Link>
         <Link
-          to={`/${locale}/client/blogs`}
+          // to={`/${locale}/client/blogs`}
+          to={pageClient.blogs}
           className="text-base font-semibold"
         >
           {t("navbar.blogs")}
         </Link>
         <Link
-          to={`/${locale}/client/contact-us`}
+          // to={`/${locale}/client/contact-us`}
+          to={pageClient.contact_us}
           className="text-base font-semibold"
         >
           {t("navbar.contact_us")}

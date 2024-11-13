@@ -12,7 +12,6 @@ import { FaSnapchat } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import bgUrl from "../../public/Services-How-BG.webp";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
 import { Link } from "react-router-dom";
@@ -26,7 +25,7 @@ function Footer() {
       <img
         className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
         alt="mission"
-        src={bgUrl}
+        src="/Services-How-BG.webp"
       />
       <div className="flex flex-col gap-3 relative z-10">
         <h4 className="lg:text-3xl text-xl text-graywhite font-medium flex flex-row items-center justify-center w-fit gap-3">

@@ -6,16 +6,16 @@ import { fetchServiceById } from "@/requests/generic/fetchServiceById";
 
 // Custom hook to fetch service by ID
 export const useFetchServiceById = (id: string) => {
-  const [service, setService] = useState<Service | null>(null);
+  const [service, setService] = useState<Service | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  
+
   useEffect(() => {
     const getServiceData = async () => {
       try {
-        const response = await fetchServiceById(id); // Fetch service data by ID
-        console.log(response);
-        setService(response.data); // Set the fetched data
+        const response: { data: Service | undefined } | undefined =
+          await fetchServiceById(id); // Fetch service data by ID
+        setService(response?.data); // Set the fetched data
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setError(error.message || "Failed to fetch service.");

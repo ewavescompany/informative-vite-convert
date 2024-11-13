@@ -1,18 +1,12 @@
-import { apiRequest } from "@/requests/api";
+import { apiRequest, ApiResponse } from "@/requests/api";
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 
-interface ApiResponse<T> {
-  data: T;
-}
-
-export const fetchRelatedPortfolios = async (
-  id: string
-): Promise<Portfolio[] | undefined> => {
+export const fetchRelatedPortfolios = async (id: string) => {
   const url = `${clientBaseServerUrl}${serverUrls.relatedPortfolios}/${id}`;
 
   try {
-    const response = await apiRequest<ApiResponse<Portfolio[]>>(url, "GET");
+    const response: ApiResponse<Portfolio[]> = await apiRequest(url, "GET");
 
     return response?.data;
   } catch (error) {

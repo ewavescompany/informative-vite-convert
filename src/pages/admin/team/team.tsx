@@ -29,7 +29,7 @@ function TeamPage() {
   // Function to remove a team member
   async function removeTeam(id: number) {
     setTeamMembers((prevMembers) =>
-      prevMembers.filter((member) => member.id !== id)
+      prevMembers?.filter((member) => member.id !== id)
     );
   }
 

@@ -1,5 +1,6 @@
-import { apiRequest } from "@/requests/api"; // Ensure correct path to apiRequest
+import { apiRequest, ApiResponse } from "@/requests/api"; // Ensure correct path to apiRequest
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls"; // Ensure correct URLs
+import { statsData } from "@/interfaces/dashboardInterface";
 
 // Function to fetch stats
 async function fetchStats() {
@@ -8,7 +9,10 @@ async function fetchStats() {
 
   try {
     // Use apiRequest to make the API call
-    const response = await apiRequest(url, method);
+    const response: ApiResponse<{ data: statsData[] }> = await apiRequest(
+      url,
+      method
+    );
     return response?.data?.data[0]; // Return the stats data
   } catch (error) {
     // Handle any errors

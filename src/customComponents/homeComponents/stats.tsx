@@ -1,5 +1,4 @@
 import i18n from "@/i18n";
-import bgUrl from "../../../../../public/Services-How-BG.webp";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { statsInterface } from "@/interfaces/clientInterface";
 import { useTranslation } from "react-i18next";
@@ -13,7 +12,7 @@ export default function Stats({ stats }: { stats: statsInterface }) {
       <img
         className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
         alt="mission"
-        src={bgUrl}
+        src="/reavelAnimation/slideComponent"
       />
       <div className="flex flex-col gap-3 h-full w-full">
         <SlideComponent dir="down">

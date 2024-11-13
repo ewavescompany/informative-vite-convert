@@ -1,5 +1,4 @@
 import PageLoader from "@/customComponents/pageLoader";
-import React from "react";
 
 function loading() {
   return (

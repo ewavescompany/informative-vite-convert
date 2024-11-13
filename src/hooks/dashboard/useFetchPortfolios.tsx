@@ -14,7 +14,7 @@ const useFetchPortfolios = () => {
       try {
         const response = await getPortfolios();
 
-        if (Array.isArray(response.data)) {
+        if (Array.isArray(response?.data)) {
           setPortfolios(response.data);
         } else if (isApiResponse(response)) {
           if (response.success && Array.isArray(response.data)) {

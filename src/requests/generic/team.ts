@@ -8,7 +8,7 @@ interface ApiResponse<T> {
 }
 
 // Function to fetch all team members
-export const getAllTeamMembers = async (): Promise<TeamMember[]> => {
+export const getAllTeamMembers = async () => {
   const url = `${clientBaseServerUrl}${serverUrls.team}`;
 
   try {
@@ -16,7 +16,7 @@ export const getAllTeamMembers = async (): Promise<TeamMember[]> => {
     const response = await apiRequest<ApiResponse<TeamMember[]>>(url, "GET");
 
     // Return the `data` field which contains the array of team members
-    return response.data.data;
+    return response?.data?.data;
   } catch (error: any) {
     throw new Error(
       error?.response?.data?.message || "Failed to fetch team members"

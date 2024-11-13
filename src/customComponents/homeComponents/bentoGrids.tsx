@@ -1,13 +1,8 @@
-"use client";
-
-import { Link, useNavigate } from "react-router-dom"; // Update this import
-import SlideComponent from "../reavelAnimation/slideComponent";
-import { ArrowUpRight, Send } from "lucide-react";
-import bentoImage from "../../public/bento1.png";
-import bentoImage1 from "../../public/robotics.png";
-import bgUrl from "../../public/Services-How-BG.webp";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
+import { ArrowUpRight, Send } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import SlideComponent from "../reavelAnimation/slideComponent";
 
 function BentoGrids() {
   const locale = i18n.language;
@@ -27,13 +22,13 @@ function BentoGrids() {
           <img
             className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
             alt="mission"
-            src={bgUrl}
+            src="/Services-How-BG.webp"
           />
           <h1 className="lg:text-5xl md:text-3xl text-lg font-medium z-10">
             {t("bentoGrids.revolutionizing")}
           </h1>
           <img
-            src={bentoImage}
+            src="bento1.png"
             alt="logo"
             className={`${
               locale === "en" ? "mr-auto" : "ml-auto"
@@ -64,7 +59,7 @@ function BentoGrids() {
                 <ArrowUpRight className="md:text-2xl text-lg text-grayblack" />
               </Link>
               <img
-                src={bentoImage1}
+                src="/robotics.png"
                 alt="logo"
                 className={`${
                   locale === "en" ? "mr-auto" : "ml-auto"
@@ -112,7 +107,7 @@ function BentoGrids() {
             <img
               className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
               alt="mission"
-              src={bgUrl}
+              src="/Services-How-BG.webp"
             />
             <div className="w-full flex flex-row justify-between items-center">
               <h3 className="text-base uppercase animate-slideInDown">

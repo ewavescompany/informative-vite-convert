@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 
 import { Testimonial } from "@/interfaces/dashboardInterface";
 import { fetchTestimonialById } from "@/requests/admin/testimonial";
+import { ApiResponse } from "@/requests/api";
 
 export const useFetchTestimonial = (id: string | number) => {
-  const [testimonial, setTestimonial] = useState<Testimonial | null>(null);
+  const [testimonial, setTestimonial] = useState<Testimonial | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchTestimonialById(id);
+        const data: ApiResponse<Testimonial> = await fetchTestimonialById(id);
         setTestimonial(data.data); // Adjust if the API response has different structure
       } catch (err: unknown) {
         setError(

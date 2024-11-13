@@ -1,9 +1,9 @@
 import AboutusVideoSection from "@/customComponents/aboutUsComponent/aboutusVideoSection";
 import SimplePortfolioCard from "@/customComponents/portfolioComponents/simplePortfolioCard";
 // import SlideComponent from "@/customComponents/reavelAnimation/slideComponent";
-import React from "react";
 import { getPortfolios } from "@/requests/generic/getPortfolio";
 import { Portfolio } from "@/interfaces/dashboardInterface";
+
 async function page() {
   const portfolioRes = await getPortfolios();
   if (portfolioRes)

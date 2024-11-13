@@ -3,7 +3,9 @@ import { fetchTestimonials } from "@/requests/generic/fetchTestimonials";
 import { Testimonial } from "@/interfaces/dashboardInterface";
 
 export const useFetchTestimonials = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[] | undefined>(
+    []
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
