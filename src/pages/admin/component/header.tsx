@@ -17,19 +17,21 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
+import { changeLanguage } from "i18next";
+import i18n from "@/i18n";
+
+const savedLanguage =
+  localStorage.getItem("i18nextLng") || i18n.language || "en";
 
 function Header() {
-  const currentLang = "en"; // Get the current language from cookies or default to "en"
+  const [currentLang, setCurrentLang] = useState<"en" | "ar">(
+    savedLanguage as "ar" | "en"
+  );
 
-  const handleLanguageChange = (lang: string) => {
-    // Update the language in cookies
-    // Cookies.set("NEXT_LOCALE", lang);
-
-    // Get the current path and replace the language part in the URL
-    const newPath = window.location.pathname.replace(/^\/(en|ar)/, `/${lang}`);
-
-    // Reload the page to apply the new language
-    window.location.href = newPath;
+  const handleLanguageChange = (lang: "en" | "ar") => {
+    setCurrentLang(lang);
+    changeLanguage(lang);
   };
 
   return (
@@ -39,7 +41,7 @@ function Header() {
         {/* Language Select Box */}
         <Select
           value={currentLang}
-          onValueChange={(value) => handleLanguageChange(value)}
+          onValueChange={(value: "ar" | "en") => handleLanguageChange(value)}
         >
           <SelectTrigger className="w-[120px]">
             <SelectValue placeholder="Language" />

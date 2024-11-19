@@ -1,4 +1,10 @@
 export const pageAdmin = {
+  login: "admin/login",
+  home: {
+    logo: "/admin",
+    video: "/admin/home-video",
+    stats: "/admin/home-stats",
+  },
   blogs: {
     manage: "/admin/blogs",
     add: "/admin/blogs/add",

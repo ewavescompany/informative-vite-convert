@@ -37,7 +37,7 @@ function TeamPage() {
   if (error)
     return (
       <div>
-        {t(".team.error_message")}: {error}
+        {t("team.error_message")}: {error}
       </div>
     );
 
@@ -45,12 +45,12 @@ function TeamPage() {
     <>
       <div className="w-full flex flex-col gap-5 capitalize">
         <div className="flex flex-row items-center justify-between">
-          <DashboardTitle title={t(".team.all_members")} />
+          <DashboardTitle title={t("team.all_members")} />
           <LinkButton
             url={`/${locale}/admin/dashboard/team/add-team`}
             className="space-x-1.5 h-9 px-4 py-2"
           >
-            <span>{t(".team.add_member")}</span>
+            <span>{t("team.add_member")}</span>
             <Plus />
           </LinkButton>
         </div>

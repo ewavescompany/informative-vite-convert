@@ -12,6 +12,21 @@ html[dir="rtl"] {
   text-align: right;
 }
 
+/* Specific RTL styles */
+body[lang="ar"] {
+  direction: rtl;
+}
+
+/* Specific RTL styles */
+html[lang="ar"] {
+  direction: rtl;
+}
+
+/* RTL-specific styles for layout or text alignment */
+html[lang="ar"] {
+  text-align: right;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

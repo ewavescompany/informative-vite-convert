@@ -31,7 +31,7 @@ const Sidebar: React.FC = () => {
       <div className="flex h-full max-h-screen min-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link
-            to={`/${locale}`}
+            to={pageAdmin.home.video}
             className="flex items-center gap-2 font-semibold"
           >
             <Package2 className="h-6 w-6" />
@@ -45,16 +45,19 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.home")}
               items={[
                 {
-                  href: `/${locale}/admin/dashboard/video-section`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/nav-logo`, // Use locale from cookies
+                  href: pageAdmin.home.logo, // Use locale from cookies
+                  label: t("sidebar.nav_logo"),
+                },
+                {
+                  // href: `/${locale}/admin/dashboard/video-section`, // Use locale from cookies
+                  href: pageAdmin.home.video, // Use locale from cookies
                   label: t("sidebar.video_section"),
                 },
                 {
-                  href: `/${locale}/admin/dashboard/stats-section`, // Use locale from cookies
+                  // href: `/${locale}/admin/dashboard/stats-section`, // Use locale from cookies
+                  href: pageAdmin.home.stats, // Use locale from cookies
                   label: t("sidebar.stats_section"),
-                },
-                {
-                  href: `/${locale}/admin/dashboard/nav-logo`, // Use locale from cookies
-                  label: t("sidebar.nav_logo"),
                 },
               ]}
             />

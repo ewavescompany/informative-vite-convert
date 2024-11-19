@@ -1,4 +1,3 @@
-"use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { loginAdmin } from "@/requests/admin/login";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 // Yup schema for form validation using translations
 export default function SignInForm() {
@@ -50,7 +50,7 @@ export default function SignInForm() {
             result?.data?.token ? result?.data?.token : ""
           );
           setTimeout(() => {
-            navigate("dashboard");
+            navigate(pageAdmin.about_us.main);
           }, 3000);
         }
         if (!result.success) {

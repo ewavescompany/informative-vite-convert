@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import Cookies from "js-cookie";
 import Loader from "@/customComponents/loader";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 const withAuth = <P extends object>(
   WrappedComponent: React.ComponentType<P>
@@ -19,7 +20,7 @@ const withAuth = <P extends object>(
       if (isClient) {
         const authToken = localStorage.getItem("authToken");
         if (!authToken) {
-          window.location.href = `/${locale}/admin/login`;
+          window.location.href = `/${pageAdmin.login}`;
         } else {
           setLoading(false);
         }

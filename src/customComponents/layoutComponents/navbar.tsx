@@ -6,8 +6,28 @@ import { Link } from "react-router-dom";
 import { pageClient } from "@/data/client/pagesURLs";
 import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { changeLanguage } from "i18next";
+
+const savedLanguage =
+  localStorage.getItem("i18nextLng") || i18n.language || "en";
 
 export default function Navbar({ logo }: { logo: string }) {
+  const [currentLang, setCurrentLang] = useState<"en" | "ar">(
+    savedLanguage as "ar" | "en"
+  );
+
+  const handleLanguageChange = (lang: "en" | "ar") => {
+    setCurrentLang(lang);
+    changeLanguage(lang);
+  };
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -36,12 +56,31 @@ export default function Navbar({ logo }: { logo: string }) {
       >
         <NavLogo logo={logo} className="p-1 w-48 h-20" />
         <NavLinks className="flex flex-row gap-4" />
-        <NavSocialIcons
-          size={20}
-          className={`w-fit flex flex-row gap-3 ${
-            locale === "en" ? "flex-row ml-auto" : "flex-row-reverse mr-auto"
+
+        <div
+          className={`w-fit flex flex-row gap-5 items-center ${
+            locale === "en" ? "flex-row ml-auto" : "flex-row mr-auto"
           }`}
-        />
+        >
+          <Select
+            value={currentLang}
+            onValueChange={(value: "ar" | "en") => handleLanguageChange(value)}
+          >
+            <SelectTrigger className="w-[100px]">
+              <SelectValue placeholder="Language" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="ar">العربية</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+
+          {/* <div className="border h-9 rounded-md flex items-center px-4"> */}
+          <NavSocialIcons className="w-fit flex flex-row gap-2" />
+          {/* </div> */}
+        </div>
       </div>
 
       <Button
@@ -70,7 +109,6 @@ export default function Navbar({ logo }: { logo: string }) {
             </SheetHeader>
             <NavLinks className="py-2 text-white flex flex-col items-center gap-4 text-xl" />
             <NavSocialIcons
-              size={29}
               className={`w-full justify-center flex flex-row gap-4 ${
                 locale === "en" ? "flex-row" : "flex-row-reverse"
               }`}
@@ -146,26 +184,32 @@ function NavLinks({ className }: { className: string }) {
   );
 }
 
-function NavSocialIcons({
-  className,
-  size,
-}: {
-  className: string;
-  size?: number;
-}) {
+function NavSocialIcons({ className }: { className: string }) {
   return (
     <div className={className}>
-      <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
-        <Facebook size={size || 20} />
+      <Link
+        to={"/home"}
+        className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
+      >
+        <Facebook className="w-7 md:w-5" />
       </Link>
-      <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
-        <Youtube size={size || 20} />
+      <Link
+        to={"/home"}
+        className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
+      >
+        <Youtube className="w-7 md:w-5" />
       </Link>
-      <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
-        <Twitter size={size || 20} />
+      <Link
+        to={"/home"}
+        className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
+      >
+        <Twitter className="w-7 md:w-5" />
       </Link>
-      <Link to={"/home"} className="lg:text-lg text-base text-graywhite">
-        <Instagram size={size || 20} />
+      <Link
+        to={"/home"}
+        className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
+      >
+        <Instagram className="w-7 md:w-5" />
       </Link>
     </div>
   );

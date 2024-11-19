@@ -29,12 +29,25 @@ import ContactUsClientPage from "./pages/client/contact-us/page";
 import ServicesClientPage from "./pages/client/services/services";
 import AboutUsClientPage from "./pages/client/about-us/page";
 import PortfolioClientPage from "./pages/client/portfolio/portfolio";
+import LoginPage from "./pages/admin/login/page";
+import NavLogoPage from "./pages/admin/home/nav-logo/navLogoPage";
+import StatsSection from "./pages/admin/home/stats-section/statsSection";
+import VideoSection from "./pages/admin/home/video-section/videoSection";
 
 export default function AppRoutes() {
   return (
     <Routes>
       {/* ADMIN ROUTES */}
+
+      {/* LOGIN */}
+      <Route path={pageAdmin.login} element={<LoginPage />} />
+
       <Route element={<DashboardLayout />}>
+        {/* BLOGS */}
+        <Route path={pageAdmin.home.video} element={<VideoSection />} />
+        <Route path={pageAdmin.home.stats} element={<StatsSection />} />
+        <Route path={pageAdmin.home.logo} element={<NavLogoPage />} />
+
         {/* BLOGS */}
         <Route path={pageAdmin.blogs.manage} element={<BlogsPage />} />
         <Route path={pageAdmin.blogs.add} element={<AddBlogsPage />} />
