@@ -14,7 +14,7 @@ function VideoSection({ settings }: videoSectionInterface) {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full h-screen relative grid lg:grid-cols-2 grid-cols-1">
+    <div className="w-full h-screen relative z-30 grid lg:grid-cols-2 grid-cols-1">
       <video
         className="object-cover w-full h-full absolute top bottom-0 left-0 right-0"
         loop
@@ -23,7 +23,7 @@ function VideoSection({ settings }: videoSectionInterface) {
         src={`${videosPath}${settings.hero_video}`}
       />
       <div className="w-full h-full flex flex-col z-10 lg:text-left text-center overflow-hidden">
-        <div className="flex flex-col gap-4 justify-center xl:py-[20%] px-[10%] lg:py-[20%] w-full h-full overflow-hidden">
+        <div className="flex flex-col gap-4 justify-end md:justify-center xl:py-[20%] pr-[20%] pl-2 md:px-[10%] lg:py-[20%] py-5 md:py-1 w-full h-full overflow-hidden">
           <div className="flex flex-col gap-4 overflow-hidden">
             <SlideComponent dir="down">
               <h2

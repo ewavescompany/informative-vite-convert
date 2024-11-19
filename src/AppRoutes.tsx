@@ -26,6 +26,9 @@ import { pageClient } from "@/data/client/pagesURLs";
 import ClientPage from "@/pages/client/page";
 import BlogClientPage from "@/pages/client/blogs/blogs";
 import ContactUsClientPage from "./pages/client/contact-us/page";
+import ServicesClientPage from "./pages/client/services/services";
+import AboutUsClientPage from "./pages/client/about-us/page";
+import PortfolioClientPage from "./pages/client/portfolio/portfolio";
 
 export default function AppRoutes() {
   return (
@@ -93,6 +96,9 @@ export default function AppRoutes() {
         <Route path={pageClient.main} element={<ClientPage />} />
         <Route path={pageClient.blogs} element={<BlogClientPage />} />
         <Route path={pageClient.contact_us} element={<ContactUsClientPage />} />
+        <Route path={pageClient.portfolio} element={<PortfolioClientPage />} />
+        <Route path={pageClient.services} element={<ServicesClientPage />} />
+        <Route path={pageClient.about_us} element={<AboutUsClientPage />} />
       </Route>
     </Routes>
   );

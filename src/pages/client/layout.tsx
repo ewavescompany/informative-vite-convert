@@ -6,6 +6,7 @@ import { homeInterface } from "@/interfaces/clientInterface";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import Loading from "./loading";
 
 export default function ClientLayout() {
   const locale = i18n.language;
@@ -33,7 +34,7 @@ export default function ClientLayout() {
   }, []);
 
   if (error) return <div>{error}</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <Loading />;
 
   return (
     <html lang="en">
@@ -43,7 +44,7 @@ export default function ClientLayout() {
         // className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-sans)] flex flex-col bg-graywhite bg`}
       >
         <Navbar logo={data.logo} />
-        <Outlet />
+        <Outlet context={data} />
         <Footer />
       </body>
     </html>

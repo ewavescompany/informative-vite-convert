@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ArrowUpRight, Send } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import SlideComponent from "../reavelAnimation/slideComponent";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function BentoGrids() {
   const locale = i18n.language;
@@ -35,7 +36,7 @@ function BentoGrids() {
             } xl:max-w-[60%] xl:max-h-[60%] max-h-[80%] max-w-[50%] bottom-1 mt-auto  absolute aspect-square`}
           />
           <Link
-            to={"/client/about-us"}
+            to={pageClient.about_us}
             className="z-10 md:text-lg text-base mt-auto border-graywhite border-2 hover:border-graywhite/50 hover:text-graywhite/50 bg-transparent duration-500 shadow-md w-fit p-2 rounded-xl animate-slideInLeft "
           >
             {t("bentoGrids.explore_future")}
@@ -53,7 +54,7 @@ function BentoGrids() {
                 {t("bentoGrids.world_of_hearing")}
               </h3>
               <Link
-                to={"/client/blogs"}
+                to={pageClient.blogs}
                 className="hover:scale-150 duration-500"
               >
                 <ArrowUpRight className="md:text-2xl text-lg text-grayblack" />
@@ -85,7 +86,7 @@ function BentoGrids() {
                 {t("bentoGrids.our_history")}
               </h3>
               <Link
-                to={"/client/blogs"}
+                to={pageClient.blogs}
                 className="hover:scale-150 duration-500"
               >
                 <ArrowUpRight className="md:text-2xl text-lg text-grayblack" />
@@ -115,7 +116,7 @@ function BentoGrids() {
                 {t("bentoGrids.questions")}
               </h3>
               <Link
-                to={"/client/contact-us"}
+                to={pageClient.blogs}
                 className="hover:scale-150 duration-500 z-[1]"
               >
                 <Send className="md:text-2xl text-lg text-graywhite" />

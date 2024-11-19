@@ -10,6 +10,8 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
   const locale = i18n.language;
   const { t } = useTranslation();
 
+  console.log("---------------", project);
+
   return (
     <div className="w-full h-full rounded-2xl flex flex-col gap-3 ">
       <div className="w-full h-full overflow-hidden rounded-2xl min-h-[30vh]">
