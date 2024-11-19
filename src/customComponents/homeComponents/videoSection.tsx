@@ -14,9 +14,9 @@ function VideoSection({ settings }: videoSectionInterface) {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full h-screen relative z-30 grid lg:grid-cols-2 grid-cols-1">
+    <div className="w-full md:h-screen md:relative z-30 grid lg:grid-cols-2 grid-cols-1">
       <video
-        className="object-cover w-full h-full absolute top bottom-0 left-0 right-0"
+        className="md:object-cover w-full md:h-full md:absolute top bottom-0 left-0 right-0"
         loop
         muted
         autoPlay
