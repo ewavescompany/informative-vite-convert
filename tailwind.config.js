@@ -4,6 +4,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'almarai': ['Almarai', 'sans-serif'],
+      },
       colors: {
         grayblack: "#111111",
         graywhite: "#f1f1f1",

@@ -59,14 +59,14 @@
     "Loading": "Loading..."
   },
   "blogs": {
-    "blogs": "Blogs",
+    "blogs": "",
     "all_blogs": "All Blogs",
     "add_blog": "Add Blog",
     "loading": "Loading...",
     "error_loading_blogs": "Error loading blogs.",
     "no_blogs": "No blogs were added yet.",
-    "shared_experiance": "Shared experiance",
-    "from_our_company": "from our company",
+    "shared_experiance": "Experience blogs",
+    "from_our_company": "",
     "read_more": "Read more",
     "added": "Added"
   },
@@ -217,9 +217,9 @@
     "team_member_updated_successfully": "Team member updated successfully",
     "team_member_updated_successfully_you_can_check_it": "You can check the updated member.",
     "team_member_updating_failed": "Failed to update the team member.",
-    "Team": "Team",
+    "Team": "",
     "Driven by expertise": "Driven by expertise",
-    "united by vision": "united by vision",
+    "united by vision": "",
     "team_description": "Our team at Upshift is comprised of seasoned professionals from various fields within digital marketing and technology",
     "Learn more": "Learn more"
   },
@@ -284,9 +284,9 @@
     "testimonial_updated_successfully": "Testimonial updated successfully.",
     "testimonial_updated_check": "You can now check the updated testimonial.",
     "testimonial_update_failed": "Failed to update testimonial.",
-    "testimonials": "Testimonials",
-    "what_our_users": "What our users",
-    "said_about_our_company": "said about our company",
+    "testimonials": "",
+    "what_our_users": "",
+    "said_about_our_company": "Reviews about our company",
     "learn_more": "Learn more"
   },
   "stats": {

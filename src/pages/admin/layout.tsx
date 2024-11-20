@@ -4,7 +4,7 @@ import Sidebar from "./component/sidebar";
 
 export default function DashboardLayout() {
   return (
-    <div className="grid min-h-screen h-full w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] antialiased font-[family-name:var(--font-geist-sans)]">
+    <div className="grid min-h-screen h-full w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] antialiased font-almarai">
       <Sidebar />
       <div className="flex flex-col">
         <Header />

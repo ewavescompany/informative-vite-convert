@@ -35,7 +35,7 @@ export default function ClientLayout() {
   if (!data) return <Loading />;
 
   return (
-    <div>
+    <div className="font-almarai">
       <Navbar logo={data.logo} />
       <Outlet context={data} />
       <Footer />
