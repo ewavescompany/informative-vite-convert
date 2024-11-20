@@ -27,6 +27,7 @@ import { addTestimonial } from "@/requests/admin/testimonials"; // Import the re
 import withAuth from "@/hocs/withAuth";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 // Validation Schema
 
 function AddTestimonialPage() {
@@ -73,7 +74,7 @@ function AddTestimonialPage() {
           });
 
           //navigate to show all testimonial page when request done will
-          navigate("/admin/dashboard/testimonials");
+          navigate(pageAdmin.testimonials.manage);
         } else {
           toast({
             variant: "destructive",

@@ -38,7 +38,6 @@ export default function SignInForm() {
       try {
         setLoading(true);
         const result = await loginAdmin(values.email, values.password);
-        console.log(result);
         setLoading(false);
         if (result.success) {
           toast({
@@ -49,9 +48,9 @@ export default function SignInForm() {
             "authToken",
             result?.data?.token ? result?.data?.token : ""
           );
-          setTimeout(() => {
-            navigate(pageAdmin.about_us.main);
-          }, 3000);
+          // setTimeout(() => {
+          navigate(pageAdmin.about_us.main);
+          // }, 3000);
         }
         if (!result.success) {
           toast({
@@ -61,6 +60,11 @@ export default function SignInForm() {
           });
         }
       } catch (error) {
+        toast({
+          variant: "destructive",
+          title: t("login.login_failed"),
+          // description: result?.error,
+        });
         console.error(error);
         setLoading(false);
       }

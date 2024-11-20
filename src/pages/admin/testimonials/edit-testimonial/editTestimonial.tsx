@@ -30,6 +30,7 @@ import PageLoader from "@/customComponents/pageLoader";
 import withAuth from "@/hocs/withAuth";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 function EditTestimonialPage() {
   const navigate = useNavigate();
@@ -94,7 +95,7 @@ function EditTestimonialPage() {
           });
 
           //navigate to show all testimonial page when request done will
-          navigate("/admin/dashboard/testimonials");
+          navigate(pageAdmin.testimonials.manage);
         } else {
           toast({
             variant: "destructive",

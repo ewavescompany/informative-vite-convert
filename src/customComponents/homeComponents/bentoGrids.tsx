@@ -14,7 +14,7 @@ function BentoGrids() {
     <div className="min-h-[80vh] h-full w-full grid xl:grid-cols-2 grid-cols-1 gap-5 overflow-hidden">
       <SlideComponent dir="left">
         <div
-          onClick={() => navigate("/client/about-us")}
+          onClick={() => navigate(pageClient.about_us)}
           className="cursor-pointer dotbg w-full h-full xl:min-h-full min-h-[300px] bg-grayblack relative aspect-auto lg:aspect-video  text-graywhite overflow-hidden  rounded-2xl md:p-8 p-4 flex flex-col gap-3"
         >
           <h3 className="md:text-lg text-base uppercase animate-slideInDown">
@@ -46,7 +46,7 @@ function BentoGrids() {
       <div className="w-full h-full grid md:grid-cols-2 grid-cols-1 gap-5 min-h-full">
         <SlideComponent className="col-span-2 w-full" dir="down">
           <div
-            onClick={() => navigate("/client/blogs")}
+            onClick={() => navigate(pageClient.blogs)}
             className="cursor-pointer w-full h-full xl:min-h-full min-h-[300px] dotbg bg-[#D7D8DC] text-grayblack rounded-2xl flex flex-col justify-between md:p-8 p-4 gap-3 overflow-hidden"
           >
             <div className="w-full flex flex-row justify-between items-center">
@@ -77,7 +77,7 @@ function BentoGrids() {
           dir="left"
         >
           <div
-            onClick={() => navigate("/client/blogs")}
+            onClick={() => navigate(pageClient.blogs)}
             className="cursor-pointer w-full h-full bg-[#D7D8DC] dotbg text-grayblack rounded-2xl flex flex-col justify-between md:p-8 p-4 gap-3 overflow-hidden"
           >
             <div className="w-full flex flex-row justify-between items-center">
@@ -102,7 +102,7 @@ function BentoGrids() {
           dir="right"
         >
           <div
-            onClick={() => navigate("/client/contact-us")}
+            onClick={() => navigate(pageClient.contact_us)}
             className="cursor-pointer w-full h-full bg-grayblack text-graywhite rounded-2xl flex flex-col justify-between md:p-8 p-4 gap-3 relative overflow-hidden"
           >
             <img

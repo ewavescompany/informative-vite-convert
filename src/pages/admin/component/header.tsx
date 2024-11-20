@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import SidebarSheet from "./sidebarSheet";
 import {
   Select,
   SelectTrigger,
@@ -36,7 +35,6 @@ function Header() {
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
-      <SidebarSheet />
       <div className="w-full flex-1">
         {/* Language Select Box */}
         <Select

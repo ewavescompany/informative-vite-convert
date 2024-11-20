@@ -3,6 +3,7 @@ import { imagesPath } from "@/constants/urls";
 import { formatDateForPortfolio } from "@/utility/generic";
 import i18n from "@/i18n";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function MainBlogCard({ blog }: { blog: blogsInterface }) {
   const locale = i18n.language;
@@ -10,7 +11,7 @@ function MainBlogCard({ blog }: { blog: blogsInterface }) {
   return (
     <div className="w-full h-full flex flex-col gap-3 xl:max-w-5xl lg:max-w-3xl max-w-full">
       <div className="w-full h-full overflow-hidden rounded-2xl max-h-[60vh]">
-        <Link to={`/${locale}/client/blogs/${blog.id}`}>
+        <Link to={`${pageClient.blogs}/${blog.id}`}>
           <img
             src={`${imagesPath}blogs/${blog.image}`}
             alt="blog img"

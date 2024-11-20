@@ -13,11 +13,10 @@ import { FaTiktok } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import i18n from "@/i18n";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function Footer() {
-  const locale = i18n.language;
   const { t } = useTranslation();
 
   return (
@@ -49,25 +48,25 @@ function Footer() {
         </Link> */}
 
           <Link
-            to={`/${locale}/client/services`}
+            to={pageClient.services}
             className="lg:text-lg text-base text-graywhite font-medium"
           >
             {t("navbar.services")}
           </Link>
           <Link
-            to={`/${locale}/client/portfolio`}
+            to={pageClient.portfolio}
             className="lg:text-lg text-base text-graywhite font-medium"
           >
             {t("navbar.portfolio")}
           </Link>
           <Link
-            to={`/${locale}/client/blogs`}
+            to={pageClient.blogs}
             className="lg:text-lg text-base text-graywhite font-medium"
           >
             {t("navbar.blogs")}
           </Link>
           <Link
-            to={`/${locale}/client/contact-us`}
+            to={pageClient.contact_us}
             className="lg:text-lg text-base text-graywhite font-medium"
           >
             {t("navbar.contact_us")}
@@ -84,7 +83,7 @@ function Footer() {
         <div className="flex md:flex-col flex-wrap md:flex-nowrap gap-2 md:gap-3">
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <Facebook size={20} />
             <span className="hidden md:inline">Facebook</span>
@@ -92,35 +91,35 @@ function Footer() {
 
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <Youtube size={20} />
             <span className="hidden md:inline">Youtube</span>
           </Link>
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <Twitter size={20} />
             <span className="hidden md:inline">Twitter</span>
           </Link>
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <Instagram size={20} />
             <span className="hidden md:inline">Instagram</span>
           </Link>
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <FaSnapchat size={20} />
             <span className="hidden md:inline">Snapchat</span>
           </Link>
           <Link
             className="lg:text-lg text-base text-graywhite font-medium flex flex-row gap-2 items-center justify-center w-fit border p-1 rounded-md md:border-0 md:p-0 md:rounded-none"
-            to={"/home"}
+            to={"/"}
           >
             <FaTiktok size={20} />
             <span className="hidden md:inline">Tiktok</span>

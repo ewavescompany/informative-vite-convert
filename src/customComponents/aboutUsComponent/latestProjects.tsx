@@ -5,6 +5,7 @@ import { imagesPath } from "@/constants/urls";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function LatestProjects({ projectsData }: { projectsData: Portfolio[] }) {
   const locale = i18n.language;
@@ -18,7 +19,10 @@ function LatestProjects({ projectsData }: { projectsData: Portfolio[] }) {
             {t("latestProjects.our_latest_projects")}
           </h4>
         </SlideComponent>
-        <Link to={"/projects"} className="hover:scale-150 duration-500">
+        <Link
+          to={pageClient.portfolio}
+          className="hover:scale-150 duration-500"
+        >
           <ArrowUpRight size={30} />
         </Link>
       </div>

@@ -34,6 +34,7 @@ import withAuth from "@/hocs/withAuth";
 import { toast } from "@/hooks/use-toast";
 import InputTag from "../inputTag";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 // Validation Schema
 
 interface BlogFormValues {
@@ -140,7 +141,7 @@ function EditBlogPage() {
             title: t("blogForm.blog_added_successfully"),
             description: t("blogForm.blog_added_successfully_you_can_check_it"),
           });
-          navigate("/admin/dashboard/blogs");
+          navigate(pageAdmin.blogs.manage);
           setTags([]);
         } else {
           toast({

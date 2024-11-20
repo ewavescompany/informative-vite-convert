@@ -31,6 +31,7 @@ import withAuth from "@/hocs/withAuth";
 import InputTag from "@/pages/admin/blogs/inputTag";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 interface BlogFormValues {
   name: string;
@@ -98,7 +99,7 @@ function AddBlogsPage() {
             description: t("blogForm.blog_added_successfully_you_can_check_it"),
           });
           formik.resetForm();
-          navigate("/admin/dashboard/blogs");
+          navigate(pageAdmin.blogs.manage);
 
           // Reset tags state if needed
           setTags([]);

@@ -5,6 +5,7 @@ import { imagesPath } from "@/constants/urls";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 interface teamSectionInterface {
   team: teamsInterface[];
 }
@@ -37,7 +38,7 @@ function TeamSection({ team }: teamSectionInterface) {
         </SlideComponent>
         <SlideComponent dir="up">
           <Link
-            to={`/${locale}/about-us`}
+            to={pageClient.about_us}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
             {t("team.Learn more")}

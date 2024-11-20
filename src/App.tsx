@@ -1,12 +1,16 @@
 import "./App.css";
 import AppRoutes from "./AppRoutes";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
-    <Router>
-      <AppRoutes />
-    </Router>
+    <div>
+      <Router>
+        <AppRoutes />
+      </Router>
+      <Toaster />
+    </div>
   );
 }
 

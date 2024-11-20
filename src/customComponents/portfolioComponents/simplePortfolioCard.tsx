@@ -5,6 +5,7 @@ import { formatDateForPortfolio } from "@/utility/generic";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function SimplePortfolioCard({ project }: { project: Portfolio }) {
   const locale = i18n.language;
@@ -35,7 +36,7 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
           {locale === "en" ? project.description_en : project.description_ar}
         </p>
         <Button variant={"default"} size={"lg"} className="w-fit rounded-full">
-          <Link to={`/${locale}/client/portfolio/${project.id}`}>
+          <Link to={`${pageClient.portfolio}/${project.id}`}>
             {t("portfolio.view_project")}
           </Link>
         </Button>

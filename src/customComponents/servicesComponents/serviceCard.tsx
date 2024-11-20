@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import img1 from "../../../../public/services/service1.jpg";
 import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 function ServiceCard() {
   return (
@@ -12,7 +13,7 @@ function ServiceCard() {
       />
       <Link
         className="ml-auto w-fit z-10 relative hover:scale-150 duration-500"
-        to={"/services"}
+        to={pageClient.services}
       >
         <ArrowUpRight size={38} className=" text-graywhite" />
       </Link>
