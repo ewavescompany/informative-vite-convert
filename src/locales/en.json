@@ -31,8 +31,8 @@
     "settings": "settings"
   },
   "login": {
-    "email": "Email",
     "password": "Password",
+    "email": "Email",
     "sign_in": "Sign in",
     "description": "Enter your email below to sign in to your dashboard Account",
     "placeholder_email": "johndoe@gmail.com",
