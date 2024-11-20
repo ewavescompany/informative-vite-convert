@@ -94,7 +94,7 @@ function BlogCard({
   return (
     <SlideComponent delay={index * 100} dir="down">
       <div
-        onClick={() => navigate(`${pageClient.blogs}/${blogId}`)}
+        onClick={() => navigate(`${pageClient.blog_details}/${blogId}`)}
         className="w-full h-full flex flex-col gap-2 cursor-pointer"
       >
         <img
