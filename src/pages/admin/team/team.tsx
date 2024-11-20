@@ -13,6 +13,7 @@ import PageLoader from "@/customComponents/pageLoader";
 import withAuth from "@/hocs/withAuth";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 function TeamPage() {
   const { teamMembers, loading, error, setTeamMembers } = useFetchTeamMembers(); // Add setTeamMembers for update
@@ -61,7 +62,7 @@ function TeamPage() {
               <CardComponent
                 key={index}
                 onDelete={() => handleOpenDialog(member.id)}
-                editUrl={`/${locale}/admin/dashboard/team/edit-team/${member.id}`}
+                editUrl={`${pageAdmin.team.edit}/${member.id}`}
                 imgUrl={`${imagesPath}/team/${member.image}`} // Correct image path
                 title={locale === "en" ? member.name_en : member.name_ar}
                 shortDescrption={

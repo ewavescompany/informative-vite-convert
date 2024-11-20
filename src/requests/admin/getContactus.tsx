@@ -1,31 +1,24 @@
-// requests/blogs.ts
-
-import {
-  // clientBaseServerUrl,
-  dashboardBaseServerUrl,
-  serverUrls,
-} from "@/constants/urls";
-import { apiRequest } from "../api"; // Import your standardized request interface
+import { adminServerUrls, dashboardBaseServerUrl } from "@/constants/urls";
+import { apiRequest } from "../api";
 import { ContactInfo } from "@/interfaces/dashboardInterface";
-// Assuming ApiResponse is exported from api.ts
 
-// Define the expected structure of the blog data (optional, depending on your API response)
-
-// Function to get blogs from the API
 export const getContactus = async (token: string): Promise<any> => {
-  const url = `${dashboardBaseServerUrl}${serverUrls.contactus}`;
+  const url = `${dashboardBaseServerUrl}${adminServerUrls.contactus}`;
   const method = "GET";
   try {
-    const response = await apiRequest<ContactInfo[]>(
-      url, // The API endpoint to get blogs
+    const response = await apiRequest<{ data: ContactInfo[] }>(
+      url,
       method,
+      null,
       {
-        headers: { Authorization: `Bearer ${token}` },
-      } // HTTP method
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
-    return response; // Return just the data from the API response
+    return response.data; // Return the API response
   } catch (error) {
-    throw new Error("Failed to fetch blogs");
+    throw new Error("Failed to fetch contact info");
   }
 };

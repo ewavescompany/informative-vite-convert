@@ -11,6 +11,7 @@ function ContactMessagesPage() {
   const { messages, loading, error } = useFetchContactMessages();
 
   if (loading) return <PageLoader />; // Show loader while fetching data
+
   if (error)
     return (
       <div>
@@ -30,16 +31,16 @@ function ContactMessagesPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                     {t("messages.name")}
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                     {t("messages.email")}
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                     {t("messages.message")}
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                     {t("messages.date")}
                   </th>
                 </tr>
@@ -47,16 +48,16 @@ function ContactMessagesPage() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {messages?.map((message: ContactInfo, index: number) => (
                   <tr key={index}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {/* {message.} */}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 w-1/4">
+                      {message.full_name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 w-1/4">
                       {message.email}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {/* {message.} */}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 w-1/4">
+                      {message.message}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 w-1/4 overflow-hidden">
                       {new Date(message.created_at).toLocaleDateString()}
                     </td>
                   </tr>

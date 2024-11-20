@@ -23,7 +23,6 @@ import { pageAdmin } from "@/data/admin/pagesURLs";
 const Sidebar: React.FC = () => {
   // Read the locale from cookies (stored in 'locale')
   // const locale = Cookies.get("NEXT_LOCALE") || "en"; // Default to 'en' if no locale is found
-  const locale = "en"; // Default to 'en' if no locale is found
   const { t } = useTranslation();
 
   return (
@@ -148,25 +147,26 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.about_us")}
             />
             <SidebarLink
-              href={`/${locale}/admin/dashboard/mission`}
+              // href={`/${locale}/admin/dashboard/mission`}
+              href={pageAdmin.mission.main}
               icon={Lightbulb}
               label={t("sidebar.mission")}
             />
             {/* Use locale from cookies */}
             <SidebarLink
-              href={`/${locale}/admin/dashboard/vission`}
+              href={pageAdmin.vision.main}
               icon={Eye}
               label={t("sidebar.vision")}
             />
             {/* Use locale from cookies */}
             <SidebarLink
-              href={`/${locale}/admin/dashboard/contact-messages`}
+              href={pageAdmin.contacts_messages.main}
               icon={Mails}
               label={t("sidebar.contact_message")}
             />
             {/* Use locale from cookies */}
             <SidebarLink
-              href={`/${locale}/admin/dashboard/settings`} // Use locale from cookies
+              href={pageAdmin.settings.main}
               icon={Settings}
               label={t("sidebar.settings")}
             />

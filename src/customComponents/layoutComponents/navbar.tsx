@@ -50,7 +50,7 @@ export default function Navbar({ logo }: { logo: string }) {
   return (
     <>
       <div
-        className={`hidden w-full h-fit min-h-20 px-8 sm:px-20 md:flex flex-row items-center text-graywhite gap-10 fixed transition-all duration-300 z-50 shadow-md ${
+        className={`hidden w-full h-fit min-h-20 px-8 md:px-4 lg:px-8 sm:px-20 md:flex flex-row items-center text-graywhite gap-10 fixed transition-all duration-300 z-50 shadow-md ${
           scrollPosition > 50 ? "bg-grayblack" : "bg-grayblack/50"
         }`}
       >

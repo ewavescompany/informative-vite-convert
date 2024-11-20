@@ -11,6 +11,7 @@ import { dashboardBaseServerUrl, imagesPath } from "@/constants/urls";
 import withAuth from "@/hocs/withAuth";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 // Import the removeTestimonial function
 
 function Testimonial() {
@@ -67,7 +68,7 @@ function Testimonial() {
               jobTitle={testimonial.name}
               title={testimonial.company}
               onDelete={() => handleOpenDialog(testimonial.id)}
-              editUrl={`/${locale}/admin/dashboard/testimonials/edit-testimonial/${testimonial.id}`} // Adjust edit URL accordingly
+              editUrl={`${pageAdmin.testimonials.edit}/${testimonial.id}`} // Adjust edit URL accordingly
               imgUrl={`${imagesPath}testimonials/${testimonial.image}`}
               descrption={
                 locale === "en"

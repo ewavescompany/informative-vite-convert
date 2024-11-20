@@ -40,7 +40,7 @@ export const pageAdmin = {
     main: "/admin/vision",
   },
   contacts_messages: {
-    main: "/admin/vision",
+    main: "/admin/contact",
   },
   settings: {
     main: "/admin/settings",

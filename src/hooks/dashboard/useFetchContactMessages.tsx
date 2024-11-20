@@ -14,7 +14,9 @@ const useFetchContactMessages = () => {
     const fetchPortfolios = async () => {
       try {
         const token = localStorage.getItem("authToken");
+        console.log("---------------- contact : ", token);
         const response = await getContactus(token ?? "");
+
         console.log(response);
         if (Array.isArray(response.data)) {
           setMessages(response.data);
@@ -23,7 +25,7 @@ const useFetchContactMessages = () => {
             setMessages(response.data);
           } else {
             // setError(response.message || "Failed to fetch portfolios");
-            setError( "Failed to fetch portfolios");
+            setError("Failed to fetch portfolios");
           }
         } else {
           setError("Invalid response format");

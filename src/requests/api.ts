@@ -14,14 +14,15 @@ export async function apiRequest<T>(
   method: AxiosRequestConfig["method"],
   data?: any,
   config?: AxiosRequestConfig
-) {
-  // ): Promise<ApiResponse<T>> {
-  // Explicitly return ApiResponse<T>
+): Promise<ApiResponse<T>> {
   try {
     const response: AxiosResponse<T> = await axios({
       url,
       method,
       data,
+      headers: {
+        ...config?.headers, // Merge existing headers
+      },
       ...config,
     });
 

@@ -177,6 +177,8 @@ export interface PortfolioImages {
 
 export interface ContactInfo {
   id: number;
+  full_name: string;
+  message: string;
   email: string;
   phone: string;
   address: string;

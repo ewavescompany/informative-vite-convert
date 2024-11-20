@@ -39,6 +39,7 @@ export const adminServerUrls = {
   editVideoSection: "/home-page/manage",
   editVission: "/vision/manage",
   editMission: "/mission/manage",
+  contactus: "/contact-us/manage",
   editSettings: "/setting",
   editAboutus: "/about-us/manage",
   getLogo: "/home-page/get-logo",

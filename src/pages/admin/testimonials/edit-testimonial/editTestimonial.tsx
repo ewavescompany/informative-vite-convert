@@ -34,8 +34,9 @@ import { pageAdmin } from "@/data/admin/pagesURLs";
 
 function EditTestimonialPage() {
   const navigate = useNavigate();
-  const params = useParams<{ id: string }>(); // Get the testimonial ID from the URL params
-  const { testimonial, loading } = useFetchTestimonial(params?.id || "");
+  const { id } = useParams(); // Get the testimonial ID from the URL params
+  const { testimonial, loading } = useFetchTestimonial(id || "");
+  console.log("testimaon: ", testimonial);
   const { toast } = useToast();
   const locale = i18n.language;
   const { t } = useTranslation();
@@ -80,7 +81,7 @@ function EditTestimonialPage() {
       formData.append("message", values.message);
       formData.append("company", values.company);
       formData.append("lang", values.lang);
-      formData.append("id", params.id || "");
+      formData.append("id", id || "");
       if (values.image) {
         formData.append("image", values.image); // Append image if available
       }

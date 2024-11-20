@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import { Testimonial } from "@/interfaces/dashboardInterface";
 import { fetchTestimonialById } from "@/requests/admin/testimonial";
-import { ApiResponse } from "@/requests/api";
 
 export const useFetchTestimonial = (id: string | number) => {
   const [testimonial, setTestimonial] = useState<Testimonial | undefined>();
@@ -12,8 +11,9 @@ export const useFetchTestimonial = (id: string | number) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data: ApiResponse<Testimonial> = await fetchTestimonialById(id);
-        setTestimonial(data.data); // Adjust if the API response has different structure
+        const data: { data: Testimonial } | undefined =
+          await fetchTestimonialById(id);
+        data && setTestimonial(data.data); // Adjust if the API response has different structure
       } catch (err: unknown) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"

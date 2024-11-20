@@ -69,7 +69,7 @@ export default function BlogsPage() {
                 <CardComponent
                   key={index}
                   onDelete={() => handleOpenDialog(blog.id)}
-                  editUrl={`/${locale}/admin/dashboard/blogs/edit-blogs/${blog.id}`} // Assuming you have an edit page
+                  editUrl={`${pageAdmin.blogs.edit}/${blog.id}`} // Assuming you have an edit page
                   imgUrl={`${imagesPath}blogs/${blog?.image}`} // Fallback to a default image
                   title={locale === "en" ? blog.title_en : blog.title_ar}
                   descrption={

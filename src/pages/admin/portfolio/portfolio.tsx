@@ -14,6 +14,7 @@ import { dashboardBaseServerUrl, imagesPath } from "@/constants/urls";
 // import { useTranslations } from "next-intl";
 import withAuth from "@/hocs/withAuth";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
 
 function PortfolioPage() {
   const { portfolios, loading, error, setPortfolios } = useFetchPortfolios();
@@ -60,7 +61,7 @@ function PortfolioPage() {
                 <CardComponent
                   key={index}
                   onDelete={() => handleOpenDialog(portfolio.id)}
-                  editUrl={`/${locale}/admin/dashboard/portfolio/edit-portfolios/${portfolio.id}`} // Assuming you have an edit page
+                  editUrl={`${pageAdmin.portfolio.edit}/${portfolio.id}`} // Assuming you have an edit page
                   imgUrl={`${imagesPath}portfolios/${portfolio?.image}`} // Fallback to a default image
                   title={
                     locale === "en" ? portfolio.title_en : portfolio.title_ar

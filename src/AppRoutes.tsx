@@ -53,25 +53,31 @@ export default function AppRoutes() {
         {/* BLOGS */}
         <Route path={pageAdmin.blogs.manage} element={<BlogsPage />} />
         <Route path={pageAdmin.blogs.add} element={<AddBlogsPage />} />
-        <Route path={pageAdmin.blogs.edit} element={<EditBlogPage />} />
+        <Route
+          path={pageAdmin.blogs.edit + "/:id"}
+          element={<EditBlogPage />}
+        />
 
         {/* PORTFOLIOS */}
         <Route path={pageAdmin.portfolio.manage} element={<PortfolioPage />} />
         <Route path={pageAdmin.portfolio.add} element={<AddPortfoliosPage />} />
         <Route
-          path={pageAdmin.portfolio.edit}
+          path={pageAdmin.portfolio.edit + "/:id"}
           element={<EditPortfoliosPage />}
         />
 
         {/* SERVICES */}
         <Route path={pageAdmin.services.manage} element={<ServicesPage />} />
         <Route path={pageAdmin.services.add} element={<AddServicesPage />} />
-        <Route path={pageAdmin.services.edit} element={<EditServicesPage />} />
+        <Route
+          path={pageAdmin.services.edit + "/:id"}
+          element={<EditServicesPage />}
+        />
 
         {/* TEAM */}
         <Route path={pageAdmin.team.manage} element={<TeamPage />} />
         <Route path={pageAdmin.team.add} element={<AddTeamPage />} />
-        <Route path={pageAdmin.team.edit} element={<EditTeamPage />} />
+        <Route path={pageAdmin.team.edit + "/:id"} element={<EditTeamPage />} />
 
         {/* TESTIMONIAL */}
         <Route
@@ -83,7 +89,7 @@ export default function AppRoutes() {
           element={<AddTestimonialsPage />}
         />
         <Route
-          path={pageAdmin.testimonials.edit}
+          path={pageAdmin.testimonials.edit + "/:id"}
           element={<EditTestimonialsPage />}
         />
 
