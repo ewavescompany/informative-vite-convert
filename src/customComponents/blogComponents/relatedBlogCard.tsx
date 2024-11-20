@@ -1,4 +1,5 @@
-import imgUrl from "../../../../public/services/service1.jpg";
+// import imgUrl from "../../../../../public/services/service1.jpg";
+import imgUrl from "../../../public/services/service1.jpg";
 
 function RelatedBlogCard() {
   return (

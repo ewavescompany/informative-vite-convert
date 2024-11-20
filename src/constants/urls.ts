@@ -45,9 +45,9 @@ export const adminServerUrls = {
   uploadLogo: "/home-page/add-logo",
 };
 
-export const baseServerUrl = "https://v4.ewavespro.com/api";
-export const clientBaseServerUrl = "https://v4.ewavespro.com/api/global";
-export const dashboardBaseServerUrl = "https://v4.ewavespro.com/api/admin";
+export const baseServerUrl = "https://v5.ewavespro.com/api";
+export const clientBaseServerUrl = "https://v5.ewavespro.com/api/global";
+export const dashboardBaseServerUrl = "https://v5.ewavespro.com/api/admin";
 
-export const imagesPath = "https://v4.ewavespro.com/public/images/";
-export const videosPath = "https://v4.ewavespro.com/public/hero/";
+export const imagesPath = "https://v5.ewavespro.com/public/images/";
+export const videosPath = "https://v5.ewavespro.com/public/hero/";

@@ -6,7 +6,7 @@ import { Toaster } from "./components/ui/toaster";
 function App() {
   return (
     <div>
-      <Router>
+      <Router future={{ v7_startTransition: true }}>
         <AppRoutes />
       </Router>
       <Toaster />

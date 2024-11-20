@@ -1,4 +1,4 @@
-import bgUrl from "../../public/Services-How-BG.webp";
+import bgUrl from "../../../public/Services-How-BG.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 // import "swiper/css";

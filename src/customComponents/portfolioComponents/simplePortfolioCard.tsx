@@ -11,8 +11,6 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
   const locale = i18n.language;
   const { t } = useTranslation();
 
-  console.log("---------------", project);
-
   return (
     <div className="w-full h-full rounded-2xl flex flex-col gap-3 ">
       <div className="w-full h-full overflow-hidden rounded-2xl min-h-[30vh]">
@@ -36,7 +34,7 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
           {locale === "en" ? project.description_en : project.description_ar}
         </p>
         <Button variant={"default"} size={"lg"} className="w-fit rounded-full">
-          <Link to={`${pageClient.portfolio}/${project.id}`}>
+          <Link to={`${pageClient.portfolio_details}/${project.id}`}>
             {t("portfolio.view_project")}
           </Link>
         </Button>

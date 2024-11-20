@@ -32,7 +32,7 @@ function LatestProjects({ projectsData }: { projectsData: Portfolio[] }) {
             <ProjectCard
               projectImgUrl={`${imagesPath}portfolios/${project.image}`}
               name={locale === "en" ? project.title_en : project.title_ar}
-              projectUrl={`/${locale}/client/portfolio/${project.id}`}
+              projectUrl={`${pageClient.portfolio}/${project.id}`}
             />
           </SlideComponent>
         </div>

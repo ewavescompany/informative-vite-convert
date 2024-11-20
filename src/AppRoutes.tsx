@@ -33,6 +33,8 @@ import LoginPage from "./pages/admin/login/page";
 import NavLogoPage from "./pages/admin/home/nav-logo/navLogoPage";
 import StatsSection from "./pages/admin/home/stats-section/statsSection";
 import VideoSection from "./pages/admin/home/video-section/videoSection";
+import BlogDetailsClientPage from "./pages/client/blogs/blog_id/blogDetails";
+import ProjectDetailsClientPage from "./pages/client/portfolio/projectDetails/projectDetails";
 
 export default function AppRoutes() {
   return (
@@ -108,8 +110,16 @@ export default function AppRoutes() {
       <Route element={<ClientLayout />}>
         <Route path={pageClient.main} element={<ClientPage />} />
         <Route path={pageClient.blogs} element={<BlogClientPage />} />
+        <Route
+          path={pageClient.blog_details + "/:id"}
+          element={<BlogDetailsClientPage />}
+        />
         <Route path={pageClient.contact_us} element={<ContactUsClientPage />} />
         <Route path={pageClient.portfolio} element={<PortfolioClientPage />} />
+        <Route
+          path={pageClient.portfolio_details + "/:id"}
+          element={<ProjectDetailsClientPage />}
+        />
         <Route path={pageClient.services} element={<ServicesClientPage />} />
         <Route path={pageClient.about_us} element={<AboutUsClientPage />} />
       </Route>

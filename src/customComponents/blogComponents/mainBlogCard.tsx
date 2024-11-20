@@ -11,7 +11,7 @@ function MainBlogCard({ blog }: { blog: blogsInterface }) {
   return (
     <div className="w-full h-full flex flex-col gap-3 xl:max-w-5xl lg:max-w-3xl max-w-full">
       <div className="w-full h-full overflow-hidden rounded-2xl max-h-[60vh]">
-        <Link to={`${pageClient.blogs}/${blog.id}`}>
+        <Link to={`${pageClient.blog_details}/${blog.id}`}>
           <img
             src={`${imagesPath}blogs/${blog.image}`}
             alt="blog img"
