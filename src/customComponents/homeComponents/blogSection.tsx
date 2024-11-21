@@ -48,8 +48,8 @@ function BlogSection({ blogs }: { blogs: blogsInterface[] }) {
           breakpoints={{
             0: { slidesPerView: 1.25 },
             768: { slidesPerView: 2.5 },
-            1024: { slidesPerView: 3.5 },
-            1440: { slidesPerView: 4.5 },
+            1024: { slidesPerView: 3 },
+            1440: { slidesPerView: 4 },
           }}
         >
           {blogs.map((blog: blogsInterface, index: number) => (

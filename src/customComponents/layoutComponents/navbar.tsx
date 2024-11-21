@@ -15,11 +15,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { changeLanguage } from "i18next";
+import { settings } from "@/interfaces/dashboardInterface";
 
 const savedLanguage =
   localStorage.getItem("i18nextLng") || i18n.language || "en";
 
-export default function Navbar({ logo }: { logo: string }) {
+export default function Navbar({
+  logo,
+  dataSetting,
+}: {
+  logo: string;
+  dataSetting: settings;
+}) {
   const [currentLang, setCurrentLang] = useState<"en" | "ar">(
     savedLanguage as "ar" | "en"
   );
@@ -78,7 +85,10 @@ export default function Navbar({ logo }: { logo: string }) {
           </Select>
 
           {/* <div className="border h-9 rounded-md flex items-center px-4"> */}
-          <NavSocialIcons className="w-fit flex flex-row gap-2" />
+          <NavSocialIcons
+            dataSetting={dataSetting}
+            className="w-fit flex flex-row gap-2"
+          />
           {/* </div> */}
         </div>
       </div>
@@ -109,6 +119,7 @@ export default function Navbar({ logo }: { logo: string }) {
             </SheetHeader>
             <NavLinks className="py-2 text-white flex flex-col items-center gap-4 text-xl" />
             <NavSocialIcons
+              dataSetting={dataSetting}
               className={`w-full justify-center flex flex-row gap-4 ${
                 locale === "en" ? "flex-row" : "flex-row-reverse"
               }`}
@@ -184,29 +195,53 @@ function NavLinks({ className }: { className: string }) {
   );
 }
 
-function NavSocialIcons({ className }: { className: string }) {
+function NavSocialIcons({
+  className,
+  dataSetting,
+}: {
+  className: string;
+  dataSetting: settings;
+}) {
+  // const [navLinksData, setNavLinksData] = useState();
+
+  // useEffect(() => {
+  //   async function getSettingsData() {
+  //     try {
+  //       const res = await fetchSettings();
+  //       console.log(res);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getSettingsData();
+  // }, []);
+
   return (
     <div className={className}>
       <Link
-        to={"/home"}
+        to={dataSetting.social_facebook}
+        target="_blank"
         className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
       >
         <Facebook className="w-7 md:w-5" />
       </Link>
       <Link
-        to={"/home"}
+        to={dataSetting.social_tiktok}
+        target="_blank"
         className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
       >
         <Youtube className="w-7 md:w-5" />
       </Link>
       <Link
-        to={"/home"}
+        to={dataSetting.social_x}
+        target="_blank"
         className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
       >
         <Twitter className="w-7 md:w-5" />
       </Link>
       <Link
-        to={"/home"}
+        to={dataSetting.social_insta}
+        target="_blank"
         className="lg:text-lg text-base text-graywhite md:border md:rounded-md md:py-1 md:px-2"
       >
         <Instagram className="w-7 md:w-5" />
