@@ -35,6 +35,8 @@ import StatsSection from "./pages/admin/home/stats-section/statsSection";
 import VideoSection from "./pages/admin/home/video-section/videoSection";
 import BlogDetailsClientPage from "./pages/client/blogs/blog_id/blogDetails";
 import ProjectDetailsClientPage from "./pages/client/portfolio/projectDetails/projectDetails";
+import MetaTagsPage from "./pages/admin/seo-control/seoControl";
+import WebsiteOpenGraphPage from "./pages/admin/website-open-graph/websiteOpenGraph";
 
 export default function AppRoutes() {
   return (
@@ -51,13 +53,18 @@ export default function AppRoutes() {
         <Route path={pageAdmin.home.logo} element={<NavLogoPage />} />
 
         {/* BLOGS */}
+        <Route path={"/admin/seo"} element={<MetaTagsPage />} />
+
+        {/* GO */}
+        <Route path={"/admin/go"} element={<WebsiteOpenGraphPage />} />
+
+        {/* BLOGS */}
         <Route path={pageAdmin.blogs.manage} element={<BlogsPage />} />
         <Route path={pageAdmin.blogs.add} element={<AddBlogsPage />} />
         <Route
           path={pageAdmin.blogs.edit + "/:id"}
           element={<EditBlogPage />}
         />
-
         {/* PORTFOLIOS */}
         <Route path={pageAdmin.portfolio.manage} element={<PortfolioPage />} />
         <Route path={pageAdmin.portfolio.add} element={<AddPortfoliosPage />} />
@@ -65,7 +72,6 @@ export default function AppRoutes() {
           path={pageAdmin.portfolio.edit + "/:id"}
           element={<EditPortfoliosPage />}
         />
-
         {/* SERVICES */}
         <Route path={pageAdmin.services.manage} element={<ServicesPage />} />
         <Route path={pageAdmin.services.add} element={<AddServicesPage />} />
@@ -73,12 +79,10 @@ export default function AppRoutes() {
           path={pageAdmin.services.edit + "/:id"}
           element={<EditServicesPage />}
         />
-
         {/* TEAM */}
         <Route path={pageAdmin.team.manage} element={<TeamPage />} />
         <Route path={pageAdmin.team.add} element={<AddTeamPage />} />
         <Route path={pageAdmin.team.edit + "/:id"} element={<EditTeamPage />} />
-
         {/* TESTIMONIAL */}
         <Route
           path={pageAdmin.testimonials.manage}
@@ -92,22 +96,17 @@ export default function AppRoutes() {
           path={pageAdmin.testimonials.edit + "/:id"}
           element={<EditTestimonialsPage />}
         />
-
         {/* ABOUT_US */}
         <Route path={pageAdmin.about_us.main} element={<AboutUsPage />} />
-
         {/* MISSION */}
         <Route path={pageAdmin.mission.main} element={<MissionPage />} />
-
         {/* CONTACTS_MESSAGES */}
         <Route
           path={pageAdmin.contacts_messages.main}
           element={<ContactMessagesPage />}
         />
-
         {/* VISION */}
         <Route path={pageAdmin.vision.main} element={<VisionPage />} />
-
         {/* SETTINGS */}
         <Route path={pageAdmin.settings.main} element={<SettingsPage />} />
       </Route>
