@@ -102,7 +102,7 @@ function TeamCard({
         src={imgUrl}
         width={100}
         height={100}
-        className="aspect-square w-full border rounded-3xl mb-3 shadow-md hover:shadow-lg duration-1000"
+        className="aspect-square w-full border-2 border-zinc-300 rounded-3xl mb-3 shadow-lg hover:shadow-xl duration-1000"
         alt="team member"
       />
       <span className="text-lg md:text-xl text-grayblack capitalize font-medium">
