@@ -54,7 +54,7 @@ function Testimonial() {
         <div className="flex flex-row items-center justify-between">
           <DashboardTitle title={t("testimonials.all_testimonials")} />
           <LinkButton
-            url={`/${locale}/admin/dashboard/testimonials/add-testimonial`}
+            url={pageAdmin.testimonials.add}
             className="space-x-1.5 h-9 px-4 py-2"
           >
             <span>{t("testimonials.add_testimonial")}</span>
