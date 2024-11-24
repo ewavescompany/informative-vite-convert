@@ -4,7 +4,7 @@
     "contact_us": "اتصل بنا"
   },
   "sidebar": {
-    "company_name": "شركتك",
+    "company_name":"E waves Company",
     "home": "الرئيسية",
     "video_section": "قسم الفيديو",
     "stats_section": "قسم الإحصائيات",
@@ -121,8 +121,8 @@
     "error_loading_blogs": "خطأ في تحميل المدونات.",
     "no_blogs": "لا يوجد مدونات",
     "blogs": "المدونات",
-    "shared_experiance": "مشاركة الخبرة",
-    "from_our_company": "من شركتنا",
+    "shared_experiance": "",
+    "from_our_company": "",
     "read_more": "اقرأ المزيد",
     "added": "تم الإضافة"
   },
@@ -273,9 +273,9 @@
     "team_member_updated_successfully_you_can_check_it": "يمكنك التحقق من عضو الفريق المحدث.",
     "team_member_updating_failed": "فشل في تحديث عضو الفريق",
     "Team": "الفريق",
-    "Driven by expertise": "مدفوعة بالخبرة",
-    "united by vision": "متحدون بالرؤية",
-    "team_description": "يتكون فريقنا في Upshift من محترفين متمرسين من مختلف المجالات في مجال التسويق الرقمي والتكنولوجيا",
+    "Driven by expertise": "",
+    "united by vision": "",
+    "team_description": "",
     "Learn more": "تعرف على المزيد"
   },
   "settings": {
@@ -337,8 +337,8 @@
     "testimonial_updated_check": "يمكنك التحقق من الشهادة المحدثة.",
     "testimonial_update_failed": "فشل تحديث الشهادة.",
     "testimonials": "الشهادات",
-    "what_our_users": "ما قاله المستخدمون",
-    "said_about_our_company": "قال عن شركتنا",
+    "what_our_users": "",
+    "said_about_our_company": "قالو عن شركتنا",
     "learn_more": "تعرف على المزيد"
   },
   "stats": {
@@ -371,7 +371,7 @@
     "language_select": "اختر اللغة",
     "stats": "احصائيات",
     "K": "الف",
-    "Businesses served": "الشركات التي تخدمها",
+    "Businesses served": "الشركات التي نخدمها",
     "Average increase in engagement": "متوسط الزيادة في المشاركة",
     "Countries reached": "البلدان التي تم الوصول إليها",
     "M": "مليون",
@@ -499,8 +499,8 @@
   "bentoGrids": {
     "future_focused": "مستقبلي",
     "explore_future": "استكشف المستقبل",
-    "world_of_hearing": "تكنولوجيا الإذن العالمية",
-    "view_blog": "عرض مدونتنا",
+    "world_of_hearing": "تكنولوجيا المستقبل",
+    "view_blog": "",
     "discover": "اكتشف",
     "our_history": "تاريخنا",
     "have_some": "لديك بعض",
