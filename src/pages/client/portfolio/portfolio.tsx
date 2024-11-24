@@ -37,7 +37,7 @@ export default function PortfolioClientPage() {
         descriptionAr="نحن نرشد الشركات التي تغير العالم، عبر الأنظمة والأماكن، من خلال تصميم متطور وتجربة رقمية متطورة."
       />
       <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center">
-        <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5">
+        <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-5">
           {portfolioData?.map((project, key) => (
             <SimplePortfolioCard project={project} key={key} />
           ))}
