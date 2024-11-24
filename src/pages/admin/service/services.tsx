@@ -54,7 +54,7 @@ function ServicesPage() {
           <DashboardTitle title={t("services.all_services")} />
           <LinkButton
             // url={`/${locale}/admin/dashboard/service/add-services`}
-            url={pageAdmin.services.manage}
+            url={pageAdmin.services.add}
             className="space-x-1.5 h-9 px-4 py-2"
           >
             <span>{t("services.add_service")}</span>

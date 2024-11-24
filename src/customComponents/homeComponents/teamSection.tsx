@@ -6,6 +6,7 @@ import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { pageClient } from "@/data/client/pagesURLs";
+import { Swiper, SwiperSlide } from "swiper/react";
 interface teamSectionInterface {
   team: teamsInterface[];
 }
@@ -45,20 +46,40 @@ function TeamSection({ team }: teamSectionInterface) {
           </Link>
         </SlideComponent>
       </div>
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-        {team.map((member: TeamMember, index: number) => (
-          <div className="w-full h-full overflow-hidden" key={index}>
-            <SlideComponent dir="up" triggerOnce>
-              <TeamCard
-                imgUrl={`${imagesPath}team/${member.image}`}
-                name={locale === "en" ? member?.name_en : member?.name_ar}
-                title={
-                  locale === "en" ? member?.position_en : member?.position_ar
-                }
-              />
-            </SlideComponent>
-          </div>
-        ))}
+      <div className="">
+        <div className="w-full h-full overflow-hidden">
+          <Swiper
+            className="mySwiper"
+            spaceBetween={30}
+            breakpoints={{
+              0: { slidesPerView: 1.25 },
+              768: { slidesPerView: 2.5 },
+              1024: { slidesPerView: 3.5 },
+              1440: { slidesPerView: 4.5 },
+            }}
+          >
+            {team.map((member: TeamMember, index: number) => (
+              <SwiperSlide
+                key={index}
+                className="w-full h-full overflow-hidden"
+              >
+                {/* <div className="w-full h-full overflow-hidden" key={index}> */}
+                <SlideComponent dir="up" triggerOnce>
+                  <TeamCard
+                    imgUrl={`${imagesPath}team/${member.image}`}
+                    name={locale === "en" ? member?.name_en : member?.name_ar}
+                    title={
+                      locale === "en"
+                        ? member?.position_en
+                        : member?.position_ar
+                    }
+                  />
+                </SlideComponent>
+                {/* </div> */}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );
@@ -76,18 +97,18 @@ function TeamCard({
   title: string;
 }) {
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col items-center">
       <img
         src={imgUrl}
         width={100}
         height={100}
-        className="aspect-square w-full border-2 border-white rounded-lg mb-3 shadow-md hover:shadow-lg duration-1000"
+        className="aspect-square w-full border-2 border-zinc-300 rounded-3xl mb-3 shadow-lg hover:shadow-xl duration-1000"
         alt="team member"
       />
-      <span className="text-lg text-grayblack capitalize font-medium">
+      <span className="text-lg md:text-xl text-grayblack capitalize font-medium">
         {name}
       </span>
-      <span className="text-lg text-gray-500 capitalize font-medium">
+      <span className="text-lg md:text-xl text-gray-500 capitalize font-medium">
         {title}
       </span>
     </div>

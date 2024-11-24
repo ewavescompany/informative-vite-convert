@@ -48,7 +48,7 @@ function TeamPage() {
         <div className="flex flex-row items-center justify-between">
           <DashboardTitle title={t("team.all_members")} />
           <LinkButton
-            url={`/${locale}/admin/dashboard/team/add-team`}
+            url={pageAdmin.team.add}
             className="space-x-1.5 h-9 px-4 py-2"
           >
             <span>{t("team.add_member")}</span>

@@ -77,7 +77,7 @@ function BentoGrids() {
           dir="left"
         >
           <div
-            onClick={() => navigate(pageClient.blogs)}
+            onClick={() => navigate(pageClient.about_us)}
             className="cursor-pointer w-full h-full bg-[#D7D8DC] dotbg text-grayblack rounded-2xl flex flex-col justify-between md:p-8 p-4 gap-3 overflow-hidden"
           >
             <div className="w-full flex flex-row justify-between items-center">
@@ -86,7 +86,7 @@ function BentoGrids() {
                 {t("bentoGrids.our_history")}
               </h3>
               <Link
-                to={pageClient.blogs}
+                to={pageClient.about_us}
                 className="hover:scale-150 duration-500"
               >
                 <ArrowUpRight className="md:text-2xl text-lg text-grayblack" />

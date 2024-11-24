@@ -9,11 +9,11 @@ export default function Stats({ stats }: { stats: statsInterface }) {
 
   return (
     <div className="z-[-1] relative grid lg:grid-cols-2 grid-cols-1 overflow-hidden w-full h-full px-8 sm:px-20 lg:px-28 lg:py-14 py-4 sm:py-10 bg-grayblack/90 rounded-2xl min-h-[30vh] lg:gap-10 gap-5">
-      <img
+      {/* <img
         className="w-full h-full absolute object-cover top-0 bottom-0 left-0 right-0"
         alt="mission"
         src="/reavelAnimation/slideComponent"
-      />
+      /> */}
       <div className="flex flex-col gap-3 h-full w-full">
         <SlideComponent dir="down">
           <span className="text-gray-500 sm:text-xl text-lg font-medium">

@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { blogsInterface } from "@/interfaces/clientInterface";
-import { formatDate } from "@/utility/generic";
 import { imagesPath } from "@/constants/urls";
 import { Link, useNavigate } from "react-router-dom";
 import i18n from "@/i18n";
@@ -48,8 +47,8 @@ function BlogSection({ blogs }: { blogs: blogsInterface[] }) {
           breakpoints={{
             0: { slidesPerView: 1.25 },
             768: { slidesPerView: 2.5 },
-            1024: { slidesPerView: 3.5 },
-            1440: { slidesPerView: 4.5 },
+            1024: { slidesPerView: 3 },
+            1440: { slidesPerView: 4 },
           }}
         >
           {blogs.map((blog: blogsInterface, index: number) => (
@@ -62,7 +61,7 @@ function BlogSection({ blogs }: { blogs: blogsInterface[] }) {
                 describition={
                   locale === "ar" ? blog.description_ar : blog.description_en
                 }
-                date={`${t("blogs.added")} ${formatDate(blog.created_at)}`}
+                // date={`${t("blogs.added")} ${formatDate(blog.created_at)}`}
               />
             </SwiperSlide>
           ))}
@@ -79,14 +78,14 @@ function BlogCard({
   blogImgUrl,
   title,
   describition,
-  date,
+  // date,
   index,
 }: {
   blogId: number;
   blogImgUrl: string;
   title: string;
   describition: string;
-  date: string;
+  // date: string;
   index: number;
 }) {
   const navigate = useNavigate();
@@ -104,7 +103,7 @@ function BlogCard({
         />
         <h5 className="text-grayblack text-2xl font-medium">{title}</h5>
         <h5 className="text-gray-500 text-base">{describition}</h5>
-        <span className="text-grayblack text-sm font-medium">{date}</span>
+        {/* <span className="text-grayblack text-sm font-medium">{date}</span> */}
       </div>
     </SlideComponent>
   );

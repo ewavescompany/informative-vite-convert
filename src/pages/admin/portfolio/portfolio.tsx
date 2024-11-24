@@ -47,7 +47,7 @@ function PortfolioPage() {
         <div className="flex flex-row items-center justify-between">
           <DashboardTitle title={t("portfolio.All portfolios")} />
           <LinkButton
-            url={`/${locale}/admin/dashboard/portfolio/add-portfolios`}
+            url={pageAdmin.portfolio.add}
             className="space-x-1.5 h-9 px-4 py-2"
           >
             <span>{t("portfolio.Add Project")}</span>
