@@ -240,6 +240,13 @@
     "Learn more": "تعرف على المزيد"
   },
   "settings": {
+    "favicon": "أيقونة الموقع",
+    "favicon_file_type": "يجب أن تكون الأيقونة بامتداد .png أو .ico أو .svg فقط.",
+    "favicon_file_size": "يجب ألا يتجاوز حجم الأيقونة 5 ميجابايت.",
+    "current_favicon": "أيقونة الموقع الحالية",
+    "favicon_preview": "معاينة الأيقونة",
+    "fav_logo": "ايقونة الموقع",
+    "fav_logo_placeholder": "تغيير ايقونة الموقع",
     "delete": "حذف",
     "edit": "تعديل",
     "update_settings": "تحديث الإعدادات",

@@ -9,19 +9,19 @@ import { homeInterface } from "@/interfaces/clientInterface";
 import BlogSection from "@/customComponents/homeComponents/blogSection";
 import Contactus from "@/customComponents/homeComponents/contactus";
 import { useOutletContext } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import icon from "../../../public/test.svg";
+// import { Helmet } from "react-helmet-async";
+// import icon from "../../../public/test.svg";
 
 export default function ClientPage() {
   const data: homeInterface = useOutletContext();
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{data.setting.title_en}</title>
         <meta name="description" content="ewavespro website" />
         <link rel="icon" href={icon} type="image/x-icon" />
-      </Helmet>
+      </Helmet> */}
 
       <div className="min-h-screen flex flex-col gap-10">
         <div className="min-h-screen flex flex-col gap-10">

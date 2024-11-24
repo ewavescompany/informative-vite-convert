@@ -25,6 +25,7 @@ export interface homeInterface {
     hero_description_ar: string | null;
     hero_description_en: string;
     logo: string;
+    fav_logo: string;
   };
   services: Array<{
     id: number;

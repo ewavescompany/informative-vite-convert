@@ -224,6 +224,13 @@
     "Learn more": "Learn more"
   },
   "settings": {
+    "favicon": "Favicon",
+    "favicon_file_type": "Favicon must be a .png, .ico, or .svg file.",
+    "favicon_file_size": "Favicon size must not exceed 5MB.",
+    "current_favicon": "Current Favicon",
+    "favicon_preview": "Favicon Preview",
+    "fav_logo": "Website Logo",
+    "fav_logo_placeholder": "Change Website Logo",
     "delete": "Delete",
     "edit": "Edit",
     "update_settings": "Update Settings",
