@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Mails,
   Settings,
+  Handshake,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SidebarLink } from "./sidebarLink";
@@ -137,6 +138,20 @@ const Sidebar: React.FC = () => {
                   // href: `/${locale}/admin/dashboard/testimonials/add-testimonial`, // Use locale from cookies
                   href: pageAdmin.testimonials.add,
                   label: t("sidebar.add_testimonials"),
+                },
+              ]}
+            />
+            <DropdownNavItem
+              icon={Handshake}
+              label={t("sidebar.partners")}
+              items={[
+                {
+                  href: pageAdmin.partners.main,
+                  label: t("sidebar.partner_title"),
+                },
+                {
+                  href: pageAdmin.partners.add,
+                  label: t("sidebar.add_partner"),
                 },
               ]}
             />

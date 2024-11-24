@@ -30,6 +30,11 @@ export const pageAdmin = {
     add: "/admin/testimonials/add",
     edit: "/admin/testimonials/edit",
   },
+  partners: {
+    main: "/admin/partners",
+    add: "/admin/partners/add",
+    edit: "/admin/partners/edit",
+  },
   about_us: {
     main: "/admin/about-us",
   },

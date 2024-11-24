@@ -35,6 +35,9 @@ import StatsSection from "./pages/admin/home/stats-section/statsSection";
 import VideoSection from "./pages/admin/home/video-section/videoSection";
 import BlogDetailsClientPage from "./pages/client/blogs/blog_id/blogDetails";
 import ProjectDetailsClientPage from "./pages/client/portfolio/projectDetails/projectDetails";
+import PartnersPage from "./pages/admin/partners/partners";
+import AddPartnerPage from "./pages/admin/partners/add/addPartner";
+import EditPartnerPage from "./pages/admin/partners/edit/editPartner";
 
 export default function AppRoutes() {
   return (
@@ -95,6 +98,14 @@ export default function AppRoutes() {
 
         {/* ABOUT_US */}
         <Route path={pageAdmin.about_us.main} element={<AboutUsPage />} />
+
+        {/* PARTNERS */}
+        <Route path={pageAdmin.partners.main} element={<PartnersPage />} />
+        <Route path={pageAdmin.partners.add} element={<AddPartnerPage />} />
+        <Route
+          path={pageAdmin.partners.edit + "/:id"}
+          element={<EditPartnerPage />}
+        />
 
         {/* MISSION */}
         <Route path={pageAdmin.mission.main} element={<MissionPage />} />

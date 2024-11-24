@@ -9,6 +9,7 @@ import { homeInterface } from "@/interfaces/clientInterface";
 import BlogSection from "@/customComponents/homeComponents/blogSection";
 import Contactus from "@/customComponents/homeComponents/contactus";
 import { useOutletContext } from "react-router-dom";
+import PartnersSection from "@/customComponents/homeComponents/partnersSection";
 
 export default function ClientPage() {
   const data: homeInterface = useOutletContext();
@@ -23,6 +24,7 @@ export default function ClientPage() {
           <Vission vission={data.vission?.[0]} />
           <Stats stats={data.stats?.[0]} />
           <TeamSection team={data.team} />
+          <PartnersSection partners={data.partner} />
           <Testomonials testimonials={data.testimonials} />
           <BlogSection blogs={data.blogs} />
           <Contactus />

@@ -28,7 +28,10 @@
     "testimonials": "Testimonials",
     "show_testimonials": "Show Testimonials",
     "add_testimonials": "Add Testimonials",
-    "settings": "settings"
+    "settings": "settings",
+    "partners": "Partners",
+    "partner_title": "Partner Management",
+    "add_partner": "Add Partner"
   },
   "login": {
     "password": "Password",
@@ -191,6 +194,42 @@
     "we give": "we give.",
     "Vision": "Vision",
     "service": "Service"
+  },
+  "partner": {
+    "partners": "Partners",
+    "submit_button_adding_loading": "Adding...",
+    "partner_title": "Partner Management",
+    "add_partner": "Add Partner",
+    "edit_partner": "Edit",
+    "error_fetch_partner": "Failed to fetch partners",
+    "title": "Partner Management",
+    "add_new": "Add New Partner",
+    "edit": "Edit Partner",
+    "create": "Create Partner",
+    "form_description_create": "Fill out the form below to add a new partner.",
+    "form_description_edit": "Edit the details of the selected partner below.",
+    "title_label": "Partner Title",
+    "image_label": "Partner Image",
+    "language_select": "Select Language",
+    "cancel_button": "Cancel",
+    "submit_button_add": "Add Partner",
+    "submit_button_edit": "Save Changes",
+    "validation": {
+      "title_required": "The partner title is required.",
+      "image_required": "The partner image is required."
+    },
+    "success": {
+      "added": "Partner added successfully.",
+      "updated": "Partner updated successfully.",
+      "added_description": "You can now view the added partner."
+    },
+    "error": {
+      "adding": "An error occurred while adding the partner.",
+      "updating": "An error occurred while updating the partner.",
+      "fetching": "An error occurred while fetching partner data.",
+      "general": "An unexpected error occurred. Please try again later."
+    },
+    "image_hint": "Recommended image size: 16:9"
   },
   "team": {
     "all_members": "All Members",
