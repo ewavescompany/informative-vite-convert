@@ -13,7 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast"; // Toast for success or failure
 import { useFetchSettings } from "@/hooks/dashboard/useFetchSettings";
 import PageLoader from "@/customComponents/pageLoader";
-import { updateSettings } from "@/requests/admin/updateSettings";
+// import { updateSettings } from "@/requests/admin/updateSettings";
 import withAuth from "@//hocs/withAuth";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
@@ -21,9 +21,8 @@ import i18n from "@/i18n";
 
 function SettingsPage() {
   const { setting, loading, error } = useFetchSettings();
-
-  const { t } = useTranslation(); // For translations
-  const { toast } = useToast(); // To show success or error messages
+  const { t } = useTranslation();
+  const { toast } = useToast();
   const locale = i18n.language;
 
   const validationSchema = Yup.object({
@@ -33,6 +32,16 @@ function SettingsPage() {
     keywords: Yup.string().required(t("settings.keywords_required")),
     maint_mode: Yup.string().required(t("settings.maint_mode_required")),
     lang: Yup.string().required(t("settings.lang_required")),
+    fav_logo: Yup.mixed()
+      .nullable()
+      .test("fileType", t("settings.fav_logo_file_type"), (value) =>
+        value instanceof File
+          ? ["image/png", "image/x-icon", "image/svg+xml"].includes(value.type)
+          : true
+      )
+      .test("fileSize", t("settings.fav_logo_file_size"), (value) =>
+        value instanceof File ? value.size <= 5 * 1024 * 1024 : true
+      ),
   });
 
   const formik = useFormik({
@@ -55,6 +64,7 @@ function SettingsPage() {
           snap: setting.social_snap,
           tiktok: setting.social_tiktok,
           lang: "en",
+          fav_logo: null as File | null, // Explicitly set type
         }
       : {
           domain: "",
@@ -69,36 +79,41 @@ function SettingsPage() {
           snap: "",
           tiktok: "",
           lang: "en",
+          fav_logo: null as File | null, // Explicitly set type
         },
     validationSchema,
     onSubmit: async (values) => {
       try {
         const formData = new FormData();
         formData.append("domain", values.domain);
-        if (values.title) formData.append("title", values.title);
-        if (values.description)
-          formData.append("description", values.description);
-        if (values.keywords) formData.append("keywords", values.keywords);
+        formData.append("title", values.title || "");
+        formData.append("description", values.description || "");
+        formData.append("keywords", values.keywords || "");
         formData.append(
           "maint_mode",
           values.maint_mode === "on" ? "on" : "off"
         );
-        formData.append("facebook", values.facebook);
-        formData.append("default_lang", "en");
-        formData.append("twitter", values.twitter);
-        formData.append("insta", values.insta);
-        formData.append("linkedin", values.linkedin);
-        formData.append("snap", values.snap);
-        formData.append("tiktok", values.tiktok);
+        formData.append("facebook", values.facebook || "");
+        formData.append("twitter", values.twitter || "");
+        formData.append("insta", values.insta || "");
+        formData.append("linkedin", values.linkedin || "");
+        formData.append("snap", values.snap || "");
+        formData.append("tiktok", values.tiktok || "");
         formData.append("lang", values.lang);
-        const token = localStorage.getItem("authToken");
-        const res = await updateSettings(formData, token ? token : "");
-        console.log(res);
+        formData.append("default_lang", "en");
+
+        // Safely append fav_logo
+        if (values.fav_logo instanceof File) {
+          formData.append("fav_logo", values.fav_logo);
+        }
+
+        // const token = localStorage.getItem("authToken");
+        // const res = await updateSettings(formData, token || "");
         toast({
           title: t("settings.form_success"),
         });
       } catch (error) {
-        console.log(error);
+        console.error(error);
         toast({
           variant: "destructive",
           title: t("settings.form_failure"),
@@ -180,6 +195,34 @@ function SettingsPage() {
           />
           {formik.errors.keywords && formik.touched.keywords && (
             <div className="text-red-500">{formik.errors.keywords}</div>
+          )}
+        </div>
+
+        {/* fav_logo Field */}
+        <div>
+          <Label htmlFor="fav_logo">{t("settings.fav_logo")}</Label>
+          <Input
+            id="fav_logo"
+            name="fav_logo"
+            type="file"
+            accept=".png,.ico,.svg"
+            onChange={(event) => {
+              const file = event.currentTarget.files?.[0];
+              formik.setFieldValue("fav_logo", file);
+            }}
+          />
+          {formik.errors.fav_logo && formik.touched.fav_logo && (
+            <div className="text-red-500">{formik.errors.fav_logo}</div>
+          )}
+          {setting?.fav_logo && (
+            <div className="mt-2">
+              <Label>{t("settings.current_fav_logo")}</Label>
+              <img
+                src={setting.fav_logo}
+                alt={t("settings.fav_logo_preview")}
+                className="w-10 h-10 rounded-md border"
+              />
+            </div>
           )}
         </div>
 

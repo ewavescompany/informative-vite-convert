@@ -146,6 +146,7 @@ export interface settings {
   hero_description_ar: string | null;
   hero_description_en: string | null;
   logo: string; // Filename or URL for the logo
+  fav_logo: string;
 }
 
 export interface vision {

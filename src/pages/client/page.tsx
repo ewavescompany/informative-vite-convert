@@ -10,12 +10,20 @@ import BlogSection from "@/customComponents/homeComponents/blogSection";
 import Contactus from "@/customComponents/homeComponents/contactus";
 import { useOutletContext } from "react-router-dom";
 import PartnersSection from "@/customComponents/homeComponents/partnersSection";
+// import { Helmet } from "react-helmet-async";
+// import icon from "../../../public/test.svg";
 
 export default function ClientPage() {
   const data: homeInterface = useOutletContext();
 
   return (
-    <div className="min-h-screen flex flex-col gap-10">
+    <>
+      {/* <Helmet>
+        <title>{data.setting.title_en}</title>
+        <meta name="description" content="ewavespro website" />
+        <link rel="icon" href={icon} type="image/x-icon" />
+      </Helmet> */}
+
       <div className="min-h-screen flex flex-col gap-10">
         <VideoSection settings={data.setting} />
         <div className="flex flex-col gap-10 px-8 pb-20 sm:px-20 py-4 sm:py-10">
@@ -30,6 +38,6 @@ export default function ClientPage() {
           <Contactus />
         </div>
       </div>
-    </div>
+    </>
   );
 }
