@@ -52,6 +52,15 @@ export default function ClientLayout() {
           }
         />
         <link rel="icon" href={data.setting.fav_logo} type="image/x-icon" />
+
+        <meta property="og:title" content={data.setting.title_en} />
+        <meta property="og:description" content={data.setting.description_en} />
+        <meta property="og:image" content={data.setting.logo} />
+        <meta
+          property="og:url"
+          content="https://informativexxxx-vite.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Navbar logo={data.logo} dataSetting={data.setting} />
