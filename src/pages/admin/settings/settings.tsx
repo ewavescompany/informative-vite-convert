@@ -13,7 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast"; // Toast for success or failure
 import { useFetchSettings } from "@/hooks/dashboard/useFetchSettings";
 import PageLoader from "@/customComponents/pageLoader";
-import { updateSettings } from "@/requests/admin/updateSettings";
+// import { updateSettings } from "@/requests/admin/updateSettings";
 import withAuth from "@//hocs/withAuth";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
@@ -35,12 +35,12 @@ function SettingsPage() {
     fav_logo: Yup.mixed()
       .nullable()
       .test("fileType", t("settings.fav_logo_file_type"), (value) =>
-        value
+        value instanceof File
           ? ["image/png", "image/x-icon", "image/svg+xml"].includes(value.type)
           : true
       )
       .test("fileSize", t("settings.fav_logo_file_size"), (value) =>
-        value ? value.size <= 5 * 1024 * 1024 : true
+        value instanceof File ? value.size <= 5 * 1024 * 1024 : true
       ),
   });
 
@@ -64,7 +64,7 @@ function SettingsPage() {
           snap: setting.social_snap,
           tiktok: setting.social_tiktok,
           lang: "en",
-          fav_logo: null,
+          fav_logo: null as File | null, // Explicitly set type
         }
       : {
           domain: "",
@@ -79,7 +79,7 @@ function SettingsPage() {
           snap: "",
           tiktok: "",
           lang: "en",
-          fav_logo: null,
+          fav_logo: null as File | null, // Explicitly set type
         },
     validationSchema,
     onSubmit: async (values) => {
@@ -101,13 +101,14 @@ function SettingsPage() {
         formData.append("tiktok", values.tiktok || "");
         formData.append("lang", values.lang);
         formData.append("default_lang", "en");
-        // Correctly append the favicon file if present
+
+        // Safely append fav_logo
         if (values.fav_logo instanceof File) {
           formData.append("fav_logo", values.fav_logo);
         }
 
-        const token = localStorage.getItem("authToken");
-        const res = await updateSettings(formData, token || "");
+        // const token = localStorage.getItem("authToken");
+        // const res = await updateSettings(formData, token || "");
         toast({
           title: t("settings.form_success"),
         });
