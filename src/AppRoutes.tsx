@@ -40,6 +40,7 @@ import AddPartnerPage from "./pages/admin/partners/add/addPartner";
 import EditPartnerPage from "./pages/admin/partners/edit/editPartner";
 import MetaTagsPage from "./pages/admin/seo-control/seoControl";
 import WebsiteOpenGraphPage from "./pages/admin/website-open-graph/websiteOpenGraph";
+import NotFoundPage from "./NotFoundPage";
 
 export default function AppRoutes() {
   return (
@@ -56,7 +57,7 @@ export default function AppRoutes() {
         <Route path={pageAdmin.home.logo} element={<NavLogoPage />} />
 
         {/* BLOGS */}
-        <Route path={"/admin/seo"} element={<MetaTagsPage />} />
+        <Route path={pageAdmin.seo_manage.main} element={<MetaTagsPage />} />
 
         {/* GO */}
         <Route path={"/admin/go"} element={<WebsiteOpenGraphPage />} />
@@ -121,6 +122,11 @@ export default function AppRoutes() {
         <Route path={pageAdmin.vision.main} element={<VisionPage />} />
         {/* SETTINGS */}
         <Route path={pageAdmin.settings.main} element={<SettingsPage />} />
+
+        <Route
+          path="admin/*"
+          element={<h1>There is no page in this route</h1>}
+        />
       </Route>
 
       {/* CLIENT ROUTES */}
@@ -139,6 +145,7 @@ export default function AppRoutes() {
         />
         <Route path={pageClient.services} element={<ServicesClientPage />} />
         <Route path={pageClient.about_us} element={<AboutUsClientPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
