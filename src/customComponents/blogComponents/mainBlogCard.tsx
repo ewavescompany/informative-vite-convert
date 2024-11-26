@@ -1,11 +1,12 @@
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
 import { formatDateForPortfolio } from "@/utility/generic";
-import i18n from "@/i18n";
 import { Link } from "react-router-dom";
 import { pageClient } from "@/data/client/pagesURLs";
+import { useTranslation } from "react-i18next";
 
 function MainBlogCard({ blog }: { blog: blogsInterface }) {
+  const { i18n } = useTranslation();
   const locale = i18n.language;
   const blogTitle = locale === "en" ? blog.title_en : blog.title_ar;
   const blogDescription =

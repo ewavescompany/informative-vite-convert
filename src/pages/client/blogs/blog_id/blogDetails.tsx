@@ -1,13 +1,17 @@
 import BlogHeader from "@/customComponents/blogComponents/blogHeader";
 import RelatedBlogs from "@/customComponents/blogComponents/relatedBlogs";
+import { pageClient } from "@/data/client/pagesURLs";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { fetchBlogById } from "@/requests/generic/fetchBlogById";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 export default function BlogDetailsClientPage() {
   const { id } = useParams();
-
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   const [blogData, setBlogData] = useState<blogsInterface | undefined>();
 
   useEffect(() => {
@@ -37,13 +41,30 @@ export default function BlogDetailsClientPage() {
   }
 
   return (
-    <div className="min-h-screen w-full h-full flex flex-col gap-10 pt-20 bg">
-      <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center ">
-        <div className="w-full h-full flex flex-col gap-10 xl:max-w-5xl lg:max-w-3xl max-w-full">
-          <BlogHeader blog={blogData} />
-          <RelatedBlogs />
+    <>
+      <Helmet>
+        <title>{lang === "en" ? blogData.title_en : blogData.title_ar}</title>
+        <meta
+          name="description"
+          content={
+            lang === "en" ? blogData.description_en : blogData.description_ar
+          }
+        />
+        <meta
+          name="keywords"
+          content={lang === "en" ? blogData.keywords_en : blogData.keywords_ar}
+        />
+        <link rel="canonical" href={pageClient.blog_details} />
+      </Helmet>
+
+      <div className="min-h-screen w-full h-full flex flex-col gap-10 pt-20 bg">
+        <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center ">
+          <div className="w-full h-full flex flex-col gap-10 xl:max-w-5xl lg:max-w-3xl max-w-full">
+            <BlogHeader blog={blogData} />
+            <RelatedBlogs />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

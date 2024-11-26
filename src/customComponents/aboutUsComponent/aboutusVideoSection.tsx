@@ -1,7 +1,6 @@
 "use client";
 import { useTranslation } from "react-i18next";
 import SlideComponent from "../reavelAnimation/slideComponent";
-import i18n from "@/i18n";
 
 function AboutusVideoSection({
   title1,
@@ -14,7 +13,7 @@ function AboutusVideoSection({
   descriptionEn: string;
   descriptionAr: string;
 }) {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const locale = i18n.language;
 
   return (

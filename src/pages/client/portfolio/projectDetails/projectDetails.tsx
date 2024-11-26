@@ -7,7 +7,9 @@ import { fetchRelatedPortfolios } from "@/requests/generic/fetchRelatedPortfolio
 import { useEffect, useState } from "react";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 import { useParams } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import { pageClient } from "@/data/client/pagesURLs";
 
 export default function ProjectDetailsClientPage() {
   const { id } = useParams();
@@ -15,6 +17,8 @@ export default function ProjectDetailsClientPage() {
   const [relatedProjects, setRelatedProjects] = useState<
     Portfolio[] | undefined
   >([]);
+  const { i18n } = useTranslation();
+  const locale = i18n.language;
 
   useEffect(() => {
     if (id) {
@@ -38,22 +42,23 @@ export default function ProjectDetailsClientPage() {
 
   return (
     <div className="min-h-screen w-full h-full flex flex-col gap-10 justify-center items-center">
-      {/* Set dynamic metadata */}
-      {/* <Helmet>
-        <title>{`${project.title_en} | eWaves Portfolio`}</title>
-        <meta name="description" content={project.description_en} />
+      <Helmet>
+        <title>{locale === "en" ? project.title_en : project.title_ar}</title>
         <meta
-          property="og:title"
-          content={`${project.title_en} | eWaves Portfolio`}
+          name="description"
+          content={
+            locale === "en" ? project.description_en : project.description_ar
+          }
         />
-        <meta property="og:description" content={project.description_en} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta
-          name="twitter:title"
-          content={`${project.title_en} | eWaves Portfolio`}
+          name="keywords"
+          content={locale === "en" ? project.keywords_en : project.keywords_ar}
         />
-      </Helmet> */}
+        <link
+          rel="canonical"
+          href={`${pageClient.portfolio_details}/${project.id}`}
+        />
+      </Helmet>
 
       <PortfolioHeader
         titleEn={project.title_en || ""}
