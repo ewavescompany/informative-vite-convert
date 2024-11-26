@@ -11,9 +11,16 @@ import { Link } from "react-router-dom";
 import { pageAdmin } from "@/data/admin/pagesURLs";
 import Loading from "@/pages/client/loading";
 import i18n from "@/i18n";
-import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import {
+  adminServerUrls,
+  clientBaseServerUrl,
+  dashboardBaseServerUrl,
+  serverUrls,
+} from "@/constants/urls";
 import { useTranslation } from "react-i18next";
 import { toast } from "@/hooks/use-toast";
+import { deleteRequest } from "@/requests/admin/deleteRequest";
+import { DeleteAlert } from "@/customComponents/deleteAlert";
 
 interface Partner {
   id: number;
@@ -78,6 +85,28 @@ export default function PartnersPage() {
     );
   }
 
+  const handleDeletePartner = async (id: number) => {
+    try {
+      await deleteRequest(
+        `${dashboardBaseServerUrl}${adminServerUrls.deletePartner}`,
+        id
+      );
+      setPartners(partners?.filter((partner) => partner.id !== id));
+      toast({
+        title: t("partner.success_delete"),
+        description: t("partner.deleted_partner"),
+        variant: "default",
+      });
+    } catch (error) {
+      console.error("Error deleting partner:", error);
+      toast({
+        title: t("partner.error_delete"),
+        description: t("partner.error.general"),
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
@@ -105,10 +134,16 @@ export default function PartnersPage() {
                 />
               </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex items-center gap-2">
               <Link to={`${pageAdmin.partners.edit}/${partner.id}`}>
-                <Button variant="outline">{t("partner.edit_partner")}</Button>
+                <Button variant="default">{t("partner.edit_partner")}</Button>
               </Link>
+              <DeleteAlert
+                itemName={
+                  currentLang === "en" ? partner.title_en : partner.title_ar
+                }
+                onDelete={() => handleDeletePartner(partner.id)}
+              />
             </CardFooter>
           </Card>
         ))}

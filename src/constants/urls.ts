@@ -29,6 +29,7 @@ export const adminServerUrls = {
   dashboard: "/dashboard",
   addPartner: "/partners/add",
   editPartner: "/partners/edit",
+  deletePartner: "/partners/delete",
   addBlog: "/blogs/add",
   editBlog: "/blogs/edit",
   addPortfolio: "/portfolio/add",
