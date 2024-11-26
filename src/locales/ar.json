@@ -4,7 +4,7 @@
     "contact_us": "اتصل بنا"
   },
   "sidebar": {
-    "company_name":"E waves Company",
+    "company_name": "E waves Company",
     "home": "الرئيسية",
     "video_section": "قسم الفيديو",
     "stats_section": "قسم الإحصائيات",
@@ -29,6 +29,7 @@
     "show_testimonials": "عرض الشهادات",
     "add_testimonials": "إضافة شهادة",
     "settings": "الاعدادات",
+    "seo_manage": "ادارة محركات البحث",
     "what_our_users": "ما قاله المستخدمون",
     "said_about_our_company": "قال عن شركتنا",
     "learn_more": "تعرف على المزيد",
@@ -42,6 +43,7 @@
     "partner_title": "إدارة الشركاء",
     "add_partner": "إضافة شريك",
     "edit_partner": "تعديل",
+    "delete_partner": "حذف",
     "error_fetch_partner": "فشل في جلب بيانات الشركاء",
     "title": "إدارة الشركاء",
     "add_new": "إضافة شريك جديد",
@@ -549,5 +551,39 @@
     "success": "تم",
     "message_sent": "تم إرسال رسالتك بنجاح!",
     "send_failed": "فشل في إرسال الرسالة، يرجى المحاولة مرة أخرى."
+  },
+  "seo_manage": {
+    "title": "إدارة تحسين محركات البحث",
+    "description": "إدارة وتخصيص قيم تحسين محركات البحث لصفحات موقعك.",
+    "form": {
+      "buttons": {
+        "submit": "حفظ قيم تحسين محركات البحث",
+        "add_tag": "إضافة وسم"
+      },
+      "label": {
+        "title": "العنوان",
+        "description": "الوصف",
+        "keywords": "الكلمات المفتاحية"
+      },
+      "placeholder": {
+        "title": "أدخل عنوانا مناسبا للصفحة",
+        "description": "أدخل وصفًا موجزًا للصفحة",
+        "keywords": "أدخل الكلمات المفتاحية واضغط إدخال"
+      }
+    },
+    "pages": {
+      "home": "الصفحة الرئيسية",
+      "about_us": "صفحة من نحن",
+      "contact": "صفحة اتصل بنا",
+      "portfolio": "صفحة الأعمال",
+      "services": "صفحة الخدمات",
+      "blog": "صفحة المدونات"
+    },
+    "messages": {
+      "success_title": "تم حفظ بيانات الميتا بنجاح",
+      "success_description": "تم تحديث بيانات الميتا الخاصة بالموقع بنجاح.",
+      "failed_title": "فشل في حفظ بيانات الميتا",
+      "failed_description": "حدث خطأ أثناء حفظ بيانات الميتا. يرجى المحاولة مرة أخرى."
+    }
   }
 }

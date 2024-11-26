@@ -1,10 +1,13 @@
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import AboutusVideoSection from "@/customComponents/aboutUsComponent/aboutusVideoSection";
 import MainBlogCard from "@/customComponents/blogComponents/mainBlogCard";
+import { pageClient } from "@/data/client/pagesURLs";
+import withMetaTags from "@/hocs/withMetaTags";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { getBlogs } from "@/requests/generic/getBlogs";
 import { useEffect, useState } from "react";
 
-export default function BlogClientPage() {
+function BlogClientPage() {
   const [blogsRes, setBlogsRes] = useState<blogsInterface[] | null>(null);
 
   useEffect(() => {
@@ -36,3 +39,9 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+export default withMetaTags(
+  BlogClientPage,
+  `${clientBaseServerUrl}${serverUrls.seo}/blog-page`,
+  pageClient.blogs
+);

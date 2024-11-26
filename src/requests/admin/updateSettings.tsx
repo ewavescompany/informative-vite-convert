@@ -1,4 +1,4 @@
-import { apiRequest } from "@/requests/api"; // Ensure correct path to apiRequest
+import { apiRequest, ApiResponse } from "@/requests/api"; // Ensure correct path to apiRequest
 import { adminServerUrls, dashboardBaseServerUrl } from "@/constants/urls"; // Ensure correct URLs
 
 // Function to update settings
@@ -8,7 +8,7 @@ export async function updateSettings(data: FormData, token: string) {
 
   try {
     // Use apiRequest to make the API call
-    const response = await apiRequest(url, method, data, {
+    const response: ApiResponse = await apiRequest(url, method, data, {
       headers: {
         "Content-Type": "multipart/form-data", // Since we are sending files
         Authorization: `Bearer ${token}`, // Include token in the request header for authentication

@@ -6,15 +6,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import MetaTagsForm from "./form";
+import { useTranslation } from "react-i18next";
 
 export default function MetaTagsPage() {
+  const { t } = useTranslation();
+
   return (
     <Card className="container mx-auto">
       <CardHeader>
         <CardTitle className="text-3xl font-bold">
-          # Meta Tags Manager
+          {t("seo_manage.title")}
         </CardTitle>
-        <CardDescription># description</CardDescription>
+        <CardDescription>{t("seo_manage.description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <MetaTagsForm />

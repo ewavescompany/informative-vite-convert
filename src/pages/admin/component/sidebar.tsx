@@ -13,6 +13,7 @@ import {
   Mails,
   Settings,
   Handshake,
+  MonitorCog,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SidebarLink } from "./sidebarLink";
@@ -180,6 +181,11 @@ const Sidebar: React.FC = () => {
               label={t("sidebar.contact_message")}
             />
             {/* Use locale from cookies */}
+            <SidebarLink
+              href={pageAdmin.seo_manage.main}
+              icon={MonitorCog}
+              label={t("sidebar.seo_manage")}
+            />
             <SidebarLink
               href={pageAdmin.settings.main}
               icon={Settings}

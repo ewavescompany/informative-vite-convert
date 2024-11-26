@@ -13,10 +13,18 @@ import {
 import { useToast } from "@/hooks/use-toast"; // Toast for success or failure
 import { useFetchSettings } from "@/hooks/dashboard/useFetchSettings";
 import PageLoader from "@/customComponents/pageLoader";
-// import { updateSettings } from "@/requests/admin/updateSettings";
+import { updateSettings } from "@/requests/admin/updateSettings";
 import withAuth from "@//hocs/withAuth";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 // Yup validation schema
 
 function SettingsPage() {
@@ -107,11 +115,21 @@ function SettingsPage() {
           formData.append("fav_logo", values.fav_logo);
         }
 
-        // const token = localStorage.getItem("authToken");
-        // const res = await updateSettings(formData, token || "");
-        toast({
-          title: t("settings.form_success"),
-        });
+        const token = localStorage.getItem("authToken");
+        const res: { message: string; error?: string } = await updateSettings(
+          formData,
+          token || ""
+        );
+        if (res.message) {
+          toast({
+            title: t("settings.form_success"),
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: t("settings.form_failure"),
+          });
+        }
       } catch (error) {
         console.error(error);
         toast({
@@ -131,231 +149,244 @@ function SettingsPage() {
     );
 
   return (
-    <div className="w-full flex flex-col gap-5 capitalize">
-      <h1 className="text-2xl font-bold">{t("settings.update_settings")}</h1>
-      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
-        {/* Domain */}
-        <div>
-          <Label htmlFor="domain">{t("settings.domain")}</Label>
-          <Input
-            id="domain"
-            name="domain"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.domain}
-            placeholder={t("settings.domain")}
-          />
-          {formik.errors.domain && formik.touched.domain && (
-            <div className="text-red-500">{formik.errors.domain}</div>
-          )}
-        </div>
+    <Card className="capitalize">
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold">
+          {t("settings.update_settings")}
+        </CardTitle>
+      </CardHeader>
+      <form onSubmit={formik.handleSubmit}>
+        <CardContent className="space-y-6">
+          {/* Domain */}
+          <div className="flex flex-col gap-4">
+            <div>
+              <Label htmlFor="domain">{t("settings.domain")}</Label>
+              <Input
+                id="domain"
+                name="domain"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.domain}
+                placeholder={t("settings.domain")}
+              />
+              {formik.errors.domain && formik.touched.domain && (
+                <div className="text-red-500">{formik.errors.domain}</div>
+              )}
+            </div>
 
-        {/* Title */}
-        <div>
-          <Label htmlFor="title">{t("settings.title")}</Label>
-          <Input
-            id="title"
-            name="title"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.title ? formik.values.title : ""}
-            placeholder={t("settings.title")}
-          />
-          {formik.errors.title && formik.touched.title && (
-            <div className="text-red-500">{formik.errors.title}</div>
-          )}
-        </div>
+            {/* Title */}
+            <div>
+              <Label htmlFor="title">{t("settings.title")}</Label>
+              <Input
+                id="title"
+                name="title"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.title ? formik.values.title : ""}
+                placeholder={t("settings.title")}
+              />
+              {formik.errors.title && formik.touched.title && (
+                <div className="text-red-500">{formik.errors.title}</div>
+              )}
+            </div>
 
-        {/* Description */}
-        <div>
-          <Label htmlFor="description">{t("settings.description")}</Label>
-          <Input
-            id="description"
-            name="description"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.description ? formik.values.description : ""}
-            placeholder={t("settings.description")}
-          />
-          {formik.errors.description && formik.touched.description && (
-            <div className="text-red-500">{formik.errors.description}</div>
-          )}
-        </div>
+            {/* Description */}
+            <div>
+              <Label htmlFor="description">{t("settings.description")}</Label>
+              <Textarea
+                id="description"
+                name="description"
+                // type="text"
+                onChange={formik.handleChange}
+                value={
+                  formik.values.description ? formik.values.description : ""
+                }
+                placeholder={t("settings.description")}
+              />
+              {formik.errors.description && formik.touched.description && (
+                <div className="text-red-500">{formik.errors.description}</div>
+              )}
+            </div>
 
-        {/* Keywords */}
-        <div>
-          <Label htmlFor="keywords">{t("settings.keywords")}</Label>
-          <Input
-            id="keywords"
-            name="keywords"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.keywords ? formik.values.keywords : ""}
-            placeholder={t("settings.keywords")}
-          />
-          {formik.errors.keywords && formik.touched.keywords && (
-            <div className="text-red-500">{formik.errors.keywords}</div>
-          )}
-        </div>
+            {/* Keywords */}
+            <div>
+              <Label htmlFor="keywords">{t("settings.keywords")}</Label>
+              <Input
+                id="keywords"
+                name="keywords"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.keywords ? formik.values.keywords : ""}
+                placeholder={t("settings.keywords")}
+              />
+              {formik.errors.keywords && formik.touched.keywords && (
+                <div className="text-red-500">{formik.errors.keywords}</div>
+              )}
+            </div>
 
-        {/* fav_logo Field */}
-        <div>
-          <Label htmlFor="fav_logo">{t("settings.fav_logo")}</Label>
-          <Input
-            id="fav_logo"
-            name="fav_logo"
-            type="file"
-            accept=".png,.ico,.svg"
-            onChange={(event) => {
-              const file = event.currentTarget.files?.[0];
-              formik.setFieldValue("fav_logo", file);
-            }}
-          />
-          {formik.errors.fav_logo && formik.touched.fav_logo && (
-            <div className="text-red-500">{formik.errors.fav_logo}</div>
-          )}
-          {setting?.fav_logo && (
-            <div className="mt-2">
-              <Label>{t("settings.current_fav_logo")}</Label>
-              <img
-                src={setting.fav_logo}
-                alt={t("settings.fav_logo_preview")}
-                className="w-10 h-10 rounded-md border"
+            {/* fav_logo Field */}
+            <div>
+              <Label htmlFor="fav_logo">{t("settings.fav_logo")}</Label>
+              <Input
+                id="fav_logo"
+                name="fav_logo"
+                type="file"
+                accept=".png,.ico,.svg"
+                onChange={(event) => {
+                  const file = event.currentTarget.files?.[0];
+                  formik.setFieldValue("fav_logo", file);
+                }}
+              />
+              {formik.errors.fav_logo && formik.touched.fav_logo && (
+                <div className="text-red-500">{formik.errors.fav_logo}</div>
+              )}
+              {setting?.fav_logo && (
+                <div className="mt-2">
+                  <Label>{t("settings.current_fav_logo")}</Label>
+                  <img
+                    src={setting.fav_logo}
+                    alt={t("settings.fav_logo_preview")}
+                    className="w-10 h-10 rounded-md border"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Maintenance Mode (Select Box) */}
+            <div>
+              <Label htmlFor="maint_mode">{t("settings.maint_mode")}</Label>
+              <Select
+                name="maint_mode"
+                value={formik.values.maint_mode}
+                onValueChange={(value) =>
+                  formik.setFieldValue("maint_mode", value)
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder={t("settings.maint_mode")} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="on">{t("settings.on")}</SelectItem>
+                  <SelectItem value="off">{t("settings.off")}</SelectItem>
+                </SelectContent>
+              </Select>
+              {formik.errors.maint_mode && formik.touched.maint_mode && (
+                <div className="text-red-500">{formik.errors.maint_mode}</div>
+              )}
+            </div>
+          </div>
+
+          <hr />
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <Label htmlFor="facebook">{t("settings.facebook")}</Label>
+              <Input
+                id="facebook"
+                name="facebook"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.facebook}
+                placeholder={t("settings.facebook")}
               />
             </div>
-          )}
-        </div>
 
-        {/* Maintenance Mode (Select Box) */}
-        <div>
-          <Label htmlFor="maint_mode">{t("settings.maint_mode")}</Label>
-          <Select
-            name="maint_mode"
-            value={formik.values.maint_mode}
-            onValueChange={(value) => formik.setFieldValue("maint_mode", value)}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder={t("settings.maint_mode")} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="on">{t("settings.on")}</SelectItem>
-              <SelectItem value="off">{t("settings.off")}</SelectItem>
-            </SelectContent>
-          </Select>
-          {formik.errors.maint_mode && formik.touched.maint_mode && (
-            <div className="text-red-500">{formik.errors.maint_mode}</div>
-          )}
-        </div>
+            <div>
+              <Label htmlFor="twitter">{t("settings.twitter")}</Label>
+              <Input
+                id="twitter"
+                name="twitter"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.twitter}
+                placeholder={t("settings.twitter")}
+              />
+            </div>
 
-        <hr />
-        {/* Social Links */}
-        <h3>{t("settings.social_links")}</h3>
-        <div>
-          <Label htmlFor="facebook">{t("settings.facebook")}</Label>
-          <Input
-            id="facebook"
-            name="facebook"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.facebook}
-            placeholder={t("settings.facebook")}
-          />
-        </div>
+            <div>
+              <Label htmlFor="insta">{t("settings.insta")}</Label>
+              <Input
+                id="insta"
+                name="insta"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.insta}
+                placeholder={t("settings.insta")}
+              />
+            </div>
 
-        <div>
-          <Label htmlFor="twitter">{t("settings.twitter")}</Label>
-          <Input
-            id="twitter"
-            name="twitter"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.twitter}
-            placeholder={t("settings.twitter")}
-          />
-        </div>
+            <div>
+              <Label htmlFor="linkedin">{t("settings.linkedin")}</Label>
+              <Input
+                id="linkedin"
+                name="linkedin"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.linkedin}
+                placeholder={t("settings.linkedin")}
+              />
+            </div>
 
-        <div>
-          <Label htmlFor="insta">{t("settings.insta")}</Label>
-          <Input
-            id="insta"
-            name="insta"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.insta}
-            placeholder={t("settings.insta")}
-          />
-        </div>
+            <div>
+              <Label htmlFor="snap">{t("settings.snap")}</Label>
+              <Input
+                id="snap"
+                name="snap"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.snap}
+                placeholder={t("settings.snap")}
+              />
+            </div>
 
-        <div>
-          <Label htmlFor="linkedin">{t("settings.linkedin")}</Label>
-          <Input
-            id="linkedin"
-            name="linkedin"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.linkedin}
-            placeholder={t("settings.linkedin")}
-          />
-        </div>
-
-        <div>
-          <Label htmlFor="snap">{t("settings.snap")}</Label>
-          <Input
-            id="snap"
-            name="snap"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.snap}
-            placeholder={t("settings.snap")}
-          />
-        </div>
-
-        <div>
-          <Label htmlFor="tiktok">{t("settings.tiktok")}</Label>
-          <Input
-            id="tiktok"
-            name="tiktok"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.tiktok}
-            placeholder={t("settings.tiktok")}
-          />
-        </div>
-
-        {/* Language (Select Box) */}
-        <div>
-          <Label htmlFor="lang">{t("settings.language")}</Label>
-          <Select
-            name="lang"
-            value={formik.values.lang}
-            onValueChange={(value) => formik.setFieldValue("lang", value)}
-          >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={t("settings.language")} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="en">English</SelectItem>
-              <SelectItem value="ar">Arabic</SelectItem>
-            </SelectContent>
-          </Select>
-          {formik.errors.lang && formik.touched.lang && (
-            <div className="text-red-500">{formik.errors.lang}</div>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        <div className="flex justify-end gap-4">
-          <Button
-            variant="outline"
-            type="button"
-            onClick={() => formik.resetForm()}
-          >
-            {t("settings.cancel")}
-          </Button>
-          <Button type="submit">{t("settings.update")}</Button>
-        </div>
+            <div>
+              <Label htmlFor="tiktok">{t("settings.tiktok")}</Label>
+              <Input
+                id="tiktok"
+                name="tiktok"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.tiktok}
+                placeholder={t("settings.tiktok")}
+              />
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter>
+          {/* Language (Select Box) */}
+          <div className="flex justify-between gap-4 items-end w-full">
+            <div>
+              <Label htmlFor="lang">{t("settings.language")}</Label>
+              <Select
+                name="lang"
+                value={formik.values.lang}
+                onValueChange={(value) => formik.setFieldValue("lang", value)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder={t("settings.language")} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="ar">Arabic</SelectItem>
+                </SelectContent>
+              </Select>
+              {formik.errors.lang && formik.touched.lang && (
+                <div className="text-red-500">{formik.errors.lang}</div>
+              )}
+            </div>
+            <div className="flex items-center gap-4">
+              <Button
+                variant="outline"
+                type="button"
+                onClick={() => formik.resetForm()}
+              >
+                {t("settings.cancel")}
+              </Button>
+              <Button type="submit">{t("settings.update")}</Button>
+            </div>
+          </div>
+        </CardFooter>
       </form>
-    </div>
+    </Card>
   );
 }
 

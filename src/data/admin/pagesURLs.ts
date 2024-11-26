@@ -50,4 +50,7 @@ export const pageAdmin = {
   settings: {
     main: "/admin/settings",
   },
+  seo_manage: {
+    main: "/admin/seo-manage",
+  },
 };

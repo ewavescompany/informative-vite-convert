@@ -1,4 +1,3 @@
-"use client";
 import { CircleUser } from "lucide-react";
 import {
   DropdownMenu,

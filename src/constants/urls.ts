@@ -13,6 +13,7 @@ export const serverUrls = {
   settings: "/setting",
   vission: "/vision",
   mission: "/mission",
+  seo: "/seo",
   aboutUs: "/about-us",
   home: "/home",
   relatedPortfolios: "/related-portfolio",

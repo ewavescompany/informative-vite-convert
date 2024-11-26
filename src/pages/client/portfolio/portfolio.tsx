@@ -4,8 +4,11 @@ import SimplePortfolioCard from "@/customComponents/portfolioComponents/simplePo
 import { getPortfolios } from "@/requests/generic/getPortfolio";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 import Loading from "../loading";
+import withMetaTags from "@/hocs/withMetaTags";
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import { pageClient } from "@/data/client/pagesURLs";
 
-export default function PortfolioClientPage() {
+function PortfolioClientPage() {
   const [portfolioData, setPortfolioData] = useState<Portfolio[] | undefined>();
   const [loading, setLoading] = useState(true);
 
@@ -46,3 +49,8 @@ export default function PortfolioClientPage() {
     </div>
   );
 }
+export default withMetaTags(
+  PortfolioClientPage,
+  `${clientBaseServerUrl}${serverUrls.seo}/portfolio-page`,
+  pageClient.portfolio
+);
