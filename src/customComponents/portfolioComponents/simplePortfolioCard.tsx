@@ -12,8 +12,8 @@ function SimplePortfolioCard({ project }: { project: Portfolio }) {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full h-full rounded-2xl flex flex-col gap-3 ">
-      <div className="w-full h-full overflow-hidden rounded-2xl min-h-[30vh]">
+    <div className="w-full h-full rounded-2xl flex flex-col gap-3">
+      <div className="w-full h-full overflow-hidden rounded-2xl min-h-[30vh] border aspect-square">
         <img
           src={`${imagesPath}portfolios/${project.image}`}
           alt="blog img"

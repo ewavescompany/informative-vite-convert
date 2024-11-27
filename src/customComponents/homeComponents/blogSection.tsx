@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SlideComponent from "../reavelAnimation/slideComponent";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
 import { pageClient } from "@/data/client/pagesURLs";
@@ -30,14 +30,14 @@ function BlogSection({ blogs }: { blogs: blogsInterface[] }) {
             {t("blogs.from_our_company")}
           </SlideComponent>
         </h3>
-        <SlideComponent dir="up">
+        {/* <SlideComponent dir="up">
           <Link
             to={pageClient.blogs}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
             {t("blogs.read_more")}
           </Link>
-        </SlideComponent>
+        </SlideComponent> */}
       </div>
 
       <div className="w-full h-full overflow-hidden">

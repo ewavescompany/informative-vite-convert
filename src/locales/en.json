@@ -28,7 +28,11 @@
     "testimonials": "Testimonials",
     "show_testimonials": "Show Testimonials",
     "add_testimonials": "Add Testimonials",
-    "settings": "settings"
+    "settings": "settings",
+    "seo_manage": "SEO manage",
+    "partners": "Partners",
+    "partner_title": "Partner Management",
+    "add_partner": "Add Partner"
   },
   "login": {
     "password": "Password",
@@ -192,6 +196,43 @@
     "Vision": "Vision",
     "service": "Service"
   },
+  "partner": {
+    "partners": "Partners",
+    "submit_button_adding_loading": "Adding...",
+    "partner_title": "Partner Management",
+    "add_partner": "Add Partner",
+    "edit_partner": "Edit",
+    "delete_partner": "Delete",
+    "error_fetch_partner": "Failed to fetch partners",
+    "title": "Partner Management",
+    "add_new": "Add New Partner",
+    "edit": "Edit Partner",
+    "create": "Create Partner",
+    "form_description_create": "Fill out the form below to add a new partner.",
+    "form_description_edit": "Edit the details of the selected partner below.",
+    "title_label": "Partner Title",
+    "image_label": "Partner Image",
+    "language_select": "Select Language",
+    "cancel_button": "Cancel",
+    "submit_button_add": "Add Partner",
+    "submit_button_edit": "Save Changes",
+    "validation": {
+      "title_required": "The partner title is required.",
+      "image_required": "The partner image is required."
+    },
+    "success": {
+      "added": "Partner added successfully.",
+      "updated": "Partner updated successfully.",
+      "added_description": "You can now view the added partner."
+    },
+    "error": {
+      "adding": "An error occurred while adding the partner.",
+      "updating": "An error occurred while updating the partner.",
+      "fetching": "An error occurred while fetching partner data.",
+      "general": "An unexpected error occurred. Please try again later."
+    },
+    "image_hint": "Recommended image size: 16:9"
+  },
   "team": {
     "all_members": "All Members",
     "add_member": "Add Member",
@@ -224,6 +265,13 @@
     "Learn more": "Learn more"
   },
   "settings": {
+    "favicon": "Favicon",
+    "favicon_file_type": "Favicon must be a .png, .ico, or .svg file.",
+    "favicon_file_size": "Favicon size must not exceed 5MB.",
+    "current_favicon": "Current Favicon",
+    "favicon_preview": "Favicon Preview",
+    "fav_logo": "Website Logo",
+    "fav_logo_placeholder": "Change Website Logo",
     "delete": "Delete",
     "edit": "Edit",
     "update_settings": "Update Settings",
@@ -502,5 +550,39 @@
     "success": "Success",
     "message_sent": "Your message has been sent successfully!",
     "send_failed": "Failed to send the message, please try again."
+  },
+  "seo_manage": {
+    "title": "SEO Management page",
+    "description": "Manage and customize the SEO values for your website's pages.",
+    "form": {
+      "buttons": {
+        "submit": "Save SEO values",
+        "add_tag": "Add Tag"
+      },
+      "label": {
+        "title": "Title",
+        "description": "Description",
+        "keywords": "Keywords"
+      },
+      "placeholder": {
+        "title": "Enter a good title to describe what page do",
+        "description": "Enter a brief description of the page",
+        "keywords": "Enter keywords and press Enter"
+      }
+    },
+    "pages": {
+      "home": "Home Page",
+      "about_us": "About-us Page",
+      "contact": "Contact-us Page",
+      "portfolio": "Portfolio Page",
+      "services": "Services Page",
+      "blog": "Blogs Page"
+    },
+    "messages": {
+      "success_title": "Metadata Saved Successfully",
+      "success_description": "The metadata for the website has been updated successfully.",
+      "failed_title": "Failed to Save Metadata",
+      "failed_description": "There was an error while saving the metadata. Please try again."
+    }
   }
 }

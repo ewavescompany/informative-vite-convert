@@ -4,8 +4,8 @@ import { TeamMember } from "@/interfaces/dashboardInterface";
 import { imagesPath } from "@/constants/urls";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { pageClient } from "@/data/client/pagesURLs";
+// import { Link } from "react-router-dom";
+// import { pageClient } from "@/data/client/pagesURLs";
 import { Swiper, SwiperSlide } from "swiper/react";
 interface teamSectionInterface {
   team: teamsInterface[];
@@ -37,14 +37,14 @@ function TeamSection({ team }: teamSectionInterface) {
             {t("team.team_description")}
           </p>
         </SlideComponent>
-        <SlideComponent dir="up">
+        {/* <SlideComponent dir="up">
           <Link
             to={pageClient.about_us}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
             {t("team.Learn more")}
           </Link>
-        </SlideComponent>
+        </SlideComponent> */}
       </div>
       <div className="">
         <div className="w-full h-full overflow-hidden">
@@ -54,8 +54,8 @@ function TeamSection({ team }: teamSectionInterface) {
             breakpoints={{
               0: { slidesPerView: 1.25 },
               768: { slidesPerView: 2.5 },
-              1024: { slidesPerView: 3.5 },
-              1440: { slidesPerView: 4.5 },
+              1024: { slidesPerView: 4 },
+              1440: { slidesPerView: 5 },
             }}
           >
             {team.map((member: TeamMember, index: number) => (

@@ -4,8 +4,11 @@ import SimplePortfolioCard from "@/customComponents/portfolioComponents/simplePo
 import { getPortfolios } from "@/requests/generic/getPortfolio";
 import { Portfolio } from "@/interfaces/dashboardInterface";
 import Loading from "../loading";
+import withMetaTags from "@/hocs/withMetaTags";
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
+import { pageClient } from "@/data/client/pagesURLs";
 
-export default function PortfolioClientPage() {
+function PortfolioClientPage() {
   const [portfolioData, setPortfolioData] = useState<Portfolio[] | undefined>();
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +40,7 @@ export default function PortfolioClientPage() {
         descriptionAr="نحن نرشد الشركات التي تغير العالم، عبر الأنظمة والأماكن، من خلال تصميم متطور وتجربة رقمية متطورة."
       />
       <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center">
-        <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5">
+        <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-5">
           {portfolioData?.map((project, key) => (
             <SimplePortfolioCard project={project} key={key} />
           ))}
@@ -46,3 +49,8 @@ export default function PortfolioClientPage() {
     </div>
   );
 }
+export default withMetaTags(
+  PortfolioClientPage,
+  `${clientBaseServerUrl}${serverUrls.seo}/portfolio-page`,
+  pageClient.portfolio
+);

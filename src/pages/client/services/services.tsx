@@ -1,5 +1,8 @@
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import AboutusVideoSection from "@/customComponents/aboutUsComponent/aboutusVideoSection";
 import ServicesSection from "@/customComponents/servicesComponents/servicesSection";
+import { pageClient } from "@/data/client/pagesURLs";
+import withMetaTags from "@/hocs/withMetaTags";
 import { Service } from "@/interfaces/dashboardInterface";
 import { getServices } from "@/requests/generic/getServices";
 import { useEffect, useState } from "react";
@@ -35,4 +38,8 @@ function ServicesClientPage() {
   );
 }
 
-export default ServicesClientPage;
+export default withMetaTags(
+  ServicesClientPage,
+  `${clientBaseServerUrl}${serverUrls.seo}/services-page`,
+  pageClient.services
+);

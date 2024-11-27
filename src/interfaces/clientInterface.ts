@@ -25,7 +25,14 @@ export interface homeInterface {
     hero_description_ar: string | null;
     hero_description_en: string;
     logo: string;
+    fav_logo: string;
   };
+  partner: Array<{
+    id: number;
+    title_en: string;
+    title_ar: string;
+    image: string;
+  }>;
   services: Array<{
     id: number;
     image: string;

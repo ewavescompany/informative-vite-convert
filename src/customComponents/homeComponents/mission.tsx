@@ -5,6 +5,7 @@ import i18n from "@/i18n";
 
 function Mission({ mission }: { mission: missionInterface }) {
   const locale = i18n.language;
+
   return (
     <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 items-center justify-center overflow-hidden">
       <div className="flex flex-col gap-3 items-start overflow-hidden">

@@ -1,13 +1,14 @@
-import i18n from "@/i18n";
 import LeftDirectionService from "./leftDirectionService";
 import RightDirectionService from "./rightDirectionService";
 import { Service } from "@/interfaces/dashboardInterface";
+import { useTranslation } from "react-i18next";
 
 export default function ServicesSection({
   services,
 }: {
   services: Service[] | undefined;
 }) {
+  const { i18n } = useTranslation();
   const locale = i18n.language;
 
   return (

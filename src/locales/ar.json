@@ -4,7 +4,7 @@
     "contact_us": "اتصل بنا"
   },
   "sidebar": {
-    "company_name":"E waves Company",
+    "company_name": "E waves Company",
     "home": "الرئيسية",
     "video_section": "قسم الفيديو",
     "stats_section": "قسم الإحصائيات",
@@ -29,9 +29,50 @@
     "show_testimonials": "عرض الشهادات",
     "add_testimonials": "إضافة شهادة",
     "settings": "الاعدادات",
+    "seo_manage": "ادارة محركات البحث",
     "what_our_users": "ما قاله المستخدمون",
     "said_about_our_company": "قال عن شركتنا",
-    "learn_more": "تعرف على المزيد"
+    "learn_more": "تعرف على المزيد",
+    "partners": "الشركاء",
+    "partner_title": "إدارة الشركاء",
+    "add_partner": "إضافة شريك"
+  },
+  "partner": {
+    "partners": "الشركاء",
+    "submit_button_adding_loading": "جاري الإضافة...",
+    "partner_title": "إدارة الشركاء",
+    "add_partner": "إضافة شريك",
+    "edit_partner": "تعديل",
+    "delete_partner": "حذف",
+    "error_fetch_partner": "فشل في جلب بيانات الشركاء",
+    "title": "إدارة الشركاء",
+    "add_new": "إضافة شريك جديد",
+    "edit": "تعديل الشريك",
+    "create": "إنشاء شريك",
+    "form_description_create": "املأ النموذج أدناه لإضافة شريك جديد.",
+    "form_description_edit": "عدل بيانات الشريك المحدد أدناه.",
+    "title_label": "عنوان الشريك",
+    "image_label": "صورة الشريك",
+    "language_select": "اختر اللغة",
+    "cancel_button": "إلغاء",
+    "submit_button_add": "إضافة الشريك",
+    "submit_button_edit": "حفظ التعديلات",
+    "validation": {
+      "title_required": "عنوان الشريك مطلوب.",
+      "image_required": "صورة الشريك مطلوبة."
+    },
+    "success": {
+      "added": "تمت إضافة الشريك بنجاح.",
+      "updated": "تم تحديث بيانات الشريك بنجاح.",
+      "added_description": "يمكنك الآن عرض الشريك الذي تمت إضافته."
+    },
+    "error": {
+      "adding": "حدث خطأ أثناء إضافة الشريك.",
+      "updating": "حدث خطأ أثناء تحديث بيانات الشريك.",
+      "fetching": "حدث خطأ أثناء جلب بيانات الشريك.",
+      "general": "حدث خطأ غير متوقع. يرجى المحاولة لاحقًا."
+    },
+    "image_hint": "الحجم الموصى به للصورة: 16:9"
   },
   "nav_logo": {
     "add_logo": "إضافة الشعار",
@@ -240,6 +281,13 @@
     "Learn more": "تعرف على المزيد"
   },
   "settings": {
+    "favicon": "أيقونة الموقع",
+    "favicon_file_type": "يجب أن تكون الأيقونة بامتداد .png أو .ico أو .svg فقط.",
+    "favicon_file_size": "يجب ألا يتجاوز حجم الأيقونة 5 ميجابايت.",
+    "current_favicon": "أيقونة الموقع الحالية",
+    "favicon_preview": "معاينة الأيقونة",
+    "fav_logo": "ايقونة الموقع",
+    "fav_logo_placeholder": "تغيير ايقونة الموقع",
     "delete": "حذف",
     "edit": "تعديل",
     "update_settings": "تحديث الإعدادات",
@@ -503,5 +551,39 @@
     "success": "تم",
     "message_sent": "تم إرسال رسالتك بنجاح!",
     "send_failed": "فشل في إرسال الرسالة، يرجى المحاولة مرة أخرى."
+  },
+  "seo_manage": {
+    "title": "إدارة تحسين محركات البحث",
+    "description": "إدارة وتخصيص قيم تحسين محركات البحث لصفحات موقعك.",
+    "form": {
+      "buttons": {
+        "submit": "حفظ قيم تحسين محركات البحث",
+        "add_tag": "إضافة وسم"
+      },
+      "label": {
+        "title": "العنوان",
+        "description": "الوصف",
+        "keywords": "الكلمات المفتاحية"
+      },
+      "placeholder": {
+        "title": "أدخل عنوانا مناسبا للصفحة",
+        "description": "أدخل وصفًا موجزًا للصفحة",
+        "keywords": "أدخل الكلمات المفتاحية واضغط إدخال"
+      }
+    },
+    "pages": {
+      "home": "الصفحة الرئيسية",
+      "about_us": "صفحة من نحن",
+      "contact": "صفحة اتصل بنا",
+      "portfolio": "صفحة الأعمال",
+      "services": "صفحة الخدمات",
+      "blog": "صفحة المدونات"
+    },
+    "messages": {
+      "success_title": "تم حفظ بيانات الميتا بنجاح",
+      "success_description": "تم تحديث بيانات الميتا الخاصة بالموقع بنجاح.",
+      "failed_title": "فشل في حفظ بيانات الميتا",
+      "failed_description": "حدث خطأ أثناء حفظ بيانات الميتا. يرجى المحاولة مرة أخرى."
+    }
   }
 }

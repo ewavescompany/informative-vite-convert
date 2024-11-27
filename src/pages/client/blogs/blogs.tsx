@@ -1,10 +1,13 @@
+import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import AboutusVideoSection from "@/customComponents/aboutUsComponent/aboutusVideoSection";
 import MainBlogCard from "@/customComponents/blogComponents/mainBlogCard";
+import { pageClient } from "@/data/client/pagesURLs";
+import withMetaTags from "@/hocs/withMetaTags";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { getBlogs } from "@/requests/generic/getBlogs";
 import { useEffect, useState } from "react";
 
-export default function BlogClientPage() {
+function BlogClientPage() {
   const [blogsRes, setBlogsRes] = useState<blogsInterface[] | null>(null);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function BlogClientPage() {
         descriptionEn="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
         descriptionAr="اكتشف كنز من المواد المهنية المصممة بعناية لتقديم لك معرفة كاملة عن أحدث الاتجاهات."
       />
-      <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center">
+      <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center">
         {blogsRes?.map((blog, index) => (
           <MainBlogCard blog={blog} key={index} />
         ))}
@@ -36,3 +39,9 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+export default withMetaTags(
+  BlogClientPage,
+  `${clientBaseServerUrl}${serverUrls.seo}/blog-page`,
+  pageClient.blogs
+);

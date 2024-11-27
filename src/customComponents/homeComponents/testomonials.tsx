@@ -3,8 +3,8 @@ import { testimonialsInterface } from "@/interfaces/clientInterface";
 import { imagesPath } from "@/constants/urls";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { pageClient } from "@/data/client/pagesURLs";
+// import { Link } from "react-router-dom";
+// import { pageClient } from "@/data/client/pagesURLs";
 
 function Testomonials({
   testimonials,
@@ -30,14 +30,14 @@ function Testomonials({
             {t("testimonials.said_about_our_company")}
           </SlideComponent>
         </h3>
-        <SlideComponent dir="up">
+        {/* <SlideComponent dir="up">
           <Link
             to={pageClient.about_us}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
             {t("testimonials.learn_more")}
           </Link>
-        </SlideComponent>
+        </SlideComponent> */}
       </div>
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
         {testimonials.map((testimonial: testimonialsInterface, index) => (

@@ -30,13 +30,13 @@ export default function Navbar({
   const [currentLang, setCurrentLang] = useState<"en" | "ar">(
     savedLanguage as "ar" | "en"
   );
-
-  const handleLanguageChange = (lang: "en" | "ar") => {
-    setCurrentLang(lang);
-    changeLanguage(lang);
-  };
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  function handleChangeLang(lang: "ar" | "en") {
+    setCurrentLang(lang);
+    changeLanguage(lang);
+  }
 
   const locale = i18n.language;
 
@@ -71,7 +71,7 @@ export default function Navbar({
         >
           <Select
             value={currentLang}
-            onValueChange={(value: "ar" | "en") => handleLanguageChange(value)}
+            onValueChange={(value: "ar" | "en") => handleChangeLang(value)}
           >
             <SelectTrigger className="w-[100px]">
               <SelectValue placeholder="Language" />
