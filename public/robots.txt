@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: info.ewavespro.com/sitemap.xml
