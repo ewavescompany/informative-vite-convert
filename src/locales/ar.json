@@ -34,13 +34,13 @@
     "said_about_our_company": "قال عن شركتنا",
     "learn_more": "تعرف على المزيد",
     "partners": "الشركاء",
-    "partner_title": "إدارة الشركاء",
+    "partner_title": "",
     "add_partner": "إضافة شريك"
   },
   "partner": {
     "partners": "الشركاء",
     "submit_button_adding_loading": "جاري الإضافة...",
-    "partner_title": "إدارة الشركاء",
+    "partner_title": "شركائنا",
     "add_partner": "إضافة شريك",
     "edit_partner": "تعديل",
     "delete_partner": "حذف",
@@ -247,7 +247,7 @@
     "fill_form_update": "املأ البيانات لتعديل الخدمة.",
     "What services": "ما هى الخدمات",
     "we give": "التى نوفرها",
-    "service": "الخدمة"
+    "service": ""
   },
   "team": {
     "all_members": "جميع الأعضاء",
@@ -345,7 +345,7 @@
     "testimonial_updated_successfully": "تم تحديث الشهادة بنجاح.",
     "testimonial_updated_check": "يمكنك التحقق من الشهادة المحدثة.",
     "testimonial_update_failed": "فشل تحديث الشهادة.",
-    "testimonials": "الشهادات",
+    "testimonials": "",
     "what_our_users": "",
     "said_about_our_company": "قالو عن شركتنا",
     "learn_more": "تعرف على المزيد"
