@@ -6,9 +6,11 @@ import withMetaTags from "@/hocs/withMetaTags";
 import { blogsInterface } from "@/interfaces/clientInterface";
 import { getBlogs } from "@/requests/generic/getBlogs";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function BlogClientPage() {
   const [blogsRes, setBlogsRes] = useState<blogsInterface[] | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -26,10 +28,9 @@ function BlogClientPage() {
   return (
     <div className="min-h-screen w-full h-full flex flex-col gap-10">
       <AboutusVideoSection
-        title1="articles"
-        title2="stories and news"
-        descriptionEn="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
-        descriptionAr="اكتشف كنز من المواد المهنية المصممة بعناية لتقديم لك معرفة كاملة عن أحدث الاتجاهات."
+        header={t("videoSection.blogs.header")}
+        sub_header={t("videoSection.blogs.sub_header")}
+        description={t("videoSection.blogs.description")}
       />
       <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center">
         {blogsRes?.map((blog, index) => (

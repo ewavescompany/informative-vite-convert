@@ -457,6 +457,33 @@
     "mission_update_failed": "Failed to update mission",
     "Mission": "Mission"
   },
+  "videoSection": {
+    "about_us": {
+      "header": "about us header",
+      "sub_header": "about us sub header",
+      "description": "about us description"
+    },
+    "blogs": {
+      "header": "blog header",
+      "sub_header": "blog sub header",
+      "description": "Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+    },
+    "contact_us": {
+      "header": "contact us header",
+      "sub_header": "contact us sub header",
+      "description": "Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+    },
+    "portfolio": {
+      "header": "portfolio header",
+      "sub_header": "portfolio sub header",
+      "description": "At eWaves, we specialize in AI, web, and mobile development, delivering innovative software solutions that drive business growth. Our focus is on leveraging cutting-edge technology to enhance digital presence and streamline marketing strategies. We’re committed to helping businesses transform through smart, data-driven solutions tailored to their needs."
+    },
+    "services": {
+      "header": "services header",
+      "sub_header": "services sub header",
+      "description": "We guide game-changing companies, across platforms and places, through agile design and digital experience."
+    }
+  },
   "aboutus": {
     "update_about_us": "Update About Us",
     "update_company_about": "Update the About Us of the company",

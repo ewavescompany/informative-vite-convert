@@ -22,6 +22,7 @@ import {
   Testimonial,
   vision,
 } from "@/interfaces/dashboardInterface";
+import { useTranslation } from "react-i18next";
 
 export default function AboutUsClientPage() {
   const [vissionData, setVissionData] = useState<vision[] | undefined>([]);
@@ -34,6 +35,8 @@ export default function AboutUsClientPage() {
   const [aboutus, setAboutus] = useState<ContentObject | undefined>();
   const [projectsData, setProjectsData] = useState<Portfolio[] | undefined>();
   const [loading, setLoading] = useState(true);
+  const { i18n, t } = useTranslation();
+  const locale = i18n.language;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,10 +83,11 @@ export default function AboutUsClientPage() {
   return (
     <div className="min-h-screen flex flex-col gap-10">
       <AboutusVideoSection
-        title1={"about_us"}
-        title2={"get_to_know_us"}
-        descriptionEn={aboutus ? aboutus.content_en : ""}
-        descriptionAr={aboutus ? aboutus.content_ar : ""}
+        header={t("videoSection.about_us.header")}
+        sub_header={t("videoSection.about_us.sub_header")}
+        description={
+          locale === "en" ? aboutus?.content_en : aboutus?.content_ar
+        }
       />
       <div className="flex flex-col gap-10 px-8 pb-20 sm:px-20 py-4 sm:py-10">
         {missionData && <Mission mission={missionData[0]} />}

@@ -7,10 +7,12 @@ import Loading from "../loading";
 import withMetaTags from "@/hocs/withMetaTags";
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import { pageClient } from "@/data/client/pagesURLs";
+import { useTranslation } from "react-i18next";
 
 function PortfolioClientPage() {
   const [portfolioData, setPortfolioData] = useState<Portfolio[] | undefined>();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchPortfolio = async () => {
@@ -34,10 +36,9 @@ function PortfolioClientPage() {
   return (
     <div className="min-h-screen w-full h-full flex flex-col gap-10">
       <AboutusVideoSection
-        title1="portfolio"
-        title2=""
-        descriptionEn="We guide game-changing companies, across platforms and places, through agile design and digital experience."
-        descriptionAr="نحن نرشد الشركات التي تغير العالم، عبر الأنظمة والأماكن، من خلال تصميم متطور وتجربة رقمية متطورة."
+        header={t("videoSection.portfolio.header")}
+        sub_header={t("videoSection.portfolio.sub_header")}
+        description={t("videoSection.portfolio.description")}
       />
       <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 flex flex-col gap-10 items-center justify-center">
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-5">
