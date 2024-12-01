@@ -13,8 +13,6 @@ import PartnersSection from "@/customComponents/homeComponents/partnersSection";
 import withMetaTags from "@/hocs/withMetaTags";
 import { clientBaseServerUrl, serverUrls } from "@/constants/urls";
 import { pageClient } from "@/data/client/pagesURLs";
-// import { Helmet } from "react-helmet-async";
-// import icon from "../../../public/test.svg";
 
 function ClientPage() {
   const data: homeInterface = useOutletContext();

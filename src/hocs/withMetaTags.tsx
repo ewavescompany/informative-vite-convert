@@ -2,6 +2,7 @@ import React, { useEffect, useState, ComponentType } from "react";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import Loading from "@/pages/client/loading";
 
 // Define the shape of the metadata response from the API
 interface MetaData {
@@ -50,7 +51,7 @@ const withMetaTags = <P extends object>(
       fetchMetaData();
     }, [apiEndpoint]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading />;
 
     return (
       <>
