@@ -6,5 +6,5 @@ export const pageClient = {
   about_us: "/about-us",
   portfolio: "/portfolio",
   portfolio_details: "/portfolio/project",
-  contact_us: "/contact-us",
+  contact_us: "/contact",
 };
