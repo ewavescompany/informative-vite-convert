@@ -18,6 +18,10 @@ import {
 import { useState } from "react";
 import { changeLanguage } from "i18next";
 import i18n from "@/i18n";
+import { Link, useNavigate } from "react-router-dom";
+import { pageAdmin } from "@/data/admin/pagesURLs";
+import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const savedLanguage =
   localStorage.getItem("i18nextLng") || i18n.language || "en";
@@ -26,6 +30,9 @@ function Header() {
   const [currentLang, setCurrentLang] = useState<"en" | "ar">(
     savedLanguage as "ar" | "en"
   );
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { toast } = useToast();
 
   const handleLanguageChange = (lang: "en" | "ar") => {
     setCurrentLang(lang);
@@ -59,10 +66,29 @@ function Header() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link className="w-full" to={pageAdmin.settings.main}>
+              Settings
+            </Link>
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>
+            <div
+              className="w-full"
+              onClick={() => {
+                localStorage.removeItem("authToken");
+                toast({
+                  variant: "default",
+                  title: t("logout.success.title"),
+                  description: t("logout.success.description"),
+                });
+                navigate(pageAdmin.login);
+              }}
+            >
+              Logout
+            </div>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>

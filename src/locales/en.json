@@ -34,6 +34,12 @@
     "partner_title": "Partner Management",
     "add_partner": "Add Partner"
   },
+  "logout": {
+    "success": {
+      "title": "Logout Successful",
+      "description": "You have been successfully logged out. See you again soon!"
+    }
+  },
   "login": {
     "password": "Password",
     "email": "Email",
@@ -459,30 +465,30 @@
   },
   "videoSection": {
     "about_us": {
-    "header": "About Us",
-    "sub_header": "Innovating Software Solutions for a Digital Future",
-    "description": "At Ewaves, we specialize in providing cutting-edge software solutions to meet the needs of modern businesses. Our team of skilled professionals focuses on creating robust applications, websites, and digital experiences that enhance operational efficiency and drive business success."
-  },
-  "blogs": {
-    "header": "Our Blog",
-    "sub_header": "Stay Updated with the Latest in Technology",
-    "description": "Explore our blog for expert insights and articles on the latest software development trends, tech innovations, and best practices. Whether you're looking for advice on web development, mobile applications, or emerging technologies, we've got you covered."
-  },
-  "contact_us": {
-    "header": "Contact Us",
-    "sub_header": "Get in Touch with Our Team",
-    "description": "Have questions or want to discuss how we can help your business grow? Reach out to our team today, and we’ll be happy to provide personalized software solutions to meet your needs."
-  },
-  "portfolio": {
-    "header": "Our Portfolio",
-    "sub_header": "Showcasing Our Work",
-    "description": "At Ewaves, we take pride in our portfolio of successful software projects. From mobile apps to scalable web platforms, we deliver innovative and user-friendly solutions that empower businesses across various industries to succeed in the digital world."
-  },
-  "services": {
-    "header": "Our Services",
-    "sub_header": "Transforming Ideas into Digital Solutions",
-    "description": "We offer a wide range of services, from custom software development and mobile app design to website development and system integration. Our team works closely with clients to ensure every project is tailored to meet their unique business needs, driving digital transformation and innovation."
-  }
+      "header": "About Us",
+      "sub_header": "Innovating Software Solutions for a Digital Future",
+      "description": "At Ewaves, we specialize in providing cutting-edge software solutions to meet the needs of modern businesses. Our team of skilled professionals focuses on creating robust applications, websites, and digital experiences that enhance operational efficiency and drive business success."
+    },
+    "blogs": {
+      "header": "Our Blog",
+      "sub_header": "Stay Updated with the Latest in Technology",
+      "description": "Explore our blog for expert insights and articles on the latest software development trends, tech innovations, and best practices. Whether you're looking for advice on web development, mobile applications, or emerging technologies, we've got you covered."
+    },
+    "contact_us": {
+      "header": "Contact Us",
+      "sub_header": "Get in Touch with Our Team",
+      "description": "Have questions or want to discuss how we can help your business grow? Reach out to our team today, and we’ll be happy to provide personalized software solutions to meet your needs."
+    },
+    "portfolio": {
+      "header": "Our Portfolio",
+      "sub_header": "Showcasing Our Work",
+      "description": "At Ewaves, we take pride in our portfolio of successful software projects. From mobile apps to scalable web platforms, we deliver innovative and user-friendly solutions that empower businesses across various industries to succeed in the digital world."
+    },
+    "services": {
+      "header": "Our Services",
+      "sub_header": "Transforming Ideas into Digital Solutions",
+      "description": "We offer a wide range of services, from custom software development and mobile app design to website development and system integration. Our team works closely with clients to ensure every project is tailored to meet their unique business needs, driving digital transformation and innovation."
+    }
   },
   "aboutus": {
     "update_about_us": "Update About Us",
