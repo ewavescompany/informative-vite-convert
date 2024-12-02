@@ -135,38 +135,38 @@ function Footer({ dataSetting }: { dataSetting: settings }) {
       </div>
 
       <div className="flex flex-col gap-2 md:gap-3 relative z-10">
-  <h4 className="mb-1 lg:text-3xl text-xl text-zinc-300 font-medium flex flex-row items-center justify-center w-fit gap-3">
-    <Send className="hidden md:inline" />
-    <span>Contact us</span>
-  </h4>
-  
-  <Link
-    className="lg:text-lg text-base text-graywhite font-medium -mt-2"
-    to={"mailto:info@ewavespro.com"}
-  >
-    Mail: info@ewavespro.com
-  </Link>
-  
-  <Link
-    className="lg:text-lg text-base text-graywhite font-medium -mt-2"
-    to={"tel:+201013377633"}
-  >
-    Phone: 01013377633
-  </Link>
+        <h4 className="mb-1 lg:text-3xl text-xl text-zinc-300 font-medium flex flex-row items-center justify-center w-fit gap-3">
+          <Send className="hidden md:inline" />
+          <span>Contact us</span>
+        </h4>
 
-  <h4 className="lg:text-3xl md:text-xl text-graywhite font-medium flex flex-row items-center justify-center w-fit gap-3">
-    <MailCheck />
-    <span>Subscribe to our newsletter</span>
-  </h4>
-  
-  <div className="flex flex-row items-center md:flex-wrap gap-1 md:gap-3">
-    <Input
-      placeholder="example@mail.com"
-      className="max-w-[300px] md:h-10 text-white text-lg"
-    />
-    <Button className="h-auto" variant={"secondary"}>
-      Subscribe
-    </Button>
+        <Link
+          className="lg:text-lg text-base text-graywhite font-medium -mt-2"
+          to={"mailto:info@ewavespro.com"}
+        >
+          Mail: info@ewavespro.com
+        </Link>
+
+        <Link
+          className="lg:text-lg text-base text-graywhite font-medium -mt-2"
+          to={"tel:+201013377633"}
+        >
+          Phone: 01013377633
+        </Link>
+
+        <h4 className="md:text-xl text-graywhite font-medium flex flex-row items-center justify-center w-fit gap-3">
+          <MailCheck />
+          <span>Subscribe to our newsletter</span>
+        </h4>
+
+        <div className="flex flex-row items-center md:flex-wrap gap-1 md:gap-3">
+          <Input
+            placeholder="example@mail.com"
+            className="max-w-[300px] md:h-10 text-white text-lg"
+          />
+          <Button className="h-auto" variant={"secondary"}>
+            Subscribe
+          </Button>
         </div>
       </div>
     </div>
