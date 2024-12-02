@@ -87,7 +87,7 @@ export default function Navbar({
           {/* <div className="border h-9 rounded-md flex items-center px-4"> */}
           <NavSocialIcons
             dataSetting={dataSetting}
-            className="w-fit flex flex-row gap-2"
+            className="w-fit flex md:hidden lg:flex flex-row gap-2"
           />
           {/* </div> */}
         </div>
