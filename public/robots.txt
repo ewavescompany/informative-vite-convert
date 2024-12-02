@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /admin
 
-Sitemap: info.ewavespro.com/sitemap.xml
+Sitemap: ewavespro.com/sitemap.xml
