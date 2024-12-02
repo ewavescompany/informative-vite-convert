@@ -366,11 +366,11 @@
     "stats_update_failed": "Failed to update stats!",
     "language_select": "Select Language",
     "stats": "Stats",
-    "K": "K",
+    "K": "",
     "Businesses served": "Businesses served",
     "Average increase in engagement": "Average increase in engagement",
     "Countries reached": "Countries reached",
-    "M": "M",
+    "M": "",
     "Campaigns launched annually": "Campaigns launched annually"
   },
   "nav_logo": {

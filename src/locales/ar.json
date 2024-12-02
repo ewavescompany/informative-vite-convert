@@ -379,11 +379,11 @@
     "stats_update_failed": "فشل في تحديث الإحصائيات!",
     "language_select": "اختر اللغة",
     "stats": "احصائيات",
-    "K": "الف",
+    "K": "",
     "Businesses served": "الشركات التي نخدمها",
     "Average increase in engagement": "متوسط الزيادة في المشاركة",
     "Countries reached": "البلدان التي تم الوصول إليها",
-    "M": "مليون",
+    "M": "",
     "Campaigns launched annually": "الحملات التي يتم إطلاقها سنويا"
   },
   "homePage": {
