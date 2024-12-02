@@ -20,6 +20,7 @@ function VideoSection({ settings }: videoSectionInterface) {
           loop
           muted
           autoPlay
+          playsInline
           src={`${videosPath}${settings.hero_video}`}
         />
         <div className="w-full h-full hidden md:flex flex-col z-10 lg:text-left text-center overflow-hidden">

@@ -16,8 +16,11 @@ function AboutusVideoSection({
         loop
         muted
         autoPlay
+        playsInline
         src="/aboutus/aboutUsVideo.mp4" // Use relative URL path
-      />
+      >
+        Your browser does not support the video tag
+      </video>
       <div className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[2] bg-grayblack/80"></div>
       <div className="capitalize flex flex-col items-center justify-center gap-3 md:text-3xl lg:text-5xl text-2xl font-semibold text-graywhite z-[3] ">
         <div className="w-full h-full flex flex-row items-center justify-start md:justify-center">
