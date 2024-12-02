@@ -11,11 +11,11 @@ const RelatedPortfolios = ({ relatedProjects }: RelatedPortfoliosProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full h-full flex flex-col gap-10 xl:max-w-6xl lg:max-w-3xl max-w-full pb-5">
+    <div className="text-center md:text-start w-full h-full flex flex-col gap-4 md:gap-10 xl:max-w-6xl lg:max-w-3xl max-w-full pb-5">
       <h4 className="text-3xl font-medium">
         {t("portfolio.Related Portfolios")}
       </h4>
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 px-2">
+      <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-2 md:gap-5 px-2">
         {relatedProjects?.map((project: Portfolio, index: number) => (
           <SimplePortfolioCard key={index} project={project} />
         ))}

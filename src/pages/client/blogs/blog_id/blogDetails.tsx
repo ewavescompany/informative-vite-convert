@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import BlogHeader from "@/customComponents/blogComponents/blogHeader";
 import RelatedBlogs from "@/customComponents/blogComponents/relatedBlogs";
 import { pageClient } from "@/data/client/pagesURLs";
@@ -6,7 +7,7 @@ import { fetchBlogById } from "@/requests/generic/fetchBlogById";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function BlogDetailsClientPage() {
   const { id } = useParams();
@@ -37,7 +38,23 @@ export default function BlogDetailsClientPage() {
   }
 
   if (!blogData) {
-    return null;
+    return (
+      <div className="min-h-screen flex justify-center items-center flex-col gap-4">
+        <p className="text-3xl md:text-5xl font-bold text-muted-foreground">
+          404
+        </p>
+        <h1 className="text-xl md:text-2xl font-semibold">
+          {lang === "en"
+            ? "There is no blog with this title"
+            : "لا يوجد مدونة بهذا العنوان"}
+        </h1>
+        <Link to={pageClient.blogs}>
+          <Button className="bg-stone-500 text-lg">
+            {lang === "en" ? "Go to Blogs page" : "اذهب الي المدونة الاساسية"}
+          </Button>
+        </Link>
+      </div>
+    );
   }
 
   return (
