@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://info.ewavespro.com/</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- صفحة الخدمات -->
+  <url>
+    <loc>https://info.ewavespro.com/services</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- صفحة المحفظة -->
+  <url>
+    <loc>https://info.ewavespro.com/portfolio</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- صفحة المدونات -->
+  <url>
+    <loc>https://info.ewavespro.com/blogs</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- صفحة الاتصال بنا -->
+  <url>
+    <loc>https://info.ewavespro.com/contact-us</loc>
+    <lastmod>2024-11-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
