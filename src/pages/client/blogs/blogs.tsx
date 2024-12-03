@@ -32,7 +32,7 @@ function BlogClientPage() {
         sub_header={t("videoSection.blogs.sub_header")}
         description={t("videoSection.blogs.description")}
       />
-      <div className="w-full h-full px-8 sm:px-20 py-4 sm:py-10 md:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center">
+      <div className="container mx-auto px-8 pb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10 xl:gap-12">
         {blogsRes?.map((blog, index) => (
           <MainBlogCard blog={blog} key={index} />
         ))}

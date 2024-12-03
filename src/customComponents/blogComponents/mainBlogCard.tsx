@@ -13,11 +13,10 @@ function MainBlogCard({ blog }: { blog: blogsInterface }) {
     locale === "en" ? blog.description_en : blog.description_ar;
   const blogTag = locale === "en" ? blog.tags_en : blog.tags_ar;
   const blogTagFormate = blogTag?.split(", ").slice(0, 2).join(", ");
-  // jus display first two tags
 
   return (
-    <div className="w-full h-full grid gap-3 aspect-square">
-      <div className="w-full h-full overflow-hidden rounded-xl min-h-[100px]">
+    <div className="">
+      <div className="aspect-video rounded-lg overflow-hidden">
         <Link to={`${pageClient.blog_details}/${blog.id}`}>
           <img
             src={`${imagesPath}blogs/${blog.image}`}
@@ -27,17 +26,17 @@ function MainBlogCard({ blog }: { blog: blogsInterface }) {
         </Link>
       </div>
 
-      <div className="row-span-2 overflow-hidden">
+      <div className="">
         <span className="text-gray-500 uppercase font-medium text-xs whitespace-normal">
           {blogTagFormate}
         </span>
-        <h3 className="text-grayblack text-lg xl:text-xl font-bold">
-          {`${blogTitle.slice(0, 40)} ${blogTitle.length > 40 ? "...." : ""}`}
+        <h3 className="text-grayblack text-lg lg:text-2xl font-bold">
+          {blogTitle}
         </h3>
         {/* <div className="w-fit flex flex-row gap-5 items-center justify-center font-medium">
           <h5>{formatDateForPortfolio(blog.created_at)}</h5>
         </div> */}
-        <p className="text-gray-500 line-clamp-3 text-xs">
+        <p className="text-gray-500 line-clamp-3 text-xs md:text-sm">
           {`${blogDescription.slice(0, 100)} ${
             blogDescription.length > 100 ? "...." : ""
           }`}
