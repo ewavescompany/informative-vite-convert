@@ -11,7 +11,10 @@ function AboutusVideoSection({
 }) {
   return (
     <div className="w-full h-[350px] md:h-[500px] px-5 relative flex flex-col items-center justify-center gap-3">
-      <video
+      <div className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[1]">
+        {/* Your browser does not support the video tag */}
+      </div>
+      {/* <video
         className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[1]"
         loop
         muted
@@ -20,15 +23,15 @@ function AboutusVideoSection({
         src="/aboutus/aboutUsVideo.mp4" // Use relative URL path
       >
         Your browser does not support the video tag
-      </video>
-      <div className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[2] bg-grayblack/80"></div>
+      </video> */}
+      <div className="object-cover w-full h-full absolute top bottom-0 left-0 right-0 z-[2] bg-grayblack"></div>
       <div className="capitalize flex flex-col items-center justify-center gap-3 md:text-3xl lg:text-5xl text-2xl font-semibold text-graywhite z-[3] ">
-        <div className="w-full h-full flex flex-row items-center justify-start md:justify-center">
+        <div className="w-full h-full flex flex-row items-center justify-center">
           <SlideComponent dir="down">
             <h1 className="">{header || ""}</h1>
           </SlideComponent>
         </div>
-        <div className="w-full h-full flex flex-row items-center justify-start md:justify-center">
+        <div className="w-full h-full flex flex-row items-center justify-center text-center">
           <SlideComponent dir="up">
             <h2 className="">{sub_header || ""}</h2>
           </SlideComponent>
