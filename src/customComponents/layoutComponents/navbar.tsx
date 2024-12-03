@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Facebook, Youtube, Twitter, Instagram, Menu } from "lucide-react";
 import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { pageClient } from "@/data/client/pagesURLs";
 import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,7 @@ export default function Navbar({
   );
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const location = useLocation();
 
   function handleChangeLang(lang: "ar" | "en") {
     setCurrentLang(lang);
@@ -53,6 +54,10 @@ export default function Navbar({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    setIsSheetOpen(false);
+  }, [location]);
 
   return (
     <>
@@ -157,38 +162,16 @@ function NavLinks({ className }: { className: string }) {
       <Link to={"/"} className="md:text-base font-semibold">
         {t("navbar.home")}
       </Link>
-      {/* <Link
-          href={`/${locale}/client/about-us`}
-          className="text-base font-semibold"
-        >
-          {t("navbar.about_us")}
-        </Link> */}
-      <Link
-        // to={`/${locale}/client/services`}
-        to={pageClient.services}
-        className="md:text-base font-semibold"
-      >
+      <Link to={pageClient.services} className="md:text-base font-semibold">
         {t("navbar.services")}
       </Link>
-      <Link
-        // to={`/${locale}/client/portfolio`}
-        to={pageClient.portfolio}
-        className="md:text-base font-semibold"
-      >
+      <Link to={pageClient.portfolio} className="md:text-base font-semibold">
         {t("navbar.portfolio")}
       </Link>
-      <Link
-        // to={`/${locale}/client/blogs`}
-        to={pageClient.blogs}
-        className="md:text-base font-semibold"
-      >
+      <Link to={pageClient.blogs} className="md:text-base font-semibold">
         {t("navbar.blogs")}
       </Link>
-      <Link
-        // to={`/${locale}/client/contact-us`}
-        to={pageClient.contact_us}
-        className="md:text-base font-semibold"
-      >
+      <Link to={pageClient.contact_us} className="md:text-base font-semibold">
         {t("navbar.contact_us")}
       </Link>
     </div>
