@@ -1,4 +1,6 @@
 import { DashboardTitle } from "@/customComponents/dashboardComponent/tags/dashboardTitle";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,9 +30,13 @@ import Loader from "@/customComponents/loader";
 import { useToast } from "@/hooks/use-toast";
 import withAuth from "@/hocs/withAuth";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
+import { useNavigate } from "react-router-dom";
 
 function Page() {
+  const [longDescription, setLongDescription] = useState(""); // Quill content state
   const [mainImagePreview, setMainImagePreview] = useState<File | null>(null);
+  const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useTranslation(); // Load translations from services.json
   const [isPosting, setIsPosting] = useState<boolean>(false);
@@ -77,6 +83,7 @@ function Page() {
           ),
         });
         setIsPosting(false);
+        navigate(pageAdmin.services.manage);
       } catch (error) {
         toast({
           variant: "destructive",
@@ -147,18 +154,38 @@ function Page() {
                   )}
               </div>
 
-              {/* Long Description */}
-              <div className="flex flex-col space-y-1.5">
+              <div className="flex flex-col space-y-1.5 w-full">
                 <Label htmlFor="longDescription">
                   {t("services.long_description")}
                 </Label>
-                <Textarea
-                  id="longDescription"
-                  name="longDescription"
-                  rows={5}
-                  onChange={formik.handleChange}
-                  value={formik.values.longDescription}
-                  placeholder={t("services.long_description")}
+                <ReactQuill
+                  style={{
+                    wordWrap: "break-word",
+                    overflowWrap: "break-word",
+                    maxWidth: "",
+                  }}
+                  value={longDescription}
+                  onChange={(value) => {
+                    setLongDescription(value);
+                    formik.setFieldValue("longDescription", value);
+                  }}
+                  modules={{
+                    toolbar: [
+                      [{ header: "1" }, { header: "2" }, { font: [] }],
+                      [{ list: "ordered" }, { list: "bullet" }],
+                      ["bold", "italic", "underline"],
+                      ["link"],
+                    ],
+                  }}
+                  formats={[
+                    "header",
+                    "font",
+                    "list",
+                    "bold",
+                    "italic",
+                    "underline",
+                    "link",
+                  ]}
                 />
                 {formik.errors.longDescription &&
                   formik.touched.longDescription && (
@@ -222,7 +249,13 @@ function Page() {
           </CardContent>
 
           <CardFooter className="flex justify-end gap-4">
-            <Button variant="outline" type="button">
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => {
+                navigate(pageAdmin.services.manage);
+              }}
+            >
               {t("services.cancel")}
             </Button>
             <Button disabled={isPosting} type="submit">

@@ -41,6 +41,7 @@ import EditPartnerPage from "./pages/admin/partners/edit/editPartner";
 import MetaTagsPage from "./pages/admin/seo-control/seoControl";
 import WebsiteOpenGraphPage from "./pages/admin/website-open-graph/websiteOpenGraph";
 import NotFoundPage from "./NotFoundPage";
+import ServiceDetailsClientPage from "./pages/client/services/serviceDetails/serviceDetails";
 
 export default function AppRoutes() {
   return (
@@ -144,6 +145,10 @@ export default function AppRoutes() {
           element={<ProjectDetailsClientPage />}
         />
         <Route path={pageClient.services} element={<ServicesClientPage />} />
+        <Route
+          path={pageClient.service_details + "/:id"}
+          element={<ServiceDetailsClientPage />}
+        />
         <Route path={pageClient.about_us} element={<AboutUsClientPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

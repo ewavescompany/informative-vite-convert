@@ -1,6 +1,6 @@
 "use client";
 import { DashboardTitle } from "@/customComponents/dashboardComponent/tags/dashboardTitle";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,20 +26,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useFetchServiceById } from "@/hooks/dashboard/useFetchServiceById";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import PageLoader from "@/customComponents/pageLoader";
 import Loader from "@/customComponents/loader";
 import { updateService } from "@/requests/admin/editService";
 import withAuth from "@/hocs/withAuth";
-import i18n from "@/i18n";
 import { useTranslation } from "react-i18next";
+import { pageAdmin } from "@/data/admin/pagesURLs";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function EditServicesPage() {
+  const [longDescription, setLongDescription] = useState("");
+  const navigate = useNavigate();
   const [mainImagePreview, setMainImagePreview] = useState<File | null>(null);
-  // const locale = Cookies.get("NEXT_LOCALE") || "en";
-  const locale = i18n.language;
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language;
   const [isPosting, setIsPosting] = useState<boolean>(false);
   const params = useParams<{ id: string }>();
   const { service, loading, error } = useFetchServiceById(params.id || "");
@@ -91,6 +94,7 @@ function EditServicesPage() {
         console.log(res);
         toast({ title: t("services.service_updated_successfully") });
         setIsPosting(false);
+        navigate(pageAdmin.services.manage);
       } catch (error) {
         console.log(error);
         setIsPosting(false);
@@ -101,6 +105,16 @@ function EditServicesPage() {
       }
     },
   });
+
+  useEffect(() => {
+    if (service) {
+      setLongDescription(
+        locale === "en"
+          ? service.long_description_en
+          : service.long_description_ar
+      );
+    }
+  }, [service]);
 
   // Handle main image upload
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -167,21 +181,39 @@ function EditServicesPage() {
 
               {/* Long Description */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="longDescription">
+                <Label htmlFor="content">
                   {t("services.long_description")}
                 </Label>
-                <Textarea
-                  id="longDescription"
-                  name="longDescription"
-                  rows={5}
-                  onChange={formik.handleChange}
-                  value={formik.values.longDescription}
-                  placeholder="Detailed description of the service"
+                <ReactQuill
+                  value={longDescription}
+                  onChange={(value) => {
+                    setLongDescription(value);
+                    formik.setFieldValue("content", value); // Update Formik state with Quill content
+                  }}
+                  modules={{
+                    toolbar: [
+                      [{ header: "1" }, { header: "2" }, { font: [] }],
+                      [{ list: "ordered" }, { list: "bullet" }],
+                      ["bold", "italic", "underline"],
+                      ["link"],
+                    ],
+                  }}
+                  formats={[
+                    "header",
+                    "font",
+                    "list",
+                    "bold",
+                    "italic",
+                    "underline",
+                    "link",
+                  ]}
                 />
                 {formik.errors.longDescription &&
                   formik.touched.longDescription && (
                     <div className="text-red-500 text-sm">
-                      {formik.errors.longDescription}
+                      {typeof formik.errors.longDescription === "string"
+                        ? formik.errors.longDescription
+                        : JSON.stringify(formik.errors.longDescription)}
                     </div>
                   )}
               </div>
@@ -241,8 +273,14 @@ function EditServicesPage() {
           </CardContent>
 
           <CardFooter className="flex justify-end gap-4">
-            <Button variant="outline" type="button">
-              Cancel
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => {
+                navigate(pageAdmin.services.manage);
+              }}
+            >
+              {locale === "en" ? "Cancel" : "الغاء"}
             </Button>
             <Button disabled={isPosting} type="submit">
               {isPosting ? <Loader size={14} /> : t("services.edit_service")}
