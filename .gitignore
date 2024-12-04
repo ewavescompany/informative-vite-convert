@@ -8,8 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
+
+# hostinger does not support node so i can't be auto deploy 
+# so I upload dist folder and add .htaccess to go for dist folder
+# for each changes make build and upload it, this changes will updated in hostinger
+# dist
+# dist-ssr
+
 *.local
 
 # Editor directories and files
