@@ -1,0 +1,11 @@
+# Redirect all requests to the dist folder
+
+RewriteEngine On
+
+# Ensure requests for the dist folder are handled correctly
+
+RewriteCond %{REQUEST_URI} !^/dist/
+
+# Rewrite all incoming traffic to dist folder
+
+RewriteRule ^(.\*)$ /dist/$1 [L]
