@@ -13,6 +13,7 @@ function App() {
         <link rel="icon" href={icon} type="image/x-icon" />
       </Helmet> */}
       <h1>hello</h1>
+      <h2>another test</h2>
       <Router future={{ v7_startTransition: true }}>
         <AppRoutes />
       </Router>
