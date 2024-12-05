@@ -12,6 +12,7 @@ function App() {
         <meta name="description" content="ewavespro website" />
         <link rel="icon" href={icon} type="image/x-icon" />
       </Helmet> */}
+      <h1>test vite</h1>
       <Router future={{ v7_startTransition: true }}>
         <AppRoutes />
       </Router>
