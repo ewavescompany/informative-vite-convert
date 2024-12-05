@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   // this is just to make hostinger can take importing (css, js) files correctly so (remove it if you host it in any platform)
-  base: "/info/dist/",
+  // base: "/info/dist/",
   plugins: [react()],
   resolve: {
     alias: {
