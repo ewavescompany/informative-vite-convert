@@ -8,7 +8,7 @@ import useFetchBlogData from "@/hooks/dashboard/useFetchBlogData";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { pageAdmin } from "@/data/admin/pagesURLs";
-import { BlogForm } from "@/components/blog/BlogForm";
+import { BlogForm } from "@/pages/admin/blogs/components/BlogForm";
 
 function EditBlogPage() {
   const navigate = useNavigate();

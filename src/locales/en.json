@@ -81,6 +81,10 @@
     "added": "Added"
   },
   "blogForm": {
+    "tabs": {
+      "main_content": "Main Content",
+      "seo_content": "SEO Content"
+    },
     "add_blog": "Add Blog",
     "edit_blog": "Edit Blog",
     "create_blog": "Create a new blog",

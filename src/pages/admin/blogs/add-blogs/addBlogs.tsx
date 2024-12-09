@@ -5,7 +5,7 @@ import { sendBlog } from "@/requests/admin/addBlog";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { pageAdmin } from "@/data/admin/pagesURLs";
-import { BlogForm } from "@/components/blog/BlogForm";
+import { BlogForm } from "@/pages/admin/blogs/components/BlogForm";
 
 function AddBlogPage() {
   const navigate = useNavigate();
