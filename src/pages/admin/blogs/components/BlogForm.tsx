@@ -29,6 +29,9 @@ import InputTag from "@/pages/admin/blogs/inputTag";
 import { useTranslation } from "react-i18next";
 import { Tabs, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent, TabsList } from "@radix-ui/react-tabs";
+import WavelyAIMetaKeywords from "./WavelyAIMetaKeywords";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface BlogFormValues {
   name: string;
@@ -75,6 +78,10 @@ export function BlogForm({
   const { t } = useTranslation();
   const [content, setContent] = useState(initialValues.content);
   const [tags, setTags] = useState<string[]>(initialValues.tags);
+  const [responseValue, setResponseValue] = useState("");
+  const [wavelyAIRequestStatus, setWavelyAIRequestStatus] = useState<
+    "not-active" | "loading" | "done" | "error"
+  >("not-active");
 
   const validationSchema = getValidationSchema(t, mode);
 
@@ -94,8 +101,12 @@ export function BlogForm({
     formik.setFieldValue("tags", tags);
   }, [tags]);
 
+  useEffect(() => {
+    formik.setFieldValue("metaKeywords", responseValue);
+  }, [responseValue]);
+
   return (
-    <div className="w-full flex flex-col gap-5 capitalize">
+    <div className="w-[1200px] flex flex-col gap-5 capitalize">
       <DashboardTitle
         title={
           mode === "add" ? t("blogForm.add_blog") : t("blogForm.edit_blog")
@@ -227,20 +238,48 @@ export function BlogForm({
                         </div>
                       )}
                   </div>
-
                   {/* Meta Keywords */}
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="metaKeywords">
                       {t("blogForm.meta_keywords")}
                     </Label>
-                    <Textarea
-                      id="metaKeywords"
-                      name="metaKeywords"
-                      rows={5}
-                      onChange={formik.handleChange}
-                      value={formik.values.metaKeywords}
-                      placeholder={t("blogForm.meta_keywords_placeholder")}
-                    />
+                    {wavelyAIRequestStatus === "not-active" ? (
+                      <div className="relative">
+                        <Textarea
+                          id="metaKeywords"
+                          name="metaKeywords"
+                          rows={6}
+                          onChange={formik.handleChange}
+                          value={formik.values.metaKeywords}
+                          placeholder={t("blogForm.meta_keywords_placeholder")}
+                        />
+
+                        <div className="absolute bottom-2 right-2">
+                          <WavelyAIMetaKeywords
+                            metaDescriptionValue={formik.values.metaDescription}
+                            setResponseValue={setResponseValue}
+                            wavelyAIRequestStatus={wavelyAIRequestStatus}
+                            setWavelyAIRequestStatus={setWavelyAIRequestStatus}
+                          />
+                        </div>
+                      </div>
+                    ) : wavelyAIRequestStatus === "done" ? (
+                      <div className="">
+                        <TextGenerateEffect
+                          duration={0.2}
+                          className="text-muted-foreground border rounded-md md:text-sm"
+                          words={responseValue}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full border p-2 rounded-md flex flex-col gap-[4px]">
+                        <Skeleton className="h-4 w-3/4" />
+                        <Skeleton className="h-4 w-full" />
+                        <Skeleton className="h-4 w-2/4" />
+                        <Skeleton className="h-4 w-3/4" />
+                        <Skeleton className="h-4 w-1/4" />
+                      </div>
+                    )}
                     {formik.errors.metaKeywords &&
                       formik.touched.metaKeywords && (
                         <div className="text-red-500 text-sm">

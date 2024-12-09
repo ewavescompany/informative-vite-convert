@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 const baseServerUrl =
@@ -13,7 +13,13 @@ const useSendMessage = (
   const navigate = useNavigate();
 
   return useCallback(
-    async (message: string, botId: string) => {
+    async (
+      message: string,
+      botId: string,
+      status: React.Dispatch<
+        React.SetStateAction<"not-active" | "loading" | "done" | "error">
+      >
+    ) => {
       try {
         const response = await fetch(`${baseServerUrl}`, {
           method: "POST",
@@ -36,9 +42,13 @@ const useSendMessage = (
         // setIsLoading(false);
         if (result.result.bot.response) {
           setResponseValue(result.result.bot.response);
+          status("done");
+        } else {
+          status("error");
         }
       } catch (error) {
         console.error("Error sending message:", error);
+        status("error");
       } finally {
       }
     },
