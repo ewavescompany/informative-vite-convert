@@ -29,11 +29,8 @@ import InputTag from "@/pages/admin/blogs/inputTag";
 import { useTranslation } from "react-i18next";
 import { Tabs, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent, TabsList } from "@radix-ui/react-tabs";
-import WavelyAIMetaKeywords from "./WavelyAIMetaKeywords";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { Skeleton } from "@/components/ui/skeleton";
 import { prompt } from "@/data/admin/prompt";
-import openAIIntegration from "@/requests/admin/open-ai-integration/openAIIntegration";
+import AiHelp from "@/components/aiHelp";
 
 interface BlogFormValues {
   name: string;
@@ -80,12 +77,6 @@ export function BlogForm({
   const { t } = useTranslation();
   const [content, setContent] = useState(initialValues.content);
   const [tags, setTags] = useState<string[]>(initialValues.tags);
-  const [responseValue, setResponseValue] = useState(
-    initialValues.metaKeywords
-  );
-  const [wavelyAIRequestStatus, setWavelyAIRequestStatus] = useState<
-    "not-active" | "loading" | "done" | "error"
-  >("not-active");
 
   const validationSchema = getValidationSchema(t, mode);
 
@@ -105,9 +96,9 @@ export function BlogForm({
     formik.setFieldValue("tags", tags);
   }, [tags]);
 
-  useEffect(() => {
-    formik.setFieldValue("metaKeywords", responseValue);
-  }, [responseValue]);
+  // useEffect(() => {
+  //   formik.setFieldValue("metaKeywords", responseValue);
+  // }, [responseValue]);
 
   return (
     <div className="max-w-[1200px] flex flex-col gap-5 capitalize">
@@ -227,14 +218,26 @@ export function BlogForm({
                     <Label htmlFor="metaDescription">
                       {t("blogForm.meta_description")}
                     </Label>
-                    <Textarea
-                      id="metaDescription"
-                      name="metaDescription"
-                      rows={5}
-                      onChange={formik.handleChange}
-                      value={formik.values.metaDescription}
-                      placeholder={t("blogForm.meta_description_placeholder")}
-                    />
+                    {
+                      <AiHelp
+                        prompt={prompt.generate_meta_description}
+                        formikValue={formik.values.metaDescription}
+                        formikSetValue={(content: string) =>
+                          formik.setFieldValue("metaDescription", content)
+                        }
+                      >
+                        <Textarea
+                          id="metaDescription"
+                          name="metaDescription"
+                          rows={5}
+                          onChange={formik.handleChange}
+                          value={formik.values.metaDescription}
+                          placeholder={t(
+                            "blogForm.meta_description_placeholder"
+                          )}
+                        />
+                      </AiHelp>
+                    }
                     {formik.errors.metaDescription &&
                       formik.touched.metaDescription && (
                         <div className="text-red-500 text-sm">
@@ -247,49 +250,22 @@ export function BlogForm({
                     <Label htmlFor="metaKeywords">
                       {t("blogForm.meta_keywords")}
                     </Label>
-                    {wavelyAIRequestStatus === "not-active" ? (
-                      <div className="relative">
-                        <Textarea
-                          id="metaKeywords"
-                          name="metaKeywords"
-                          rows={4}
-                          onChange={formik.handleChange}
-                          value={formik.values.metaKeywords}
-                          placeholder={t("blogForm.meta_keywords_placeholder")}
-                        />
-
-                        <div className="absolute bottom-2 right-2">
-                          <WavelyAIMetaKeywords
-                            wavelyAIRequestStatus={wavelyAIRequestStatus}
-                            setWavelyAIRequestStatus={setWavelyAIRequestStatus}
-                            callbackFunction={() =>
-                              openAIIntegration(
-                                prompt.generate_meta_keywords,
-                                formik.values.metaDescription,
-                                setResponseValue,
-                                setWavelyAIRequestStatus
-                              )
-                            }
-                          />
-                        </div>
-                      </div>
-                    ) : wavelyAIRequestStatus === "done" ? (
-                      <div className="">
-                        <TextGenerateEffect
-                          duration={0.2}
-                          className="text-muted-foreground md:text-sm"
-                          words={responseValue}
-                          setWords={setResponseValue}
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-full border p-2 rounded-md flex flex-col gap-[4px]">
-                        <Skeleton className="h-4 w-3/4" />
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-2/4" />
-                        <Skeleton className="h-4 w-3/4" />
-                      </div>
-                    )}
+                    <AiHelp
+                      prompt={prompt.generate_meta_keywords}
+                      formikValue={formik.values.metaKeywords}
+                      formikSetValue={(content: string) =>
+                        formik.setFieldValue("metaKeywords", content)
+                      }
+                    >
+                      <Textarea
+                        id="metaKeywords"
+                        name="metaKeywords"
+                        rows={4}
+                        onChange={formik.handleChange}
+                        value={formik.values.metaKeywords}
+                        placeholder={t("blogForm.meta_keywords_placeholder")}
+                      />
+                    </AiHelp>
                     {formik.errors.metaKeywords &&
                       formik.touched.metaKeywords && (
                         <div className="text-red-500 text-sm">

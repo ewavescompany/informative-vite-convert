@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FormikErrors } from "formik";
+import { BlogFormValues } from "@/schema/blogTypes";
 
 export const TextGenerateEffect = ({
   words,
@@ -8,7 +10,10 @@ export const TextGenerateEffect = ({
   duration = 0.1,
 }: {
   words: string;
-  setWords: React.Dispatch<React.SetStateAction<string>>;
+  // setWords: React.Dispatch<React.SetStateAction<string>>;
+  setWords: (
+    content: string
+  ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>;
   className?: string;
   duration?: number;
 }) => {
@@ -35,8 +40,6 @@ export const TextGenerateEffect = ({
   return (
     <div className={className}>
       <motion.textarea
-        id="metaKeywords"
-        name="metaKeywords"
         rows={4}
         value={text}
         onChange={handleChange}

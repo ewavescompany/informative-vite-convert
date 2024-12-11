@@ -16,13 +16,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-export default function WavelyAIMetaKeywords({
-  wavelyAIRequestStatus,
-  setWavelyAIRequestStatus,
+export default function GenerateWithAIDialog({
+  aiRequestStatus,
+  setAiRequestStatus,
   callbackFunction,
 }: {
-  wavelyAIRequestStatus: "not-active" | "loading" | "done" | "error";
-  setWavelyAIRequestStatus: React.Dispatch<
+  aiRequestStatus: "not-active" | "loading" | "done" | "error";
+  setAiRequestStatus: React.Dispatch<
     React.SetStateAction<"not-active" | "loading" | "done" | "error">
   >;
   callbackFunction: () => void;
@@ -31,7 +31,7 @@ export default function WavelyAIMetaKeywords({
 
   function handleWavely() {
     setOpenWavelyAIDialog(false);
-    setWavelyAIRequestStatus("loading");
+    setAiRequestStatus("loading");
     callbackFunction();
   }
 
@@ -42,11 +42,11 @@ export default function WavelyAIMetaKeywords({
           <TooltipTrigger asChild>
             <Button
               type="button"
-              disabled={wavelyAIRequestStatus === "not-active" ? false : true}
+              disabled={aiRequestStatus === "not-active" ? false : true}
               size="sm"
               onClick={() => setOpenWavelyAIDialog(true)}
               className={`p-1 rounded-md focus:animate-none hover:animate-none inline-flex text-md font-semibold tracking-wide cursor-pointer ${
-                wavelyAIRequestStatus === "not-active"
+                aiRequestStatus === "not-active"
                   ? "animate-bounce bg-green-700 hover:bg-green-700/90 focus:bg-green-700/90"
                   : "animate-none"
               }`}

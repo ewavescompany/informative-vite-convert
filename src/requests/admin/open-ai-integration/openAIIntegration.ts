@@ -1,4 +1,6 @@
 import OpenAI from "openai";
+import { FormikErrors } from "formik";
+import { BlogFormValues } from "@/schema/blogTypes";
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -8,10 +10,13 @@ const openai = new OpenAI({
 export default async function openAIIntegration(
   prompt: string,
   data: string,
-  setResponseValue: React.Dispatch<React.SetStateAction<string>>,
+  // setResponseValue: React.Dispatch<React.SetStateAction<string>>,
   setWavelyAIRequestStatus: React.Dispatch<
     React.SetStateAction<"not-active" | "loading" | "done" | "error">
-  >
+  >,
+  formikSetValue: (
+    content: string
+  ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>
 ) {
   try {
     const completion = await openai.chat.completions.create({
@@ -27,10 +32,12 @@ export default async function openAIIntegration(
 
     console.log(completion.choices[0].message.content);
     const res = completion.choices[0].message.content || "";
-    setResponseValue(res);
+    // setResponseValue(res);
+    formikSetValue(res);
   } catch (error) {
     console.error("Error fetching completion:", error);
-    setResponseValue("");
+    // setResponseValue("");
+    formikSetValue("");
   } finally {
     setWavelyAIRequestStatus("done");
   }
