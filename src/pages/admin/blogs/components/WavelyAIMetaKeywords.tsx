@@ -15,28 +15,25 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import useSendMessage from "@/requests/admin/ai-bot/sendMassage";
 
 export default function WavelyAIMetaKeywords({
-  setResponseValue,
-  metaDescriptionValue,
   wavelyAIRequestStatus,
   setWavelyAIRequestStatus,
+  callbackFunction,
 }: {
-  setResponseValue: React.Dispatch<React.SetStateAction<string>>;
-  metaDescriptionValue: string;
   wavelyAIRequestStatus: "not-active" | "loading" | "done" | "error";
   setWavelyAIRequestStatus: React.Dispatch<
     React.SetStateAction<"not-active" | "loading" | "done" | "error">
   >;
+  callbackFunction: () => void;
 }) {
   const [openWavelyAIDialog, setOpenWavelyAIDialog] = useState(false);
-  const sendAIMessage = useSendMessage(
-    "",
-    "200|1nfPiMbqxAcrzSLEjslkQ0y4ETRh5P7fu55gLkx7c4757a12",
-    true,
-    setResponseValue
-  );
+
+  function handleWavely() {
+    setOpenWavelyAIDialog(false);
+    setWavelyAIRequestStatus("loading");
+    callbackFunction();
+  }
 
   return (
     <>
@@ -44,6 +41,7 @@ export default function WavelyAIMetaKeywords({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
+              type="button"
               disabled={wavelyAIRequestStatus === "not-active" ? false : true}
               size="sm"
               onClick={() => setOpenWavelyAIDialog(true)}
@@ -73,15 +71,7 @@ export default function WavelyAIMetaKeywords({
           </DialogHeader>
           <DialogFooter>
             <Button
-              onClick={() => {
-                setOpenWavelyAIDialog(false);
-                setWavelyAIRequestStatus("loading");
-                sendAIMessage(
-                  `/keywords_suggest ${metaDescriptionValue}`,
-                  "1",
-                  setWavelyAIRequestStatus
-                );
-              }}
+              onClick={handleWavely}
               className="bg-green-700 hover:bg-green-600 focus:bg-green-600"
               type="button"
             >

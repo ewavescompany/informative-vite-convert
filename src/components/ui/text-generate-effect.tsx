@@ -1,62 +1,48 @@
-"use client";
-import { useEffect } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export const TextGenerateEffect = ({
   words,
+  setWords,
   className,
-  filter = true,
-  duration = 0.5,
+  duration = 0.1,
 }: {
   words: string;
+  setWords: React.Dispatch<React.SetStateAction<string>>;
   className?: string;
-  filter?: boolean;
   duration?: number;
 }) => {
-  const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
-  useEffect(() => {
-    animate(
-      "span",
-      {
-        opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
-      },
-      {
-        duration: duration ? duration : 1,
-        delay: stagger(0.2),
-      }
-    );
-  }, [scope.current]);
+  const [text, setText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(true);
 
-  const renderWords = () => {
-    return (
-      <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span
-              key={word + idx}
-              className="dark:text-white text-black opacity-0"
-              style={{
-                filter: filter ? "blur(10px)" : "none",
-              }}
-            >
-              {word}{" "}
-            </motion.span>
-          );
-        })}
-      </motion.div>
-    );
+  useEffect(() => {
+    if (isAnimating && currentIndex < words.length) {
+      const timeout = setTimeout(() => {
+        setText((prev) => prev + words[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      }, duration * 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [isAnimating, currentIndex, words, duration]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsAnimating(false);
+    setText(e.target.value);
+    setWords(e.target.value);
   };
 
   return (
-    <div className={cn("font-normal", className)}>
-      <div className="m-4">
-        <div className=" dark:text-white text-black leading-snug tracking-wide">
-          {renderWords()}
-        </div>
-      </div>
+    <div className={className}>
+      <motion.textarea
+        id="metaKeywords"
+        name="metaKeywords"
+        rows={4}
+        value={text}
+        onChange={handleChange}
+        className="dark:text-white text-black border p-3 w-full leading-snug tracking-wide rounded-md"
+        style={{ resize: "none" }}
+      />
     </div>
   );
 };

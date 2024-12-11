@@ -16,8 +16,8 @@ import { pageAdmin } from "@/data/admin/pagesURLs";
 // import withAuth from "@/hocs/withAuth";
 
 export default function BlogsPage() {
-  const { t } = useTranslation();
-  const locale = "en";
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language;
   const { isOpen, openDialog, closeDialog } = useShowDialog();
   const [active, setActive] = useState<number>();
 

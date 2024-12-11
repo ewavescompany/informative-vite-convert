@@ -10,9 +10,9 @@ import { BlogForm } from "@/pages/admin/blogs/components/BlogForm";
 
 function EditBlogPage() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
-  const locale = "en";
+  const locale = i18n.language;
   const params = useParams<{ id: string }>();
 
   const { blogData, loading, error } = useFetchBlogData(

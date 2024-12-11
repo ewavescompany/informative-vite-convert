@@ -32,6 +32,8 @@ import { TabsContent, TabsList } from "@radix-ui/react-tabs";
 import WavelyAIMetaKeywords from "./WavelyAIMetaKeywords";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Skeleton } from "@/components/ui/skeleton";
+import { prompt } from "@/data/admin/prompt";
+import openAIIntegration from "@/requests/admin/open-ai-integration/openAIIntegration";
 
 interface BlogFormValues {
   name: string;
@@ -78,7 +80,9 @@ export function BlogForm({
   const { t } = useTranslation();
   const [content, setContent] = useState(initialValues.content);
   const [tags, setTags] = useState<string[]>(initialValues.tags);
-  const [responseValue, setResponseValue] = useState("");
+  const [responseValue, setResponseValue] = useState(
+    initialValues.metaKeywords
+  );
   const [wavelyAIRequestStatus, setWavelyAIRequestStatus] = useState<
     "not-active" | "loading" | "done" | "error"
   >("not-active");
@@ -106,7 +110,7 @@ export function BlogForm({
   }, [responseValue]);
 
   return (
-    <div className="w-[1200px] flex flex-col gap-5 capitalize">
+    <div className="max-w-[1200px] flex flex-col gap-5 capitalize">
       <DashboardTitle
         title={
           mode === "add" ? t("blogForm.add_blog") : t("blogForm.edit_blog")
@@ -248,7 +252,7 @@ export function BlogForm({
                         <Textarea
                           id="metaKeywords"
                           name="metaKeywords"
-                          rows={6}
+                          rows={4}
                           onChange={formik.handleChange}
                           value={formik.values.metaKeywords}
                           placeholder={t("blogForm.meta_keywords_placeholder")}
@@ -256,10 +260,16 @@ export function BlogForm({
 
                         <div className="absolute bottom-2 right-2">
                           <WavelyAIMetaKeywords
-                            metaDescriptionValue={formik.values.metaDescription}
-                            setResponseValue={setResponseValue}
                             wavelyAIRequestStatus={wavelyAIRequestStatus}
                             setWavelyAIRequestStatus={setWavelyAIRequestStatus}
+                            callbackFunction={() =>
+                              openAIIntegration(
+                                prompt.generate_meta_keywords,
+                                formik.values.metaDescription,
+                                setResponseValue,
+                                setWavelyAIRequestStatus
+                              )
+                            }
                           />
                         </div>
                       </div>
@@ -267,8 +277,9 @@ export function BlogForm({
                       <div className="">
                         <TextGenerateEffect
                           duration={0.2}
-                          className="text-muted-foreground border rounded-md md:text-sm"
+                          className="text-muted-foreground md:text-sm"
                           words={responseValue}
+                          setWords={setResponseValue}
                         />
                       </div>
                     ) : (
@@ -277,7 +288,6 @@ export function BlogForm({
                         <Skeleton className="h-4 w-full" />
                         <Skeleton className="h-4 w-2/4" />
                         <Skeleton className="h-4 w-3/4" />
-                        <Skeleton className="h-4 w-1/4" />
                       </div>
                     )}
                     {formik.errors.metaKeywords &&
