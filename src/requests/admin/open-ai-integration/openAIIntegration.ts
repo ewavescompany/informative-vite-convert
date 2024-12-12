@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 export default async function openAIIntegration(
   prompt: string,
-  data: string,
+  content: string,
   // setResponseValue: React.Dispatch<React.SetStateAction<string>>,
   setWavelyAIRequestStatus: React.Dispatch<
     React.SetStateAction<"not-active" | "loading" | "done" | "error">
@@ -25,7 +25,7 @@ export default async function openAIIntegration(
         // { role: "system", content: "You are a helpful assistant." },
         {
           role: "user",
-          content: `${prompt} ${data}`,
+          content: `${prompt} ${content}`,
         },
       ],
     });

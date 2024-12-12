@@ -6,10 +6,8 @@ const pages = ["home", "about_us", "contact", "portfolio", "services", "blog"];
 
 export default async function getSEOData({
   setInitialValues,
-}: // setInputValues,
-{
+}: {
   setInitialValues: React.Dispatch<React.SetStateAction<InitialValues | null>>;
-  // setInputValues: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 }) {
   try {
     const response = await axios.get("https://v4.ewavespro.com/api/global/seo");
@@ -28,28 +26,12 @@ export default async function getSEOData({
         meta_title_ar: item ? item.meta_title_ar || "" : "",
         meta_description_en: item ? item.meta_description_en || "" : "",
         meta_description_ar: item ? item.meta_description_ar || "" : "",
-        // keywords_en:
-        //   item && item.meta_keywords_en
-        //     ? item.meta_keywords_en.split(",").map((s: string) => s.trim())
-        //     : [],
-        // keywords_ar:
-        //   item && item.meta_keywords_ar
-        //     ? item.meta_keywords_ar.split(",").map((s: string) => s.trim())
-        //     : [],
         meta_keywords_en: item ? item.meta_keywords_en || "" : "",
         meta_keywords_ar: item ? item.meta_keywords_ar || "" : "",
       };
     });
 
     setInitialValues({ pages: pagesData });
-
-    // // Initialize inputValues for the keywords input
-    // const inputValuesInit = pagesData.reduce((acc, page) => {
-    //   acc[page.name] = "";
-    //   return acc;
-    // }, {} as Record<string, string>);
-
-    // setInputValues(inputValuesInit);
   } catch (error) {
     console.error("Error fetching data from API:", error);
   }

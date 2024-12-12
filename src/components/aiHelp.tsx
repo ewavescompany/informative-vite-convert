@@ -9,6 +9,7 @@ import { BlogFormValues } from "@/schema/blogTypes";
 type AiHelpType = {
   children: ReactNode;
   prompt: string;
+  content: string;
   formikValue: string;
   formikSetValue: (
     content: string
@@ -18,13 +19,13 @@ type AiHelpType = {
 export default function AiHelp({
   children,
   prompt,
+  content,
   formikValue,
   formikSetValue,
 }: AiHelpType) {
   const [aiRequestStatus, setAiRequestStatus] = useState<
     "not-active" | "loading" | "done" | "error"
   >("not-active");
-  // const [responseValue, setResponseValue] = useState("");
 
   if (aiRequestStatus === "not-active")
     return (
@@ -38,8 +39,7 @@ export default function AiHelp({
             callbackFunction={() =>
               openAIIntegration(
                 prompt,
-                formikValue,
-                // setResponseValue,
+                content,
                 setAiRequestStatus,
                 formikSetValue
               )

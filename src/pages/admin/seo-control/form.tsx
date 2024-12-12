@@ -19,6 +19,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import postSEOData from "./requests/postSEOData";
+import AiHelp from "@/components/aiHelp";
+import { prompt } from "@/data/admin/prompt";
+import aiContent from "./utils/aiContent";
 
 const validationSchema = Yup.object().shape({
   blogLang: Yup.string().required("Language is required"),
@@ -83,7 +86,7 @@ export default function SeoInputsForm() {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div className="grid lg:grid-cols-2 gap-4">
+      <div className="grid xl:grid-cols-2 gap-4">
         {formik.values.pages.map((page, index) => (
           <CardForm
             key={page.slug}
@@ -165,25 +168,54 @@ function CardForm({
 
           <div>
             <Label>{t("seo_manage.form.label.description")}</Label>
-            <Input
-              id={fieldName(`meta_description_${blogLang}`)}
-              name={fieldName(`meta_description_${blogLang}`)}
-              type="text"
-              placeholder={t("seo_manage.form.placeholder.description")}
-              onChange={formik.handleChange}
-              value={formik.values.pages[index][`meta_description_${blogLang}`]}
-            />
+            <AiHelp
+              prompt={prompt.generate_meta_description}
+              content={aiContent(page.name)}
+              formikValue={
+                formik.values.pages[index][`meta_description_${blogLang}`]
+              }
+              formikSetValue={(content: string) =>
+                formik.setFieldValue(
+                  fieldName(`meta_description_${blogLang}`),
+                  content
+                )
+              }
+            >
+              <Textarea
+                id={fieldName(`meta_description_${blogLang}`)}
+                name={fieldName(`meta_description_${blogLang}`)}
+                placeholder={t("seo_manage.form.placeholder.description")}
+                onChange={formik.handleChange}
+                value={
+                  formik.values.pages[index][`meta_description_${blogLang}`]
+                }
+              />
+            </AiHelp>
           </div>
 
           <div>
             <Label>{t("seo_manage.form.label.keywords")}</Label>
-            <Textarea
-              id={fieldName(`meta_keywords_${blogLang}`)}
-              name={fieldName(`meta_keywords_${blogLang}`)}
-              placeholder={t("seo_manage.form.placeholder.keywords")}
-              onChange={formik.handleChange}
-              value={formik.values.pages[index][`meta_keywords_${blogLang}`]}
-            />
+            <AiHelp
+              prompt={prompt.generate_meta_keywords}
+              content={aiContent(page.name)}
+              formikValue={
+                formik.values.pages[index][`meta_keywords_${blogLang}`]
+              }
+              formikSetValue={(content: string) =>
+                formik.setFieldValue(
+                  fieldName(`meta_keywords_${blogLang}`),
+                  content
+                )
+              }
+            >
+              <Textarea
+                id={fieldName(`meta_keywords_${blogLang}`)}
+                name={fieldName(`meta_keywords_${blogLang}`)}
+                placeholder={t("seo_manage.form.placeholder.keywords")}
+                onChange={formik.handleChange}
+                value={formik.values.pages[index][`meta_keywords_${blogLang}`]}
+              />
+            </AiHelp>
           </div>
         </div>
       </CardContent>
