@@ -57,7 +57,7 @@ export default function Navbar({
 
   useEffect(() => {
     setIsSheetOpen(false);
-  }, [location]);
+  }, [location, currentLang]);
 
   return (
     <>
@@ -122,7 +122,29 @@ export default function Navbar({
                 className="w-full h-20 p-4 overflow-hidden"
               />
             </SheetHeader>
-            <NavLinks className="py-2 text-white flex flex-col items-center gap-4 text-xl" />
+            <div>
+              <NavLinks className="py-2 text-white flex flex-col items-center gap-4 text-xl" />
+
+              <div className="text-white flex w-full justify-center mt-4">
+                <Select
+                  value={currentLang}
+                  onValueChange={(value: "ar" | "en") =>
+                    handleChangeLang(value)
+                  }
+                >
+                  <SelectTrigger className="w-[100px]">
+                    <SelectValue placeholder="Language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="en">English</SelectItem>
+                      <SelectItem value="ar">العربية</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
             <NavSocialIcons
               dataSetting={dataSetting}
               className={`w-full justify-center flex flex-row gap-4 ${
