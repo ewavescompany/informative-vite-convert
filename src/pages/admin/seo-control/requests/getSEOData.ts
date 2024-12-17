@@ -2,7 +2,7 @@ import axios from "axios";
 import { InitialValues, Page } from "../types/form";
 import { ResponseType } from "../types/request";
 
-const pages = ["home", "about_us", "contact", "portfolio", "services", "blog"];
+const pages = ["home", "about-us", "contact", "portfolio", "services", "blog"];
 
 export default async function getSEOData({
   setInitialValues,

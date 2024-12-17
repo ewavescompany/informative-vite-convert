@@ -225,6 +225,8 @@ export function BlogForm({
                         formikSetValue={(content: string) =>
                           formik.setFieldValue("metaDescription", content)
                         }
+                        type="description"
+                        content={formik.values.content}
                       >
                         <Textarea
                           id="metaDescription"
@@ -251,11 +253,13 @@ export function BlogForm({
                       {t("blogForm.meta_keywords")}
                     </Label>
                     <AiHelp
-                      prompt={prompt.generate_meta_keywords}
+                      prompt={prompt.generate_meta_keywords_seo}
                       formikValue={formik.values.metaKeywords}
                       formikSetValue={(content: string) =>
                         formik.setFieldValue("metaKeywords", content)
                       }
+                      type="keywords"
+                      content={formik.values.content}
                     >
                       <Textarea
                         id="metaKeywords"

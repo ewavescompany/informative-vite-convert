@@ -51,17 +51,16 @@ export default function SeoInputsForm() {
 
   const formik = useFormik({
     initialValues: {
-      blogLang: (locale as "en" | "ar") || "en", // Ensure the type matches
+      blogLang: (locale as "en" | "ar") || "en",
       pages: initialValues?.pages || [],
     },
     enableReinitialize: true,
     validationSchema,
     onSubmit: (values) => {
-      // Prepare the body for the POST request
       const body = {
         pages: values.pages.map((page) => {
           return {
-            slug: page.slug + "-page",
+            slug: `${page.slug}-page`,
             page_name_en: page.name,
             page_name_ar: page.name,
             meta_title_en: page.meta_title_en,
@@ -73,8 +72,6 @@ export default function SeoInputsForm() {
           };
         }),
       };
-
-      console.log("Sending body:", values);
 
       postSEOData({ body, t });
     },
@@ -180,6 +177,7 @@ function CardForm({
                   content
                 )
               }
+              type="description"
             >
               <Textarea
                 id={fieldName(`meta_description_${blogLang}`)}
@@ -196,7 +194,7 @@ function CardForm({
           <div>
             <Label>{t("seo_manage.form.label.keywords")}</Label>
             <AiHelp
-              prompt={prompt.generate_meta_keywords}
+              prompt={prompt.generate_meta_keywords_seo}
               content={aiContent(page.name)}
               formikValue={
                 formik.values.pages[index][`meta_keywords_${blogLang}`]
@@ -207,6 +205,7 @@ function CardForm({
                   content
                 )
               }
+              type="keywords"
             >
               <Textarea
                 id={fieldName(`meta_keywords_${blogLang}`)}

@@ -5,8 +5,9 @@ export default function aiContent(page: string) {
     return "home page for ewavespro compony website work in programming websites and mobile apps, in digital marketing";
   }
 
-  if (page === "about_us") {
-    return "about_us page for ewavespro compony website work in programming websites and mobile apps, in digital marketing";
+  if (page === "about-us") {
+    // return "about_us page for ewavespro compony website work in programming websites and mobile apps, in digital marketing";
+    return "";
   }
 
   if (page === "contact") {
