@@ -28,6 +28,8 @@ import "react-quill/dist/quill.snow.css";
 import { getValidationSchema } from "../validation/portfolioSchema";
 import { useTranslation } from "react-i18next";
 import { PortfolioFormValues } from "../types/portfolio";
+import AiHelp from "@/components/aiHelp";
+import { prompt } from "@/data/admin/prompt";
 
 interface PortfolioFormProps {
   initialValues?: PortfolioFormValues;
@@ -139,14 +141,24 @@ const PortfolioForm: React.FC<PortfolioFormProps> = ({
               <Label htmlFor="description">
                 {t("portfolio.form.label.description")}
               </Label>
-              <Input
-                id="description"
-                name="description"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.description}
-                placeholder={t("portfolio.form.placeholder.description")}
-              />
+              <AiHelp
+                prompt={prompt.generate_meta_description}
+                content={formik.values.content}
+                formikValue={formik.values.description}
+                formikSetValue={(content: string) =>
+                  formik.setFieldValue("description", content)
+                }
+                type="description"
+              >
+                <Textarea
+                  id="description"
+                  name="description"
+                  rows={3}
+                  onChange={formik.handleChange}
+                  value={formik.values.description}
+                  placeholder={t("portfolio.form.placeholder.description")}
+                />
+              </AiHelp>
               {formik.errors.description && formik.touched.description && (
                 <div className="text-red-500 text-sm">
                   {formik.errors.description}
@@ -193,14 +205,24 @@ const PortfolioForm: React.FC<PortfolioFormProps> = ({
               <Label htmlFor="keywords">
                 {t("portfolio.form.label.keywords")}
               </Label>
-              <Textarea
-                id="keywords"
-                name="keywords"
-                rows={3}
-                onChange={formik.handleChange}
-                value={formik.values.keywords}
-                placeholder={t("portfolio.form.placeholder.keywords")}
-              />
+              <AiHelp
+                prompt={prompt.generate_meta_keywords_seo}
+                content={formik.values.content}
+                formikValue={formik.values.keywords}
+                formikSetValue={(content: string) =>
+                  formik.setFieldValue("keywords", content)
+                }
+                type="keywords"
+              >
+                <Textarea
+                  id="keywords"
+                  name="keywords"
+                  rows={3}
+                  onChange={formik.handleChange}
+                  value={formik.values.keywords}
+                  placeholder={t("portfolio.form.placeholder.keywords")}
+                />
+              </AiHelp>
               {formik.errors.keywords && formik.touched.keywords && (
                 <div className="text-red-500 text-sm">
                   {formik.errors.keywords}

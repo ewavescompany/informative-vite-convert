@@ -11,7 +11,7 @@ export const getValidationSchema = (t: TFunction) => {
       .required(t("portfolio.Description is required"))
       .min(10, t("portfolio.Description needs to be more than 10 characters"))
       .max(
-        100,
+        500,
         t("portfolio.Description needs to be less than 100 characters")
       ),
     status: Yup.string().required(t("portfolio.Status is required")),
