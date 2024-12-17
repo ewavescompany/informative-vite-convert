@@ -123,46 +123,80 @@
     "delete_failed": "Delete faild"
   },
   "portfolio": {
-    "Add Project": "Add Project",
-    "Create a new project": "Create a new project",
-    "description porject": "Fill the form data to add the project.",
-    "Title": "Title",
-    "Title is required": "Title is required",
-    "Project title": "Project title",
-    "Content": "Content",
-    "Content is required": "Content is required",
-    "Project content": "Project content",
-    "Keywords": "Keywords",
-    "Keywords are required": "Keywords are required",
-    "Description": "Description",
-    "Description is required": "Description is required",
-    "Project description": "Project description",
-    "Client Name": "Client Name",
-    "Client name is required": "Client name is required",
-    "Status": "Status",
-    "Select status": "Select status",
-    "Completed": "Completed",
-    "Ongoing": "Ongoing",
-    "Status is required": "Status is required",
-    "Start Date": "Start Date",
-    "Start date is required": "Start date is required",
-    "End Date": "End Date",
-    "End date is required": "End date is required",
-    "Website Link": "Website Link",
-    "Website link is required": "Website link is required",
-    "Must be a valid URL": "Must be a valid URL",
-    "Main Image": "Main Image",
-    "Main image is required": "Main image is required",
-    "Add Additional Images": "Add Additional Images",
-    "At least one image is required": "At least one image is required",
-    "language_select": "Select Language",
-    "lang_required": "Language selection is required",
-    "portfolio_added_successfully": "Portfolio added successfully",
-    "portfolio_added_successfully_you_can_check_it": "portfolio added successfully you can check it",
-    "portfolio_adding_failed": "portfolio adding failed",
+    "request_status": {
+      "add": {
+        "success": {
+          "title": "Portfolio added successfully",
+          "description": "portfolio added successfully you can check it"
+        },
+        "failed": {
+          "title": "portfolio adding failed"
+        }
+      },
+      "edit": {
+        "success": {
+          "title": "portfolio updated successfully",
+          "description": "portfolio updated successfully you can check it"
+        }
+      }
+    },
+    "form": {
+      "label": {
+        "title": "Project Title",
+        "description": "Project Description",
+        "content": "Project Content",
+        "keywords": "Project Keywords",
+        "client_name": "Client Name",
+        "status": "Project Status",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "main_image": "Main Image",
+        "additional_images": "Add Additional Images",
+        "website_link": "Website Link",
+        "language": "Language"
+      },
+      "placeholder": {
+        "title": "Project title",
+        "content": "Project content",
+        "description": "Project description",
+        "client": "Client",
+        "select": "Select status",
+        "language_select": "Select Language"
+      },
+      "select_val": {
+        "completed": "Completed",
+        "ongoing": "Ongoing"
+      },
+      "validation_message": {
+        "title": "A project title is required.",
+        "content": "Please provide project content.",
+        "keywords": "Please provide relevant project keywords.",
+        "description": "A project description is required.",
+        "client": "The client name is required.",
+        "status": "Please select the project status.",
+        "start": "A start date is required.",
+        "end_date": "An end date is required.",
+        "website_link": "A project website link is required.",
+        "URL": "Please provide a valid URL.",
+        "main_image": "A main image is required.",
+        "additional_image": "Please add at least one additional image.",
+        "language_select": "Language selection is required."
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "submit": "Submit",
+        "submitting_loading": "Submitting..."
+      },
+      "add": {
+        "title": "Create a New Project",
+        "description": "Complete the form below to add a new project."
+      },
+      "edit": {
+        "title": "Edit Project",
+        "description": "Update the fields below and submit to save your changes."
+      }
+    },
     "All portfolios": "All portfolios",
-    "portfolio_updated_successfully": "portfolio updated successfully",
-    "portfolio_updated_successfully_you_can_check_it": "portfolio updated successfully you can check it",
     "client": "Client",
     "project": "Project",
     "project_type": "Project Type",
