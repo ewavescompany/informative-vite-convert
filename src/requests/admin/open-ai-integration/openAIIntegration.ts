@@ -1,6 +1,6 @@
 import OpenAI from "openai";
-import { FormikErrors } from "formik";
-import { BlogFormValues } from "@/schema/blogTypes";
+// import { FormikErrors } from "formik";
+// import { BlogFormValues } from "@/schema/blogTypes";
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -14,10 +14,12 @@ export default async function openAIIntegration(
   setWavelyAIRequestStatus: React.Dispatch<
     React.SetStateAction<"not-active" | "loading" | "done" | "error">
   >,
-  formikSetValue: (
-    content: string
-  ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>
+  formikSetValue: (content: string) => void
+  // formikSetValue: (
+  //   content: string
+  // ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>
 ) {
+  setWavelyAIRequestStatus("loading");
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini", // Use a valid model name

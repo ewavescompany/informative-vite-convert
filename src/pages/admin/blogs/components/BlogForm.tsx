@@ -31,6 +31,10 @@ import { Tabs, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent, TabsList } from "@radix-ui/react-tabs";
 import { prompt } from "@/data/admin/prompt";
 import AiHelp from "@/components/aiHelp";
+import openAIIntegration from "@/requests/admin/open-ai-integration/openAIIntegration";
+import Loading from "@/pages/client/loading";
+import BlogContentAIDialog from "./BlogContnetAIDialog";
+import { BotMessageSquare } from "lucide-react";
 
 interface BlogFormValues {
   name: string;
@@ -77,6 +81,11 @@ export function BlogForm({
   const { t } = useTranslation();
   const [content, setContent] = useState(initialValues.content);
   const [tags, setTags] = useState<string[]>(initialValues.tags);
+  // const [contentUsingAI, setContentUsingAI] = useState("");
+  const [isContentAIDialogOpen, setIsContentAIDialogOpen] = useState(false);
+  const [contentUsingAIStatus, setContentUsingAIStatus] = useState<
+    "not-active" | "loading" | "done" | "error"
+  >("not-active");
 
   const validationSchema = getValidationSchema(t, mode);
 
@@ -95,6 +104,19 @@ export function BlogForm({
   useEffect(() => {
     formik.setFieldValue("tags", tags);
   }, [tags]);
+
+  useEffect(() => {
+    setContent(formik.values.content);
+  }, [formik.values.content]);
+
+  function blogContentAIGeneration(content: string) {
+    openAIIntegration(
+      prompt.generate_blog_content,
+      content,
+      setContentUsingAIStatus,
+      (content: string) => formik.setFieldValue("content", content)
+    );
+  }
 
   // useEffect(() => {
   //   formik.setFieldValue("metaKeywords", responseValue);
@@ -172,41 +194,69 @@ export function BlogForm({
 
                   {/* Blog Content */}
                   <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="content">{t("blogForm.content")}</Label>
-                    <ReactQuill
-                      style={{
-                        wordWrap: "break-word",
-                        overflowWrap: "break-word",
-                      }}
-                      value={content}
-                      onChange={(value) => {
-                        setContent(value);
-                        formik.setFieldValue("content", value);
-                      }}
-                      modules={{
-                        toolbar: [
-                          [{ header: "1" }, { header: "2" }, { font: [] }],
-                          [{ list: "ordered" }, { list: "bullet" }],
-                          ["bold", "italic", "underline"],
-                          ["link", "image"],
-                        ],
-                      }}
-                      formats={[
-                        "header",
-                        "font",
-                        "list",
-                        "bold",
-                        "italic",
-                        "underline",
-                        "link",
-                        "image",
-                      ]}
+                    <BlogContentAIDialog
+                      isOpen={isContentAIDialogOpen}
+                      setIsOpen={setIsContentAIDialogOpen}
+                      aiRequest={(content) => blogContentAIGeneration(content)}
                     />
-                    {formik.errors.content && formik.touched.content && (
-                      <div className="text-red-500 text-sm">
-                        {formik.errors.content}
-                      </div>
-                    )}
+
+                    <Label htmlFor="content">{t("blogForm.content")}</Label>
+                    <div className="relative">
+                      <ReactQuill
+                        style={{
+                          wordWrap: "break-word",
+                          overflowWrap: "break-word",
+                        }}
+                        value={content}
+                        onChange={(value) => {
+                          setContent(value);
+                          formik.setFieldValue("content", value);
+                        }}
+                        modules={{
+                          toolbar: [
+                            [{ header: "1" }, { header: "2" }, { font: [] }],
+                            [{ list: "ordered" }, { list: "bullet" }],
+                            ["bold", "italic", "underline"],
+                            ["link", "image"],
+                          ],
+                        }}
+                        formats={[
+                          "header",
+                          "font",
+                          "list",
+                          "bold",
+                          "italic",
+                          "underline",
+                          "link",
+                          "image",
+                        ]}
+                      />
+                      {formik.errors.content && formik.touched.content && (
+                        <div className="text-red-500 text-sm">
+                          {formik.errors.content}
+                        </div>
+                      )}
+                      {contentUsingAIStatus === "loading" && (
+                        <div className="absolute top-0 bottom-0 right-0 left-0 backdrop-blur-sm bg-black/10 flex justify-center items-center z-10">
+                          <Loading />
+                        </div>
+                      )}
+                    </div>
+
+                    <Button
+                      size="sm"
+                      className="w-fit px-3 bg-green-900 hover:bg-green-900/90 flex items-center gap-2"
+                      type="button"
+                      onClick={() => {
+                        // blogContentAIGeneration();
+                        setIsContentAIDialogOpen(true);
+                      }}
+                    >
+                      <BotMessageSquare />
+                      <span className="text-sm">
+                        Generate blog content using AI
+                      </span>
+                    </Button>
                   </div>
                 </div>
               </TabsContent>

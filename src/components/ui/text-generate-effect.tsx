@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FormikErrors } from "formik";
-import { BlogFormValues } from "@/schema/blogTypes";
 import { X } from "lucide-react";
 
 export const TextGenerateEffect = ({
@@ -13,9 +11,10 @@ export const TextGenerateEffect = ({
 }: {
   words: string;
   // setWords: React.Dispatch<React.SetStateAction<string>>;
-  setWords: (
-    content: string
-  ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>;
+  // setWords: (
+  //   content: string
+  // ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>;
+  setWords: (content: string) => void;
   className?: string;
   duration?: number;
   type: string;

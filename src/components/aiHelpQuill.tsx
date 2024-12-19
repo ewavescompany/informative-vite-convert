@@ -3,6 +3,8 @@ import openAIIntegration from "@/requests/admin/open-ai-integration/openAIIntegr
 import { Skeleton } from "./ui/skeleton";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { ReactNode, useState } from "react";
+import { FormikErrors } from "formik";
+import { BlogFormValues } from "@/schema/blogTypes";
 import { X } from "lucide-react";
 
 type AiHelpType = {
@@ -10,10 +12,9 @@ type AiHelpType = {
   prompt: string;
   content: string;
   formikValue: string;
-  formikSetValue: (content: string) => void;
-  // formikSetValue: (
-  //   content: string
-  // ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>;
+  formikSetValue: (
+    content: string
+  ) => Promise<void> | Promise<FormikErrors<BlogFormValues>>;
   type: string;
 };
 
