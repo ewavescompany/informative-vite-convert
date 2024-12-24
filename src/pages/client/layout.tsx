@@ -39,7 +39,7 @@ export default function ClientLayout() {
   if (!data) return <Loading />;
 
   return (
-    <div className="font-almarai">
+    <div className="font-almarai relative">
       <Helmet>
         <title>
           {lang === "en" ? data.setting.title_en : data.setting.title_ar}
@@ -56,6 +56,9 @@ export default function ClientLayout() {
 
       <Navbar logo={data.logo} dataSetting={data.setting} />
       <Outlet context={data} />
+      <a href="https://wa.me/+966538130050" className="fixed bottom-0 right-0 p-4 duration-300 md:hover:scale-105" style={{ zIndex: 1000 }}>
+        <img className="w-10 md:w-16" src="/whatsapp_icon.png" alt="logo" />
+      </a>
       <Footer dataSetting={data.setting} />
     </div>
   );
