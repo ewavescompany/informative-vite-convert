@@ -13,12 +13,15 @@ export default async function openAIIntegration(
   setWavelyAIRequestStatus("loading");
   const url = `${dashboardBaseServerUrl}${adminServerUrls.openAIIntegration.generale}`;
   const method = "POST";
+  const body =
+      {Content:`${prompt} ${content}`};
+
 
   try {
     const response: ApiResponse = await apiRequest(
       url,
       method,
-      {Content:`${prompt} ${content}`},
+      body,
       {
         headers: {
           "Content-Type": "multipart/form-data",
