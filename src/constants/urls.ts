@@ -50,6 +50,10 @@ export const adminServerUrls = {
   editAboutus: "/about-us/manage",
   getLogo: "/home-page/get-logo",
   uploadLogo: "/home-page/add-logo",
+  openAIIntegration: {
+    generale: "/blogs/chat",
+    blog: "/blogs/chat",
+  },
 };
 
 export const baseServerUrl = "https://v4.ewavespro.com/api";
