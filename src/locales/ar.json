@@ -135,6 +135,10 @@
     "added": "تم الإضافة"
   },
   "blogForm": {
+    "tabs": {
+      "main_content": "المحتوي الأساسي",
+      "seo_content": "محتوي محركات البحث"
+    },
     "add_blog": "إضافة مدونة",
     "edit_blog": "تعديل المدونة",
     "create_blog": "إنشاء مدونة جديدة",
@@ -172,46 +176,71 @@
     "delete_failed": "فشل الحذف"
   },
   "portfolio": {
+    "form": {
+      "label": {
+        "title": "عنوان المشروع",
+        "description": "وصف المشروع",
+        "content": "محتوى المشروع",
+        "keywords": "الكلمات الدلالية للمشروع",
+        "client_name": "اسم العميل",
+        "status": "حالة المشروع",
+        "start_date": "تاريخ البدء",
+        "end_date": "تاريخ الانتهاء",
+        "main_image": "الصورة الرئيسية",
+        "additional_images": "إضافة صور إضافية",
+        "website_link": "رابط الموقع",
+        "language": "اللغة"
+      },
+      "placeholder": {
+        "title": "عنوان المشروع",
+        "content": "محتوى المشروع",
+        "description": "وصف المشروع",
+        "client": "اسم العميل",
+        "select": "اختر الحالة",
+        "language_select": "اختر اللغة"
+      },
+      "select_val": {
+        "completed": "مكتمل",
+        "ongoing": "قيد التنفيذ"
+      },
+      "validation_message": {
+        "title": "يُرجى إدخال عنوان للمشروع.",
+        "content": "يُرجى تقديم محتوى للمشروع.",
+        "keywords": "يُرجى إدخال كلمات دلالية مناسبة للمشروع.",
+        "description": "يُرجى إدخال وصف للمشروع.",
+        "client": "يجب إدخال اسم العميل.",
+        "status": "يُرجى اختيار حالة المشروع.",
+        "start": "يجب تحديد تاريخ البدء.",
+        "end_date": "يجب تحديد تاريخ الانتهاء.",
+        "website_link": "يُرجى إدخال رابط الموقع الخاص بالمشروع.",
+        "URL": "يُرجى إدخال رابط URL صالح.",
+        "main_image": "يجب إضافة الصورة الرئيسية.",
+        "additional_image": "يُرجى إضافة صورة إضافية واحدة على الأقل.",
+        "language_select": "يُرجى اختيار اللغة."
+      },
+      "buttons": {
+        "cancel": "إلغاء",
+        "submit": "إرسال",
+        "submitting_loading": "جارٍ الإرسال..."
+      },
+      "add": {
+        "title": "إنشاء مشروع جديد",
+        "description": "أكمل النموذج أدناه لإضافة مشروع جديد."
+      },
+      "edit": {
+        "title": "تعديل المشروع",
+        "description": "حدِّث الحقول أدناه ثم اضغط على إرسال لحفظ التغييرات."
+      }
+    },
     "Add Project": "إضافة مشروع",
-    "Create a new project": "إنشاء مشروع جديد",
-    "description porject": "املأ بيانات النموذج لإضافة المشروع.",
-    "Title": "العنوان",
-    "Title is required": "العنوان مطلوب",
     "Project title": "عنوان المشروع",
-    "Content": "المحتوى",
-    "Content is required": "المحتوى مطلوب",
     "Project content": "محتوى المشروع",
-    "Keywords": "الكلمات المفتاحية",
-    "Keywords are required": "الكلمات المفتاحية مطلوبة",
-    "Description": "الوصف",
-    "Description is required": "الوصف مطلوب",
     "Project description": "وصف المشروع",
-    "Client Name": "اسم العميل",
-    "Client name is required": "اسم العميل مطلوب",
-    "Status": "الحالة",
     "Select status": "اختر الحالة",
     "Completed": "مكتمل",
     "Ongoing": "قيد التنفيذ",
-    "Status is required": "الحالة مطلوبة",
-    "Start Date": "تاريخ البدء",
-    "Start date is required": "تاريخ البدء مطلوب",
-    "End Date": "تاريخ الانتهاء",
-    "End date is required": "تاريخ الانتهاء مطلوب",
     "Website Link": "رابط الموقع",
-    "Website link is required": "رابط الموقع مطلوب",
-    "Must be a valid URL": "يجب أن يكون رابطاً صحيحاً",
-    "Main Image": "الصورة الرئيسية",
-    "Main image is required": "الصورة الرئيسية مطلوبة",
-    "Add Additional Images": "إضافة صور إضافية",
-    "At least one image is required": "مطلوب صورة واحدة على الأقل",
-    "language_select": "اختر اللغة",
-    "lang_required": "اختيار اللغة مطلوب",
-    "portfolio_added_successfully": "تمت إضافة المحفظة بنجاح",
-    "portfolio_added_successfully_you_can_check_it": "تمت إضافة المشروع بنجاح يمكنك التحقق من ذلك",
-    "portfolio_adding_failed": "فشلت إضافة مشروع",
     "All portfolios": "جميع المشاريع",
-    "portfolio_updated_successfully": "تم تحديث المشروع بنجاح",
-    "portfolio_updated_successfully_you_can_check_it": "تم تحديث المشروع بنجاح يمكنك التحقق من ذلك",
     "client": "العميل",
     "project": "المشروع",
     "project_type": "نوع المشروع",

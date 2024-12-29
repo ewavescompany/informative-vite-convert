@@ -1,4 +1,3 @@
-"use client";
 import LinkButton from "@/customComponents/dashboardComponent/links/linkButton";
 import { DashboardTitle } from "@/customComponents/dashboardComponent/tags/dashboardTitle";
 import { useState } from "react";
