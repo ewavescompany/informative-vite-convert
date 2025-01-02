@@ -27,7 +27,7 @@ import ClientPage from "@/pages/client/page";
 import BlogClientPage from "@/pages/client/blogs/blogs";
 import ContactUsClientPage from "./pages/client/contact-us/page";
 import ServicesClientPage from "./pages/client/services/services";
-import AboutUsClientPage from "./pages/client/about-us/page";
+// import AboutUsClientPage from "./pages/client/about-us/page";
 import PortfolioClientPage from "./pages/client/portfolio/portfolio";
 import LoginPage from "./pages/admin/login/page";
 import NavLogoPage from "./pages/admin/home/nav-logo/navLogoPage";
@@ -149,7 +149,7 @@ export default function AppRoutes() {
           path={pageClient.service_details + "/:id"}
           element={<ServiceDetailsClientPage />}
         />
-        <Route path={pageClient.about_us} element={<AboutUsClientPage />} />
+        {/* <Route path={pageClient.about_us} element={<AboutUsClientPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
