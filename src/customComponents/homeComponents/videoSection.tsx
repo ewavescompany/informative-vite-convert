@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { settings } from "@/interfaces/dashboardInterface";
 import SlideComponent from "../reavelAnimation/slideComponent";
+import { Link } from "react-router-dom";
+import { pageClient } from "@/data/client/pagesURLs";
 
 interface videoSectionInterface {
   settings: settings;
@@ -52,22 +54,26 @@ function VideoSection({ settings }: videoSectionInterface) {
 
             <div className="flex flex-row gap-3 overflow-hidden mx-0">
               <SlideComponent dir="up">
-                <Button
-                  className="w-fit border-graywhite border-2 text-graywhite hover:text-grayblack"
-                  size={"default"}
-                  variant={"ghost"}
-                >
-                  {t("HomePage.more_about_us")}
-                </Button>
+                <Link to={pageClient.portfolio}>
+                  <Button
+                    className="w-fit border-graywhite border-2 text-graywhite hover:text-grayblack"
+                    size={"default"}
+                    variant={"ghost"}
+                  >
+                    {t("HomePage.more_about_us")}
+                  </Button>
+                </Link>
               </SlideComponent>
               <SlideComponent dir="down">
-                <Button
-                  className="w-fit border-graywhite border-2 text-grayblack hover:text-graywhite hover:bg-transparent animate-slideInDown"
-                  size={"default"}
-                  variant={"secondary"}
-                >
-                  {t("HomePage.contact_us")}
-                </Button>
+                <Link to={pageClient.contact_us}>
+                  <Button
+                    className="w-fit border-graywhite border-2 text-grayblack hover:text-graywhite hover:bg-transparent animate-slideInDown"
+                    size={"default"}
+                    variant={"secondary"}
+                  >
+                    {t("HomePage.contact_us")}
+                  </Button>
+                </Link>
               </SlideComponent>
             </div>
           </div>
