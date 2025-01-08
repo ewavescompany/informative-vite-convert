@@ -620,7 +620,15 @@
     "send": "Send Message",
     "success": "Success",
     "message_sent": "Your message has been sent successfully!",
-    "send_failed": "Failed to send the message, please try again."
+    "send_failed": "Failed to send the message, please try again.",
+    "actions": "Actions",
+    "message_details": "Message Details",
+    "confirm_deletion": "Confirm Deletion",
+    "delete_confirmation": "Are you sure you want to delete the message from {{name}}?"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "delete": "Delete"
   },
   "seo_manage": {
     "title": "SEO Management page",
